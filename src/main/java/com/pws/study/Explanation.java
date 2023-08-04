@@ -85,7 +85,7 @@ public class Explanation {
 	      projectname2_2.setBounds(39, 141, 15, 25);
 	      panel.add(projectname2_2);
 	      
-	      JLabel projectname2_2_1 = new JLabel("스터디 카페를 사용할 수 있는 공간입니다.");
+	      JLabel projectname2_2_1 = new JLabel("스터디 카페를 사용할 수 있는 공간입니다1111.");
 	      projectname2_2_1.setForeground(new Color(114, 166, 255));
 	      projectname2_2_1.setFont(new Font("굴림", Font.BOLD, 15));
 	      projectname2_2_1.setBounds(57, 166, 327, 25);
