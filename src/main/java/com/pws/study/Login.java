@@ -14,9 +14,13 @@ import org.json.simple.parser.ParseException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeListener;
+import java.lang.reflect.Member;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.beans.PropertyChangeEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -40,7 +44,7 @@ public class Login {
    int currentDay;
    int currentHour;
    int currentMinute;
-   String seat_time = "null";
+   String seat_time = "0 0 0 0 0";
    JSONObject data = new JSONObject();
    JSONObject check;
    Post po = new Post();
@@ -80,6 +84,7 @@ public class Login {
       frame.setResizable(false);
       frame.setVisible(true);
       Border border =  BorderFactory.createLineBorder(new Color(114,166,250),2);
+      Border border1 =  BorderFactory.createLineBorder(new Color(255,0,0),2);
       
       JPanel panel_4 = new JPanel();
       panel_4.setBounds(0, 0, 856, 613);
@@ -153,8 +158,55 @@ public class Login {
       nokeypanel_1.setBounds(291, 14, 167, 108);
       nokeypanel_1.setVisible(false);
       nomembership.add(nokeypanel_1);
-      
+    
+  	  JLabel Memberlabel_1 = new JLabel("            사물함 사용 가능 시간이 남아 있지 않습니다!");
+	  JLabel Memberlabel = new JLabel("");
+	  
+	  	JLabel Warning = new JLabel("<html>시간이용권, 기간이용권 중 이용권을 구매한 후에 <br><br>좌석을 선택하여 스터디카페를 사용 가능합니다!.<html>");
+	  	Warning.setBounds(72, 16, 450, 57);
+		textpanel3.add(Warning);
+		Warning.setForeground(new Color(33, 112, 255));
+		//Warning.setForeground(new Color(255, 100, 100));
+		Warning.setFont(new Font("굴림", Font.BOLD, 14));
+		
+		JLabel Warning1= new JLabel("<html>회원님은 이미 선택한 좌석이 존재합니다. <br><br>좌석 이동을 원하신다면 좌석 이동 메뉴를 선택해주세요!<html>");
+		Warning1.setBounds(72, 16, 450, 57);
+		textpanel3.add(Warning1);
+		Warning1.setForeground(new Color(33, 112, 255));
+		Warning1.setFont(new Font("굴림", Font.BOLD, 13));
+		Warning1.setVisible(false);
+		Warning.setVisible(false);
+		
       RoundedButton2 ticketbutton1 = new RoundedButton2("좌석 선택"); 
+      ticketbutton1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				boolean isEnabled = ticketbutton1.isEnabled();
+				if(!isEnabled)
+				{
+					if(seat_time.equals("0 0 0 0 0")) {
+						Warning.setVisible(true);
+						Warning1.setVisible(false);
+						Memberlabel.setVisible(false);
+						Memberlabel_1.setVisible(false);
+						
+					}
+					else if(!Info.seat_number.equals("NULL")){
+						Warning1.setVisible(true);
+						Warning.setVisible(false);
+						Memberlabel.setVisible(false);
+						Memberlabel_1.setVisible(false);
+					}
+			}
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Warning.setVisible(false);
+				Warning1.setVisible(false);
+				Memberlabel.setVisible(true);
+				Memberlabel_1.setVisible(true);
+			}
+		});
       ticketbutton1.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
       		frame.dispose();
@@ -164,7 +216,7 @@ public class Login {
       ticketbutton1.setBounds(250, 88, 200, 23);
       textpanel3.add(ticketbutton1);
       ticketbutton1.setEnabled(false);
-      
+
       RoundedButton2 logoutbutton2 = new RoundedButton2("입장하기");
       logoutbutton2.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
@@ -228,52 +280,11 @@ public class Login {
 	  lock.setEnabled(false);
 	  coffe.setEnabled(false);
 	  
-      RoundedButton2 logoutbutton = new RoundedButton2("로그아웃");
-      logoutbutton.addActionListener(new ActionListener() {
-      	public void actionPerformed(ActionEvent e) {
-      		Info.phone = "NULL";
-      		Info.pw = "NULL";
-      		Info.seat_number = "NULL";
-      		Message ms = new Message("로그아웃이 완료되었습니다!");
-			textpanel2.setVisible(true);
-			textpanel3.setVisible(false);
-			phonetext.setText("");
-			pwtext.setText("");
-		    one.setEnabled(false);
-		    move.setEnabled(false);
-		    spirit.setEnabled(false);
-		    checkout.setEnabled(false);
-		    lock.setEnabled(false);
-		    coffe.setEnabled(false);
-		    try {
-				data.put("phone", Info.phone);
-	   		check = po.jsonpost("/FindSeatPhone", data);
-	   		Info.seat_number = check.getString("seat_number");
-	    	if((Info.seat_number.equals("NULL")) && (!seat_time.equals("null")))
-	    	{
-	    		ticketbutton1.setEnabled(true);
-	    		
-	    	}
-	    	else if ((Info.seat_number.equals("NULL")) && (seat_time.equals("null"))) {
-	    		ticketbutton1.setEnabled(false);
-	    	}
-	    	} catch (JSONException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-      	}
-      });
-      logoutbutton.setBounds(20, 88, 200, 23);
-      textpanel3.add(logoutbutton);
-	  
 	  JLabel phonelabel = new JLabel("전화번호 : ");
 	  phonelabel.setFont(new Font("굴림", Font.BOLD, 12));
 	  phonelabel.setBounds(12, 14, 75, 15); 
 	  textpanel2.add(phonelabel);
 	  
-	  
-	  
-	  JLabel Memberlabel = new JLabel("");
 	  Memberlabel.setFont(new Font("굴림", Font.BOLD, 14));
 	  Memberlabel.setForeground(new Color(255, 100, 100));
 	  Memberlabel.setBounds(28, 15, 430, 34); 
@@ -283,10 +294,17 @@ public class Login {
 	   {
 		   textpanel2.setVisible(true);
 		   textpanel3.setVisible(false);
-		   ticketbutton1.setEnabled(false);
 	   }
 	   else if(Info.phone != "NULL")
 	   {
+	    	try {
+				data.put("phone", Info.phone);
+	   		check = po.jsonpost("/FindSeatPhone", data);
+	   		Info.seat_number = check.getString("seat_number");
+			} catch (JSONException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		   textpanel3.setVisible(true);
 		   textpanel2.setVisible(false);
 	    	one.setEnabled(true);
@@ -295,32 +313,17 @@ public class Login {
 	    	checkout.setEnabled(true);
 	    	lock.setEnabled(true);
 	    	coffe.setEnabled(true);
-	    	try {
+	    	try {	
 	    		data.put("phone", Info.phone);
 	    		check = po.jsonpost("/FindSeatTime", data);
-	    		String seat_time = check.getString("seat_time");
+	    		seat_time = check.getString("seat_time");
 	    		if(seat_time.equals("0 0 0 0 0"))
 	    		{
 	    			Memberlabel.setText("            좌석 사용 가능 시간이 남아 있지 않습니다!");
 	    			ticketbutton1.setEnabled(false);
+	    			seat_time = "0 0 0 0 0";
 	    		}
 	    		else {
-	    			try {
-						data.put("phone", Info.phone);
-			   		check = po.jsonpost("/FindSeatPhone", data);
-			   		Info.seat_number = check.getString("seat_number");
-			    	if((Info.seat_number.equals("NULL")) && (!seat_time.equals("null")))
-			    	{
-			    		ticketbutton1.setEnabled(true);
-			    		
-			    	}
-			    	else if ((Info.seat_number.equals("NULL")) && (seat_time.equals("null"))) {
-			    		ticketbutton1.setEnabled(false);
-			    	}
-			    	} catch (JSONException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
 	    			 String arr[] = seat_time.split(" ");
 		    		  for(String cut : arr) {
 		    			  year = Integer.valueOf(arr[0]);
@@ -330,28 +333,62 @@ public class Login {
 		    			  minute = Integer.valueOf(arr[4]);
 		    			  
 		    		  }
-		    		  String formattedMonth = String.format("%02d", month);
-		    		  String formattedDay = String.format("%02d", day);
-		    		  String formattedHour = String.format("%02d", hour);
-		    		  String formattedMinute = String.format("%02d", minute);
-		    		  Memberlabel.setText("좌   석 : " + year + "년 " + formattedMonth + "월 " + formattedDay + "일 " + formattedHour + "시 " + formattedMinute + "분까지 사용 가능합니다.");
+		    		  if (currentYear > year
+		    				    || (currentYear == year && currentMonth > month)
+		    				    || (currentYear == year && currentMonth == month && currentDay > day)
+		    				    || (currentYear == year && currentMonth == month && currentDay == day && currentHour > hour)
+		    				    || (currentYear == year && currentMonth == month && currentDay == day && currentHour == hour && currentMinute > minute)) {
+		    			  String add_time = "0 0 0 0 0";
+		    			  data.put("phone", Info.phone);
+					      data.put("add_time",add_time);
+					      check = po.jsonpost("/AddSeatTime", data);
+					      if((check.get("check")).equals("true"))
+							{
+					    	  Memberlabel.setText("            좌석 사용 가능 시간이 남아 있지 않습니다!");
+								data.put("phone", Info.phone);
+						   		check = po.jsonpost("/FindSeatPhone", data);
+						   		Info.seat_number = check.getString("seat_number");
+								data.put("phone", "NULL");
+								data.put("seatnumber", Info.seat_number);
+								data.put("activations", "1");
+								check = po.jsonpost("/UpdateSeat", data);
+								Info.seat_number = "NULL";
+								seat_time = "0 0 0 0 0";
+							}
+					      else
+							{
+							}
+		    		  }
+		    		  else {
+		    			  String formattedMonth = String.format("%02d", month);
+			    		  String formattedDay = String.format("%02d", day);
+			    		  String formattedHour = String.format("%02d", hour);
+			    		  String formattedMinute = String.format("%02d", minute);
+			    		  Memberlabel.setText("좌    석 : " + year + "년 " + formattedMonth + "월 " + formattedDay + "일 " + formattedHour + "시 " + formattedMinute + "분까지 사용 가능합니다.");
+		    		  }
+		    			try {
+							data.put("phone", Info.phone);
+				   		check = po.jsonpost("/FindSeatPhone", data);
+				   		Info.seat_number = check.getString("seat_number");
+				    	if((Info.seat_number.equals("NULL")) && !seat_time.equals("0 0 0 0 0"))
+				    	{
+				    		ticketbutton1.setEnabled(true);
+				    	}
+				    	else if ((Info.seat_number.equals("NULL")) && (seat_time.equals("0 0 0 0 0"))) {
+				    		ticketbutton1.setEnabled(false);
+				    	}
+				    	else {
+				    	}
+				    	} catch (JSONException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+				    	}
+	    				}
+	    		}catch(JSONException e1) {
+	    			
 	    		}
-	    		
-	    	} catch (JSONException e1) {
-	    		// TODO Auto-generated catch block
-	    		e1.printStackTrace();
 	    	}
-	    	
-	    	try {
-				data.put("phone", Info.phone);
-	   		check = po.jsonpost("/FindSeatPhone", data);
-	   		Info.seat_number = check.getString("seat_number");
-			} catch (JSONException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-	   }  
-	  
+   
 	  
 	  phonetext = new JTextField();
 	  phonetext.addMouseListener(new MouseAdapter() {
@@ -422,6 +459,7 @@ public class Login {
 			    		if(seat_time.equals("0 0 0 0 0")) {
 			    			Memberlabel.setText("            좌석 사용 가능 시간이 남아 있지 않습니다!");
 			    			ticketbutton1.setEnabled(false);
+			    			seat_time = "0 0 0 0 0";
 			    		}
 			    		else {
 			    			 String arr[] = seat_time.split(" ");
@@ -445,13 +483,21 @@ public class Login {
 							      if((check.get("check")).equals("true"))
 									{
 							    	  Memberlabel.setText("            좌석 사용 가능 시간이 남아 있지 않습니다!");
+										data.put("phone", Info.phone);
+								   		check = po.jsonpost("/FindSeatPhone", data);
+								   		Info.seat_number = check.getString("seat_number");
+										data.put("phone", "NULL");
+										data.put("seatnumber", Info.seat_number);
+										data.put("activations", "1");
+										check = po.jsonpost("/UpdateSeat", data);
+										Info.seat_number = "NULL";
+										seat_time = "0 0 0 0 0";
 									}
 							      else
 									{
 									}
 				    		  }
 				    		  else {
-				    			  System.out.println(currentMinute);
 				    			  String formattedMonth = String.format("%02d", month);
 					    		  String formattedDay = String.format("%02d", day);
 					    		  String formattedHour = String.format("%02d", hour);
@@ -462,11 +508,11 @@ public class Login {
 									data.put("phone", Info.phone);
 						   		check = po.jsonpost("/FindSeatPhone", data);
 						   		Info.seat_number = check.getString("seat_number");
-						    	if((Info.seat_number.equals("NULL")) && !seat_time.equals("null"))
+						    	if((Info.seat_number.equals("NULL")) && !seat_time.equals("0 0 0 0 0"))
 						    	{
 						    		ticketbutton1.setEnabled(true);
 						    	}
-						    	else if ((Info.seat_number.equals("NULL")) && (seat_time.equals("null"))) {
+						    	else if ((Info.seat_number.equals("NULL")) && (seat_time.equals("0 0 0 0 0"))) {
 						    		ticketbutton1.setEnabled(false);
 						    	}
 						    	else {
@@ -496,6 +542,27 @@ public class Login {
     loginbutton.setBounds(12, 78, 235, 23);
     textpanel2.add(loginbutton);
     
+    RoundedButton2 logoutbutton = new RoundedButton2("로그아웃");
+    logoutbutton.addActionListener(new ActionListener() {
+    	public void actionPerformed(ActionEvent e) {
+    		Info.phone = "NULL";
+    		Info.pw = "NULL";
+    		Info.seat_number = "NULL";
+    		Message ms = new Message("로그아웃이 완료되었습니다!");
+			textpanel2.setVisible(true);
+			textpanel3.setVisible(false);
+			phonetext.setText("");
+			pwtext.setText("");
+		    one.setEnabled(false);
+		    move.setEnabled(false);
+		    spirit.setEnabled(false);
+		    checkout.setEnabled(false);
+		    lock.setEnabled(false);
+		    coffe.setEnabled(false);
+    	}
+    });
+    logoutbutton.setBounds(20, 88, 200, 23);
+    textpanel3.add(logoutbutton);
     
     RoundedButton2 b1 = new RoundedButton2("1");
     b1.addActionListener(new ActionListener() {
@@ -996,7 +1063,6 @@ public class Login {
 	b9_1_1.setBounds(60, 81, 39, 23);
 	keypanel.add(b9_1_1);
 	
-	JLabel Memberlabel_1 = new JLabel("            사물함 사용 가능 시간이 남아 있지 않습니다!");
 	Memberlabel_1.setForeground(new Color(255, 100, 100));
 	Memberlabel_1.setFont(new Font("굴림", Font.BOLD, 14));
 	Memberlabel_1.setBounds(28, 45, 430, 34);
@@ -1292,14 +1358,12 @@ public class Login {
       projectname2.setBounds(265, 54, 315, 37);
       borderpanel.add(projectname2);
       
-      Border border1 =  BorderFactory.createLineBorder(new Color(114,166,250),2);
-      
       JPanel panel_5 = new JPanel();
       panel_5.setBounds(532, 443, 293, 140);
       borderpanel.add(panel_5);
       panel_5.setLayout(null);
       panel_5.setBackground(new Color(255,255,255));
-      panel_5.setBorder(border1);
+      panel_5.setBorder(border);
       
       JLabel uselabel = new JLabel("이용안내");
       uselabel.setForeground(new Color(0, 0, 255));
@@ -1344,5 +1408,87 @@ public class Login {
 	faq.setBorderPainted(false);
 	faq.setContentAreaFilled(false);
 	faq.setFocusPainted(false);
+	
+	
+//	ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+//
+//    Runnable serverRequestTask = new Runnable() {
+//        @Override
+//        public void run() {
+//        	if(!Info.phone.equals("NULL")) {
+//        		try {
+//    	    		data.put("phone", Info.phone);
+//    	    		check = po.jsonpost("/FindSeatTime", data);
+//    	    		String seat_time = check.getString("seat_time");
+//    	    		if(seat_time.equals("0 0 0 0 0"))
+//    	    		{
+//    	    			Memberlabel.setText("            좌석 사용 가능 시간이 남아 있지 않습니다!");
+//    	    			ticketbutton1.setEnabled(false);
+//    	    		}
+//    	    		else {
+//   	    			 String arr[] = seat_time.split(" ");
+//   		    		  for(String cut : arr) {
+//   		    			  year = Integer.valueOf(arr[0]);
+//   		    			  month = Integer.valueOf(arr[1]);
+//   		    			  day = Integer.valueOf(arr[2]);
+//   		    			  hour = Integer.valueOf(arr[3]);
+//   		    			  minute = Integer.valueOf(arr[4]);
+//   		    			  
+//   		    		  }
+//   		    		  if (currentYear > year
+//   		    				    || (currentYear == year && currentMonth > month)
+//   		    				    || (currentYear == year && currentMonth == month && currentDay > day)
+//   		    				    || (currentYear == year && currentMonth == month && currentDay == day && currentHour > hour)
+//   		    				    || (currentYear == year && currentMonth == month && currentDay == day && currentHour == hour && currentMinute > minute)) {
+//   		    			  String add_time = "0 0 0 0 0";
+//   		    			  data.put("phone", Info.phone);
+//   					      data.put("add_time",add_time);
+//   					      check = po.jsonpost("/AddSeatTime", data);
+//   					      if((check.get("check")).equals("true"))
+//   							{
+//   					    	  Memberlabel.setText("            좌석 사용 가능 시간이 남아 있지 않습니다!");
+//   	    					data.put("phone", "NULL");
+//   	    					data.put("seatnumber", Info.seat_number);
+//   	    					data.put("activations", "1");
+//   	    					check = po.jsonpost("/UpdateSeat", data);
+//   							}
+//   					      else
+//   							{
+//   							}
+//   		    		  }
+//   		    		  else {
+//   		    			  String formattedMonth = String.format("%02d", month);
+//   			    		  String formattedDay = String.format("%02d", day);
+//   			    		  String formattedHour = String.format("%02d", hour);
+//   			    		  String formattedMinute = String.format("%02d", minute);
+//   			    		  Memberlabel.setText("좌    석 : " + year + "년 " + formattedMonth + "월 " + formattedDay + "일 " + formattedHour + "시 " + formattedMinute + "분까지 사용 가능합니다.");
+//   		    		  }
+//   		    			try {
+//   							data.put("phone", Info.phone);
+//   				   		check = po.jsonpost("/FindSeatPhone", data);
+//   				   		Info.seat_number = check.getString("seat_number");
+//   				    	if((Info.seat_number.equals("NULL")) && !seat_time.equals("null"))
+//   				    	{
+//   				    		ticketbutton1.setEnabled(true);
+//   				    	}
+//   				    	else if ((Info.seat_number.equals("NULL")) && (seat_time.equals("null"))) {
+//   				    		ticketbutton1.setEnabled(false);
+//   				    	}
+//   				    	else {
+//   				    	}
+//   				    	} catch (JSONException e1) {
+//   							// TODO Auto-generated catch block
+//   							e1.printStackTrace();
+//   				    	}
+//   	    				}
+//   	    		}catch(JSONException e1) {
+//   	    			
+//   	    		}
+//        	}
+//        }
+//    };
+//
+//    // 30초마다 서버에게 동작 요청
+//    scheduler.scheduleWithFixedDelay(serverRequestTask, 0, 30, TimeUnit.SECONDS);
    }
 }

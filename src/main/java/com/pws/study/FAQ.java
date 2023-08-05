@@ -222,6 +222,10 @@ public class FAQ {
 				panel.add(text_1_1);
 				
 			    RoundedButton2 inquiry = new RoundedButton2("문의하기"); 
+			    inquiry.addActionListener(new ActionListener() {
+			    	public void actionPerformed(ActionEvent e) {
+			    	}
+			    });
 				inquiry.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseEntered(MouseEvent e) {
