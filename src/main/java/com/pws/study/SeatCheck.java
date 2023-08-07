@@ -2,9 +2,12 @@ package com.pws.study;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -16,6 +19,11 @@ import javax.swing.border.Border;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 
 public class SeatCheck {
 
@@ -54,7 +62,7 @@ public class SeatCheck {
 	 */
 	private void initialize(String seat, String seatnumber, JFrame frame1) {
 		frame = new JFrame();
-		frame.setBounds(420, 120, 550, 510);
+		frame.setBounds(380, 120, 550, 510);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -142,7 +150,6 @@ public class SeatCheck {
 		    		  String formattedDay = String.format("%02d", day);
 		    		  String formattedHour = String.format("%02d", hour);
 		    		  String formattedMinute = String.format("%02d", minute);
-		    		  //Memberlabel.setText("좌    석 : " + year + "년 " + formattedMonth + "월 " + formattedDay + "일 " + formattedHour + "시 " + formattedMinute + "분까지 사용 가능합니다.");
 		    		  phonelabel.setText(Info.phone);
 		    		  seatlabel.setText(seat + " 번");
 		    		  timelabel.setText(year + "년 " + formattedMonth + "월 " + formattedDay + "일 " + formattedHour + "시 " + formattedMinute + "분");
@@ -170,6 +177,9 @@ public class SeatCheck {
 		closebutton.setContentAreaFilled(false);
 		closebutton.setFocusPainted(false);
 		
+		JLabel randomnumber = new JLabel("");
+		JLabel Qrlabel = new JLabel("");
+		
 		RoundedButton2 okbutton = new RoundedButton2("New button");
 		okbutton.setFont(new Font("굴림", Font.BOLD, 15));
 		okbutton.setText("확인");
@@ -185,9 +195,15 @@ public class SeatCheck {
 					JSONObject check = po.jsonpost("/UpdateSeat", data);
 		   		if((check.get("check")).equals("true"))
 					{
+	   					String Number = RandomNumber(8);  
+	   					randomnumber.setText(Number);
+	   					generateQRCode(Qrlabel,String.valueOf(Number));
 		   				checkpanel.setVisible(true);
 		   				panel_1.setVisible(false);
-			    		  
+		   				
+		   				data.put("phone", Info.phone);
+						data.put("Number", Number);
+						check = po.jsonpost("/InsertQrNumber", data);
 					}
 				} catch (JSONException e1) {
 					// TODO Auto-generated catch block
@@ -216,6 +232,14 @@ public class SeatCheck {
 		lblNewLabel_1_1_1_1.setFont(new Font("굴림", Font.BOLD, 20));
 		lblNewLabel_1_1_1_1.setBounds(134, 340, 259, 28);
 		panel_1.add(lblNewLabel_1_1_1_1);
+		
+		Qrlabel.setBounds(112, 50, 300, 250);
+		checkpanel.add(Qrlabel);
+		
+		randomnumber.setForeground(new Color(255, 72, 72));
+		randomnumber.setFont(new Font("굴림", Font.BOLD, 20));
+		randomnumber.setBounds(180, 302, 154, 28);
+		checkpanel.add(randomnumber);
 		
 		RoundedButton2 okbutton_1 = new RoundedButton2("New button");
 		okbutton_1.setBounds(212, 390, 95, 39);
@@ -247,4 +271,45 @@ public class SeatCheck {
 	      checkpanel.setVisible(false);
 		
 	}
+	
+	 public static String RandomNumber(int length) {
+	        String digits = "0123456789";
+	        Random random = new Random();
+	        StringBuilder sb = new StringBuilder();
+
+	        for (int i = 0; i < length; i++) {
+	            int randomIndex = random.nextInt(digits.length());
+	            char randomDigit = digits.charAt(randomIndex);
+	            sb.append(randomDigit);
+
+	            if (i < length - 1) {
+	                sb.append(" "); // 숫자 사이에 띄어쓰기 추가
+	            }
+	        }
+
+	        return sb.toString();
+	    }
+	 
+	    public static void generateQRCode(JLabel qrlabel, String data) {
+	        try {
+	            // QR 코드 생성기 생성
+	            QRCodeWriter qrCodeWriter = new QRCodeWriter();
+
+	            // 데이터를 비트맵 이미지로 변환
+	            BitMatrix bitMatrix = qrCodeWriter.encode(data, BarcodeFormat.QR_CODE, 300, 250);
+
+	            // BufferedImage로 변환
+	            BufferedImage qrImage = new BufferedImage(300, 250, BufferedImage.TYPE_INT_RGB);
+	            for (int x = 0; x < 300; x++) {
+	                for (int y = 0; y < 250; y++) {
+	                    qrImage.setRGB(x, y, bitMatrix.get(x, y) ? Color.BLACK.getRGB() : Color.WHITE.getRGB());
+	                }
+	            }
+
+	            qrlabel.setIcon(new ImageIcon(qrImage));
+
+	        } catch (WriterException e) {
+	            e.printStackTrace();
+	        }
+	    }
 }

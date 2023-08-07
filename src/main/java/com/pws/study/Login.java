@@ -256,10 +256,6 @@ public class Login {
       borderpanel.add(spirit);
       
       RoundedButton2 checkout = new RoundedButton2("퇴실하기");
-      checkout.setFont(new Font("굴림", Font.BOLD, 20));
-      checkout.setText("퇴실");
-      checkout.setBounds(329, 267, 170, 95);
-      borderpanel.add(checkout);
       
       RoundedButton2 lock = new RoundedButton2("사물함이용권");
       lock.setFont(new Font("굴림", Font.BOLD, 20));
@@ -354,6 +350,10 @@ public class Login {
 								check = po.jsonpost("/UpdateSeat", data);
 								Info.seat_number = "NULL";
 								seat_time = "0 0 0 0 0";
+								check = po.jsonpost("/UpdateSeat", data);
+				   				data.put("phone", Info.phone);
+								data.put("Number", "0 0 0 0 0");
+								check = po.jsonpost("/InsertQrNumber", data);
 							}
 					      else
 							{
@@ -443,6 +443,7 @@ public class Login {
 					Message ms = new Message("로그인이 완료되었습니다!");
 					Info.phone = check.getString("phone");
 					Info.pw = check.getString("pw");
+					Info.seat_time = check.getString("seat_time");
 					textpanel2.setVisible(false);
 					textpanel3.setVisible(true);
 			    	one.setEnabled(true);
@@ -492,6 +493,10 @@ public class Login {
 										check = po.jsonpost("/UpdateSeat", data);
 										Info.seat_number = "NULL";
 										seat_time = "0 0 0 0 0";
+										check = po.jsonpost("/UpdateSeat", data);
+						   				data.put("phone", Info.phone);
+										data.put("Number", "0 0 0 0 0");
+										check = po.jsonpost("/InsertQrNumber", data);
 									}
 							      else
 									{
@@ -563,6 +568,21 @@ public class Login {
     });
     logoutbutton.setBounds(20, 88, 200, 23);
     textpanel3.add(logoutbutton);
+    
+    checkout.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+			if(Info.seat_number.equals("NULL")) {
+				Message ms = new Message("현재 입실 상태가 아닙니다!");
+			}
+			else if(!Info.seat_number.equals("NULL")) {
+	      		CheckOut ch = new CheckOut(Info.phone, Info.seat_number, seat_time,frame);
+			}
+      	}
+      });
+      checkout.setFont(new Font("굴림", Font.BOLD, 20));
+      checkout.setText("퇴실");
+      checkout.setBounds(329, 267, 170, 95);
+      borderpanel.add(checkout);
     
     RoundedButton2 b1 = new RoundedButton2("1");
     b1.addActionListener(new ActionListener() {

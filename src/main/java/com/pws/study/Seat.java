@@ -642,7 +642,6 @@ public class Seat {
 			question.setBorderPainted(false);
 			question.setContentAreaFilled(false);
 			question.setFocusPainted(false);
-			System.out.println(Info.seat_number);
 			  if(!Info.seat_number.equals("NULL"))
 			  {
 				  s1.setEnabled(false);
