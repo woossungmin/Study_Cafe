@@ -47,6 +47,7 @@ public class Login {
    String seat_time = "0 0 0 0 0";
    JSONObject data = new JSONObject();
    JSONObject check;
+   String lock_time = "0 0 0 0 0";
    Post po = new Post();
 
    /**
@@ -159,7 +160,7 @@ public class Login {
       nokeypanel_1.setVisible(false);
       nomembership.add(nokeypanel_1);
     
-  	  JLabel Memberlabel_1 = new JLabel("            사물함 사용 가능 시간이 남아 있지 않습니다!");
+  	  JLabel Memberlabel_1 = new JLabel("");
 	  JLabel Memberlabel = new JLabel("");
 	  
 	  	JLabel Warning = new JLabel("<html>시간이용권, 기간이용권 중 이용권을 구매한 후에 <br><br>좌석을 선택하여 스터디카페를 사용 가능합니다!.<html>");
@@ -230,7 +231,7 @@ public class Login {
       one.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
       		frame.dispose();
-      		TicketDay ti = new TicketDay();
+      		SeatTicketDay ti = new SeatTicketDay();
       	}
       });
       one.setFont(new Font("굴림", Font.BOLD, 20));
@@ -247,7 +248,7 @@ public class Login {
       spirit.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
       		frame.dispose();
-      		TicketSeason ti = new TicketSeason();
+      		SeatTicketSeason ti = new SeatTicketSeason();
       	}
       });
       spirit.setFont(new Font("굴림", Font.BOLD, 20));
@@ -258,8 +259,20 @@ public class Login {
       RoundedButton2 checkout = new RoundedButton2("퇴실하기");
       
       RoundedButton2 lock = new RoundedButton2("사물함이용권");
+      lock.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+      		if(Info.lock_time.equals("0 0 0 0 0")) {
+          		LockerTicket lo = new LockerTicket();
+          		frame.dispose();
+      		}
+      		else if(!Info.lock_time.equals("0 0 0 0 0")) {
+      			Locker lo = new Locker();
+      			frame.dispose();
+      		}
+      	}
+      });
       lock.setFont(new Font("굴림", Font.BOLD, 20));
-      lock.setText("사물함 이용권");
+      lock.setText("사물함");
       lock.setBounds(521, 156, 170, 95);
       borderpanel.add(lock);
       
@@ -366,6 +379,7 @@ public class Login {
 			    		  String formattedMinute = String.format("%02d", minute);
 			    		  Memberlabel.setText("좌    석 : " + year + "년 " + formattedMonth + "월 " + formattedDay + "일 " + formattedHour + "시 " + formattedMinute + "분까지 사용 가능합니다.");
 		    		  }
+		    		  
 		    			try {
 							data.put("phone", Info.phone);
 				   		check = po.jsonpost("/FindSeatPhone", data);
@@ -384,6 +398,64 @@ public class Login {
 							e1.printStackTrace();
 				    	}
 	    				}
+	    		}catch(JSONException e1) {
+	    			
+	    		}
+  		  try {	
+	    		data.put("phone", Info.phone);
+	    		check = po.jsonpost("/FindLockTime", data);
+	    		lock_time = check.getString("lock_time");
+	    		Info.lock_time = lock_time;
+	    		if(lock_time.equals("0 0 0 0 0"))
+	    		{
+	    			Memberlabel_1.setText("           사물함 사용 가능 시간이 남아 있지 않습니다!");
+	    			ticketbutton1.setEnabled(false);
+	    			lock_time = "0 0 0 0 0";
+	    		}
+	    		else {
+	    			 String arr[] = lock_time.split(" ");
+		    		  for(String cut : arr) {
+		    			  year = Integer.valueOf(arr[0]);
+		    			  month = Integer.valueOf(arr[1]);
+		    			  day = Integer.valueOf(arr[2]);
+		    			  hour = Integer.valueOf(arr[3]);
+		    			  minute = Integer.valueOf(arr[4]);
+		    			  
+		    		  }
+		    		  if (currentYear > year
+		    				    || (currentYear == year && currentMonth > month)
+		    				    || (currentYear == year && currentMonth == month && currentDay > day)
+		    				    || (currentYear == year && currentMonth == month && currentDay == day && currentHour > hour)
+		    				    || (currentYear == year && currentMonth == month && currentDay == day && currentHour == hour && currentMinute > minute)) {
+		    			  String add_time = "0 0 0 0 0";
+		    			  data.put("phone", Info.phone);
+					      data.put("add_time",add_time);
+					      check = po.jsonpost("/UpdateLockTime", data);
+					      if((check.get("check")).equals("true"))
+							{
+					    	  Memberlabel.setText("           사물함 사용 가능 시간이 남아 있지 않습니다!");
+								
+					    	  	data.put("phone", Info.phone);
+						   		check = po.jsonpost("/FindLockPhone", data);
+						   		Info.lock_number = check.getString("lock_number");
+								data.put("phone", "NULL");
+								data.put("locknumber", Info.lock_number);
+								data.put("activations", "1");
+								check = po.jsonpost("/UpdateLock", data);
+								Info.lock_number = "NULL";
+							}
+					      else
+							{
+							}
+		    		  }
+		    		  else {
+		    			  String formattedMonth = String.format("%02d", month);
+			    		  String formattedDay = String.format("%02d", day);
+			    		  String formattedHour = String.format("%02d", hour);
+			    		  String formattedMinute = String.format("%02d", minute);
+			    		  Memberlabel_1.setText("사 물 함  : " + year + "년 " + formattedMonth + "월 " + formattedDay + "일 " + formattedHour + "시 " + formattedMinute + "분까지 사용 가능합니다.");
+		    		  }
+	    			}
 	    		}catch(JSONException e1) {
 	    			
 	    		}
@@ -509,6 +581,7 @@ public class Login {
 					    		  String formattedMinute = String.format("%02d", minute);
 					    		  Memberlabel.setText("좌    석 : " + year + "년 " + formattedMonth + "월 " + formattedDay + "일 " + formattedHour + "시 " + formattedMinute + "분까지 사용 가능합니다.");
 				    		  }
+				    		  
 				    			try {
 									data.put("phone", Info.phone);
 						   		check = po.jsonpost("/FindSeatPhone", data);
@@ -532,6 +605,65 @@ public class Login {
 			    		// TODO Auto-generated catch block
 			    		e1.printStackTrace();
 			    	}
+			    	
+			    	 try {	
+			  	    		data.put("phone", Info.phone);
+			  	    		check = po.jsonpost("/FindLockTime", data);
+			  	    		lock_time = check.getString("lock_time");
+			  	    		Info.lock_time = lock_time;
+			  	    		if(lock_time.equals("0 0 0 0 0"))
+			  	    		{
+			  	    			Memberlabel_1.setText("           사물함 사용 가능 시간이 남아 있지 않습니다!");
+			  	    			ticketbutton1.setEnabled(false);
+			  	    			lock_time = "0 0 0 0 0";
+			  	    		}
+			  	    		else {
+			  	    			 String arr[] = lock_time.split(" ");
+			  		    		  for(String cut : arr) {
+			  		    			  year = Integer.valueOf(arr[0]);
+			  		    			  month = Integer.valueOf(arr[1]);
+			  		    			  day = Integer.valueOf(arr[2]);
+			  		    			  hour = Integer.valueOf(arr[3]);
+			  		    			  minute = Integer.valueOf(arr[4]);
+			  		    			  
+			  		    		  }
+			  		    		  if (currentYear > year
+			  		    				    || (currentYear == year && currentMonth > month)
+			  		    				    || (currentYear == year && currentMonth == month && currentDay > day)
+			  		    				    || (currentYear == year && currentMonth == month && currentDay == day && currentHour > hour)
+			  		    				    || (currentYear == year && currentMonth == month && currentDay == day && currentHour == hour && currentMinute > minute)) {
+			  		    			  String add_time = "0 0 0 0 0";
+			  		    			  data.put("phone", Info.phone);
+			  					      data.put("add_time",add_time);
+			  					      check = po.jsonpost("/UpdateLockTime", data);
+			  					      if((check.get("check")).equals("true"))
+			  							{
+			  					    	  Memberlabel.setText("           사물함 사용 가능 시간이 남아 있지 않습니다!");
+			  								
+			  					    	  	data.put("phone", Info.phone);
+			  						   		check = po.jsonpost("/FindLockPhone", data);
+			  						   		Info.lock_number = check.getString("lock_number");
+			  								data.put("phone", "NULL");
+			  								data.put("locknumber", Info.lock_number);
+			  								data.put("activations", "1");
+			  								check = po.jsonpost("/UpdateLock", data);
+			  								Info.lock_number = "NULL";
+			  							}
+			  					      else
+			  							{
+			  							}
+			  		    		  }
+			  		    		  else {
+			  		    			  String formattedMonth = String.format("%02d", month);
+			  			    		  String formattedDay = String.format("%02d", day);
+			  			    		  String formattedHour = String.format("%02d", hour);
+			  			    		  String formattedMinute = String.format("%02d", minute);
+			  			    		  Memberlabel_1.setText("사 물 함  : " + year + "년 " + formattedMonth + "월 " + formattedDay + "일 " + formattedHour + "시 " + formattedMinute + "분까지 사용 가능합니다.");
+			  		    		  }
+			  	    			}
+			  	    		}catch(JSONException e1) {
+			  	    			
+			  	    		}
 				}
 				else
 				{
@@ -847,7 +979,7 @@ public class Login {
 	membership.setBounds(12, 105, 95, 23);
 	textpanel2.add(membership);
 	membership.setBorderPainted(false);
-	membership.setContentAreaFilled(false);     
+	membership.setContentAreaFilled(false);   
 	
 	RoundedButton2 b1_1 = new RoundedButton2("~");
 	b1_1.addActionListener(new ActionListener() {

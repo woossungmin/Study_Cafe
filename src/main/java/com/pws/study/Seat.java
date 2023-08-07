@@ -74,7 +74,7 @@ public class Seat {
 	      panel_4.setBackground(new Color(255,255,255));
 	      
 	      JPanel borderpanel = new JPanel();
-	      borderpanel.setBounds(12, 10, 837, 593);
+	      borderpanel.setBounds(10, 10, 839, 593);
 	      panel_4.add(borderpanel);
 	      borderpanel.setLayout(null);
 	      borderpanel.setBackground(new Color(255,255,255));
