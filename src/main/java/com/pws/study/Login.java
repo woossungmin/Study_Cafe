@@ -459,6 +459,15 @@ public class Login {
 	    		}catch(JSONException e1) {
 	    			
 	    		}
+  		  
+			  	try {
+					data.put("phone", Info.phone);
+			   		check = po.jsonpost("/FindLockPhone", data);
+			   		Info.lock_number = check.getString("lock_number");
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 	    	}
    
 	  
@@ -673,6 +682,14 @@ public class Login {
 				}
     		} catch (JSONException e1) {
     		}
+		  	try {
+				data.put("phone", Info.phone);
+		   		check = po.jsonpost("/FindLockPhone", data);
+		   		Info.lock_number = check.getString("lock_number");
+			} catch (JSONException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
     		
     	}
     });

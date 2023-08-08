@@ -219,7 +219,6 @@ public class SeatCheck {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				Info.seat_number = "NULL";
-				
 			}
 		});
 		backbutton.setFont(new Font("굴림", Font.BOLD, 15));

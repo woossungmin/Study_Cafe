@@ -13,7 +13,8 @@ import javax.swing.JButton;
 
 public class RoundedButton2 extends JButton {
 
-    public RoundedButton2() {
+    private Color backgroundColor;
+	public RoundedButton2() {
         super();
         decorate();
     }
@@ -80,5 +81,9 @@ public class RoundedButton2 extends JButton {
             graphics.drawString(line, textX, textY);
             textY += fontMetrics.getHeight(); // 다음 줄로 이동/
             }
+    }
+    public void setBackgroundColor(Color backgroundColor) {
+        this.backgroundColor = backgroundColor;
+        repaint(); // 배경색 변경 후 다시 그리기
     }
 }

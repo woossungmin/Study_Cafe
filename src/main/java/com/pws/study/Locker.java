@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -13,6 +15,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Locker {
 
@@ -106,102 +112,302 @@ public class Locker {
 		borderpanel2.setBorder(border);
 		borderpanel2.setLayout(null);
 		
-		RoundedButton2 l1 = new RoundedButton2("사물함" + "<br>" +"1번");
+		RoundedButton3 l1 = new RoundedButton3("사물함" + "<br>" +"1번");
+		l1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 1", "l1", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 1", "l1", frame);
+				}
+			}
+		});
 		l1.setFont(new Font("굴림", Font.BOLD, 15));
 		l1.setBounds(40, 29, 129, 87);
 		borderpanel2.add(l1);
 		
-		RoundedButton2 l2 = new RoundedButton2("사물함" + "<br>" +"2번");
+		RoundedButton3 l2 = new RoundedButton3("사물함" + "<br>" +"2번");
+		l2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 2", "l2", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 2", "l2", frame);
+				}
+			}
+		});
 		l2.setFont(new Font("굴림", Font.BOLD, 15));
 		l2.setBounds(181, 29, 129, 87);
 		borderpanel2.add(l2);
 		
-		RoundedButton2 l3 = new RoundedButton2("사물함" + "<br>" +"3번");
+		RoundedButton3 l3 = new RoundedButton3("사물함" + "<br>" +"3번");
+		l3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 3", "l3", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 3", "l3", frame);
+				}
+			}
+		});
 		l3.setFont(new Font("굴림", Font.BOLD, 15));
 		l3.setBounds(322, 29, 129, 87);
 		borderpanel2.add(l3);
 		
-		RoundedButton2 l4 = new RoundedButton2("사물함" + "<br>" +"4번");
+		RoundedButton3 l4 = new RoundedButton3("사물함" + "<br>" +"4번");
+		l4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 4", "l4", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 4", "l4", frame);
+				}
+			}
+		});
 		l4.setFont(new Font("굴림", Font.BOLD, 15));
 		l4.setBounds(463, 29, 129, 87);
 		borderpanel2.add(l4);
 		
-		RoundedButton2 l5 = new RoundedButton2("사물함" + "<br>" +"5번");
+		RoundedButton3 l5 = new RoundedButton3("사물함" + "<br>" +"5번");
+		l5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 5", "l5", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 5", "l5", frame);
+				}
+			}
+		});
 		l5.setFont(new Font("굴림", Font.BOLD, 15));
 		l5.setBounds(604, 29, 129, 87);
 		borderpanel2.add(l5);
 		
-		RoundedButton2 l6 = new RoundedButton2("사물함" + "<br>" +"6번");
+		RoundedButton3 l6 = new RoundedButton3("사물함" + "<br>" +"6번");
+		l6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 6", "l6", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 6", "l6", frame);
+				}
+			}
+		});
 		l6.setFont(new Font("굴림", Font.BOLD, 15));
 		l6.setBounds(40, 126, 129, 87);
 		borderpanel2.add(l6);
 		
-		RoundedButton2 l7 = new RoundedButton2("사물함" + "<br>" +"7번");
+		RoundedButton3 l7 = new RoundedButton3("사물함" + "<br>" +"7번");
+		l7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 7", "l7", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 7", "l7", frame);
+				}
+			}
+		});
 		l7.setFont(new Font("굴림", Font.BOLD, 15));
 		l7.setBounds(181, 126, 129, 87);
 		borderpanel2.add(l7);
 		
-		RoundedButton2 l8 = new RoundedButton2("사물함" + "<br>" +"8번");
+		RoundedButton3 l8 = new RoundedButton3("사물함" + "<br>" +"8번");
+		l8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 8", "l8", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 8", "l8", frame);
+				}
+			}
+		});
 		l8.setFont(new Font("굴림", Font.BOLD, 15));
 		l8.setBounds(322, 126, 129, 87);
 		borderpanel2.add(l8);
 		
-		RoundedButton2 l9 = new RoundedButton2("사물함" + "<br>" +"9번");
+		RoundedButton3 l9 = new RoundedButton3("사물함" + "<br>" +"9번");
+		l9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 9", "l9", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 9", "l9", frame);
+				}
+			}
+		});
 		l9.setFont(new Font("굴림", Font.BOLD, 15));
 		l9.setBounds(463, 126, 129, 87);
 		borderpanel2.add(l9);
 		
-		RoundedButton2 l10 = new RoundedButton2("사물함" + "<br>" +"10번");
+		RoundedButton3 l10 = new RoundedButton3("사물함" + "<br>" +"10번");
+		l10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 10", "l10", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 10", "l10", frame);
+				}
+			}
+		});
 		l10.setFont(new Font("굴림", Font.BOLD, 15));
 		l10.setBounds(604, 126, 129, 87);
 		borderpanel2.add(l10);
 		
-		RoundedButton2 l11 = new RoundedButton2("사물함" + "<br>" +"11번");
+		RoundedButton3 l11 = new RoundedButton3("사물함" + "<br>" +"11번");
+		l11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 11", "l11", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 11", "l11", frame);
+				}
+			}
+		});
 		l11.setFont(new Font("굴림", Font.BOLD, 15));
 		l11.setBounds(40, 223, 129, 87);
 		borderpanel2.add(l11);
 		
-		RoundedButton2 l12 = new RoundedButton2("사물함" + "<br>" +"12번");
+		RoundedButton3 l12 = new RoundedButton3("사물함" + "<br>" +"12번");
+		l12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 12", "l12", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 12", "l12", frame);
+				}
+			}
+		});
 		l12.setFont(new Font("굴림", Font.BOLD, 15));
 		l12.setBounds(181, 223, 129, 87);
 		borderpanel2.add(l12);
 		
-		RoundedButton2 l13 = new RoundedButton2("사물함" + "<br>" +"13번");
+		RoundedButton3 l13 = new RoundedButton3("사물함" + "<br>" +"13번");
+		l13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 13", "l13", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 13", "l13", frame);
+				}
+			}
+		});
 		l13.setFont(new Font("굴림", Font.BOLD, 15));
 		l13.setBounds(322, 223, 129, 87);
 		borderpanel2.add(l13);
 		
-		RoundedButton2 l14 = new RoundedButton2("사물함" + "<br>" +"14번");
+		RoundedButton3 l14 = new RoundedButton3("사물함" + "<br>" +"14번");
+		l14.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 14", "l14", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 14", "l14", frame);
+				}
+			}
+		});
 		l14.setFont(new Font("굴림", Font.BOLD, 15));
 		l14.setBounds(463, 223, 129, 87);
 		borderpanel2.add(l14);
 		
-		RoundedButton2 l15 = new RoundedButton2("사물함" + "<br>" +"15번");
+		RoundedButton3 l15 = new RoundedButton3("사물함" + "<br>" +"15번");
+		l15.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 15", "l15", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 15", "l15", frame);
+				}
+			}
+		});
 		l15.setFont(new Font("굴림", Font.BOLD, 15));
 		l15.setBounds(604, 223, 129, 87);
 		borderpanel2.add(l15);
 		
-		RoundedButton2 l16 = new RoundedButton2("사물함" + "<br>" +"16번");
+		RoundedButton3 l16 = new RoundedButton3("사물함" + "<br>" +"16번");
+		l16.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 16", "l16", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 16", "l16", frame);
+				}
+			}
+		});
 		l16.setFont(new Font("굴림", Font.BOLD, 15));
 		l16.setBounds(40, 320, 129, 87);
 		borderpanel2.add(l16);
 		
-		RoundedButton2 l17 = new RoundedButton2("사물함" + "<br>" +"17번");
+		RoundedButton3 l17 = new RoundedButton3("사물함" + "<br>" +"17번");
+		l17.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 17", "l17", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 17", "l17", frame);
+				}
+			}
+		});
 		l17.setFont(new Font("굴림", Font.BOLD, 15));
 		l17.setBounds(181, 320, 129, 87);
 		borderpanel2.add(l17);
 		
-		RoundedButton2 l18 = new RoundedButton2("사물함" + "<br>" +"18번");
+		RoundedButton3 l18 = new RoundedButton3("사물함" + "<br>" +"18번");
+		l18.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 18", "l18", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 18", "l18", frame);
+				}
+			}
+		});
 		l18.setFont(new Font("굴림", Font.BOLD, 15));
 		l18.setBounds(322, 320, 129, 87);
 		borderpanel2.add(l18);
 		
-		RoundedButton2 l19 = new RoundedButton2("사물함" + "<br>" +"19번");
+		RoundedButton3 l19 = new RoundedButton3("사물함" + "<br>" +"19번");
+		l19.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 19", "l19", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 19", "l19", frame);
+				}
+			}
+		});
 		l19.setFont(new Font("굴림", Font.BOLD, 15));
 		l19.setBounds(463, 320, 129, 87);
 		borderpanel2.add(l19);
 		
-		RoundedButton2 l20 = new RoundedButton2("사물함" + "<br>" +"20번");
+		RoundedButton3 l20 = new RoundedButton3("사물함" + "<br>" +"20번");
+		l20.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Info.lock_number.equals("NULL")) {
+					LockerCheck lo = new LockerCheck("사물함 20", "l20", frame);	
+				}
+				else if(!Info.lock_number.equals("NULL")) {
+					UpdateLock up = new UpdateLock("사물함 20", "l20", frame);
+				}
+			}
+		});
 		l20.setFont(new Font("굴림", Font.BOLD, 15));
 		l20.setBounds(604, 320, 129, 87);
 		borderpanel2.add(l20);
@@ -219,5 +425,60 @@ public class Locker {
 		borderpanel.add(lockerticket);
 		lockerticket.setBorderPainted(false);
 		lockerticket.setContentAreaFilled(false);   
+		JSONObject data = new JSONObject();
+		try {
+			String activations = "0";
+			data.put("activations", activations);
+			Post po = new Post();
+			
+			JSONObject check = po.jsonpost("/FindLockNumber", data);
+			if((check.get("check")).equals("true"))
+			{
+				JSONArray jArray = new JSONArray();
+				jArray = (JSONArray) check.get("lock_numbers");
+				
+				Map<String, RoundedButton3> buttonMap = new HashMap<>(); //hashMap으로 문자열과 버튼 객체 매칭함
+				buttonMap.put("l1",l1);
+				buttonMap.put("l2",l2);
+				buttonMap.put("l3",l3);
+				buttonMap.put("l4",l4);
+				buttonMap.put("l5",l5);
+				buttonMap.put("l6",l6);
+				buttonMap.put("l7",l7);
+				buttonMap.put("l8",l8);
+				buttonMap.put("l9",l9);
+				buttonMap.put("l10",l10);
+				buttonMap.put("l11",l11);
+				buttonMap.put("l12",l12);
+				buttonMap.put("l13",l13);
+				buttonMap.put("l14",l14);
+				buttonMap.put("l15",l15);
+				buttonMap.put("l16",l16);
+				buttonMap.put("l17",l17);
+				buttonMap.put("l18",l18);
+				buttonMap.put("l19",l19);
+				buttonMap.put("l20",l20);
+				
+		        Color selectedColor = new Color(114,166,255).brighter();
+		        Color defaultColor = new Color(200, 196, 196);
+
+			        for(int i = 0; i < jArray.length(); i++) {
+			            String lockNumber = (String) jArray.get(i); // 좌석 번호를 가져옵니다.
+			                RoundedButton3 button = buttonMap.get(lockNumber);
+			                if (Info.lock_number.equals(lockNumber)) {
+			                    button.setBackgroundColor(selectedColor);
+			                } else {
+			                    button.setBackgroundColor(defaultColor);
+			                }
+			                button.setBorderPainted(false);
+			                button.setEnabled(false);
+			        }
+			    } else {
+			        // ...
+			    }
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 }

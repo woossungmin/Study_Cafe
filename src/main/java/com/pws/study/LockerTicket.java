@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
 import org.json.JSONArray;
@@ -220,32 +221,65 @@ public class LockerTicket {
 						  data.put("phone", Info.phone);
 						  check = po.jsonpost("/FindLockTime", data);
 						  String lock_time = check.getString("lock_time");
-						  if(lock_time.equals("0 0 0 0 0"))
-						  {
-							  Calendar now = Calendar.getInstance();
-						      year = now.get(Calendar.YEAR);
-						      month = now.get(Calendar.MONTH)+1;
-						      day = now.get(Calendar.DAY_OF_MONTH);
-						      hour = now.get(Calendar.HOUR_OF_DAY);
-						      minute = now.get(Calendar.MINUTE); 
-						      int time = Integer.parseInt(result);
-						      add_time = plus_time(time);
-						      Payment pa = new Payment();
-						  }
-						  else {
-							  String arr[] = lock_time.split(" ");
-							  for(String cut : arr) {
-								  year = Integer.valueOf(arr[0]);
-								  month = Integer.valueOf(arr[1]);
-								  day = Integer.valueOf(arr[2]);
-								  hour = Integer.valueOf(arr[3]);
-								  minute = Integer.valueOf(arr[4]);
-							      int time = Integer.parseInt(result);
-							      add_time = plus_time(time);
-							      Payment pa = new Payment();
-							  }
-						  }
-					      System.out.println(add_time);
+						  if(lock_time.equals("0 0 0 0 0")) {
+							    Calendar now = Calendar.getInstance();
+							    year = now.get(Calendar.YEAR);
+							    month = now.get(Calendar.MONTH) + 1;
+							    day = now.get(Calendar.DAY_OF_MONTH);
+							    hour = now.get(Calendar.HOUR_OF_DAY);
+							    minute = now.get(Calendar.MINUTE);
+							    int time = Integer.parseInt(result);
+							    add_time = plus_time(time);
+							    Payment pa = new Payment();
+							    
+							    Thread lockerThread = new Thread(new Runnable() { // UI전담 스레드, 일반스레드로 할경우 업데이트가 늦어지는 경우가 생김, Payment에서도 스레드를 돌리기때문
+							        public void run() {
+							            try {
+							                Thread.sleep(7000); // 5초 대기
+							                SwingUtilities.invokeLater(new Runnable() {
+							                    public void run() {
+							                        frame.dispose();
+							                        Locker locker = new Locker(); // Locker 호출
+							                    }
+							                });
+							            } catch (InterruptedException e) {
+							                e.printStackTrace();
+							            }
+							        }
+							    });
+							    lockerThread.start(); // 스레드 시작
+							} else {
+							    String arr[] = lock_time.split(" ");
+							    for(String cut : arr) {
+							        year = Integer.valueOf(arr[0]);
+							        month = Integer.valueOf(arr[1]);
+							        day = Integer.valueOf(arr[2]);
+							        hour = Integer.valueOf(arr[3]);
+							        minute = Integer.valueOf(arr[4]);
+							        int time = Integer.parseInt(result);
+							        add_time = plus_time(time);
+							        Payment pa = new Payment();
+							    }
+
+							    Thread lockerThread = new Thread(new Runnable() {
+							        public void run() {
+							            try {
+							                Thread.sleep(7000); // 5초 대기
+							                SwingUtilities.invokeLater(new Runnable() {
+							                    public void run() {
+							                        frame.dispose();
+							                        Locker locker = new Locker(); // Locker 호출
+							                    }
+							                });
+							            } catch (InterruptedException e) {
+							                e.printStackTrace();
+							            }
+							        }
+							    });
+							    lockerThread.start(); // 스레드 시작
+							}
+
+
 					      data.put("phone", Info.phone);
 					      data.put("add_time",add_time);
 					      check = po.jsonpost("/UpdateLockTime", data);
