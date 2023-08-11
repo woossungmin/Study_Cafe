@@ -94,6 +94,15 @@ public class Login {
       panel_4.setBackground(new Color(255,255,255));
       
       JPanel borderpanel = new JPanel();
+      borderpanel.addMouseListener(new MouseAdapter() {
+      	@Override
+      	public void mouseClicked(MouseEvent e) {
+      		if(e.getClickCount()>2)
+			{
+      			ManagerMessage ma = new ManagerMessage(frame);
+			}
+      	}
+      });
       borderpanel.setBounds(10, 10, 837, 593);
       panel_4.add(borderpanel);
       borderpanel.setLayout(null);

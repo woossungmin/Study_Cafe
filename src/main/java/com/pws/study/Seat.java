@@ -226,11 +226,6 @@ public class Seat {
 			s10.setBounds(92, 240, 50, 44);
 			panel.add(s10);
 			
-			JLabel label4 = new JLabel("Study Room");
-			label4.setBounds(126, 303, 101, 29);
-			panel.add(label4);
-			label4.setFont(new Font("굴림", Font.BOLD, 13));
-			
 			JLabel label1 = new JLabel("LAPTOP ZONE");
 			label1.setForeground(new Color(0, 0, 255));
 			label1.setBounds(28, 8, 101, 25);
@@ -439,6 +434,12 @@ public class Seat {
 			s28.setBounds(80, 35, 306, 118);
 			panel_1_1_1.add(s28);
 			
+			JLabel label4_1 = new JLabel("Study Room");
+			label4_1.setForeground(Color.BLUE);
+			label4_1.setFont(new Font("굴림", Font.BOLD, 13));
+			label4_1.setBounds(189, 6, 101, 29);
+			panel_1_1_1.add(label4_1);
+			
 			JSONObject data = new JSONObject();
 			try {
 				String activations = "0";
@@ -526,11 +527,6 @@ public class Seat {
 			panel_1_2_1.setBackground(new Color(255,255,255));
 			panel_1_2_1.setBorder(border);
 			
-			JLabel label5 = new JLabel("Laptop Zone");
-			label5.setFont(new Font("굴림", Font.BOLD, 15));
-			label5.setBounds(240, 256, 101, 29);
-			panel_1_2_1.add(label5);
-			
 			JLabel label6 = new JLabel("");
 			label6.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\kiosk (2).png"));
 			label6.setBounds(0, 5, 62, 62);
@@ -608,6 +604,12 @@ public class Seat {
 			panel_1_2.add(panel_2_1);
 			panel_2_1.setBorder(border);
 			panel_2_1.setBackground(new Color(255,255,255));
+			
+			JLabel label4 = new JLabel("Study Room");
+			label4.setBounds(130, 6, 101, 29);
+			panel_1_1.add(label4);
+			label4.setFont(new Font("굴림", Font.BOLD, 13));
+			label4.setForeground(new Color(0,0,255));
 			
 			JLabel label20 = new JLabel("");
 			label20.setBounds(16, 5, 40, 19);
