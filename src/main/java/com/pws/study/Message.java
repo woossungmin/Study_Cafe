@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 
 public class Message {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.

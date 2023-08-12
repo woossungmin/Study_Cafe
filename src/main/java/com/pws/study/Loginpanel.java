@@ -1,6 +1,7 @@
 package com.pws.study;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,22 +13,38 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
 public class Loginpanel extends JPanel {
 	private JTextField phonetext;
-	private JTextField pwtext;
+	private JTextField cardtext;
 	private JPanel Keypadpanel;
 	private JLabel phonelabel;
 	private JLabel pwlabel;
 	private JLabel label;
 	private JButton Loginbutton;
     int focusTextFeild = 0;
-	/**
-	 * Create the panel.
-	 */
-	public Loginpanel() {
+    private Homepanel homePanel; // Homepanel 인스턴스를 저장할 필드 선언
+	private JPanel borderPanel;
+	private JButton homeButton;
+	private JButton modifyButton;
+	private JButton memberButton;
+	private JButton seatButton;
+	private JButton lockButton;
+	private JButton ticketButton;
+	private JButton salesButton;
+	private JButton faqButton;
+	private JButton qaButton;
+	private JButton caffeButton;
+	
+    
+	public Loginpanel(Homepanel homePanel, JPanel borderPanel, JButton homebutton,JButton modifybutton,JButton memberbutton,JButton seatbutton,
+			JButton lockbutton,JButton ticketbutton,JButton salesbutton,JButton faqbutton,JButton qabutton,JButton cafebutton) {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -43,8 +60,20 @@ public class Loginpanel extends JPanel {
 		setLayout(null);
 		setBounds(23, 60, 813, 603);
 		//setBorder(border);
+        this.homePanel = homePanel;
+        this.borderPanel = borderPanel; // borderPanel 저장
+		this.homeButton =homebutton;
+		this.modifyButton = modifybutton;
+		this.seatButton = seatbutton;
+		this.lockButton = lockbutton;
+		this.ticketButton = ticketbutton;
+		this.memberButton = memberbutton;
+		this.salesButton = salesbutton;
+		this.faqButton = faqbutton;
+		this.qaButton = qabutton;
+		this.caffeButton = cafebutton;
 		
-		phonelabel = new JLabel("전 화 번 호 : ");
+        phonelabel = new JLabel("전 화 번 호 : ");
 		phonelabel.setFont(new Font("굴림", Font.BOLD, 20));
 		phonelabel.setForeground(new Color(114, 166, 255));
 		phonelabel.setBounds(139, 230, 133, 24);
@@ -64,9 +93,35 @@ public class Loginpanel extends JPanel {
 	       
 		
  	  	 Loginbutton = new RoundedButton2("로그인");
+ 	  	 Loginbutton.addActionListener(new ActionListener() {
+ 	  	 	public void actionPerformed(ActionEvent e) {
+ 	  	 	String phone = phonetext.getText();
+    		String card_number = cardtext.getText();
+    		
+    		JSONObject data = new JSONObject();
+    		try {
+				data.put("phone", phone);
+				data.put("card_number", card_number);
+				Post po = new Post();
+				JSONObject check = po.jsonpost("/ManagerLogin", data);
+				if((check.get("check")).equals("true")) {
+					Message ms = new Message("    관리자님 환영합니다!");
+					ms.frame.setBounds(620, 230, ms.frame.getWidth(), ms.frame.getHeight());
+					Info2.phone = phone;
+					switchPanel(homePanel);
+				}else {
+					Message ms = new Message(" 로그인을 실패하였습니다.");
+					ms.frame.setBounds(620, 230, ms.frame.getWidth(), ms.frame.getHeight());
+				}
+ 	  	 	}catch (JSONException e1) {
+	    		// TODO Auto-generated catch block
+	    		e1.printStackTrace();
+	    	}
+ 	  	 	}
+ 	  	 });
  		 Loginbutton.setText("Login");
  		 Loginbutton.setFont(new Font("굴림", Font.BOLD, 20));
- 		 Loginbutton.setBounds(582, 230, 95, 76);
+ 		 Loginbutton.setBounds(594, 230, 95, 76);
  		 add(Loginbutton);
 		 
 	      JPanel keypadpanel = new JPanel();
@@ -121,8 +176,8 @@ public class Loginpanel extends JPanel {
  	      phonetext.requestFocus(true);
  	      phonetext.setBorder(border);
  	      
- 	      pwtext = new JTextField();
- 	      pwtext.addMouseListener(new MouseAdapter() {
+ 	      cardtext = new JTextField();
+ 	      cardtext.addMouseListener(new MouseAdapter() {
  	      	@Override
  	      	public void mouseClicked(MouseEvent e) {
  	      	   if (focusTextFeild != 1 && focusTextFeild != 2) {  // 포커스가 처음 잡혔을 때만 조정
@@ -132,10 +187,10 @@ public class Loginpanel extends JPanel {
 	      		}
  	      	}
  	      });
- 	      pwtext.setColumns(10);
- 	      pwtext.setBounds(284, 282, 286, 24);
- 	      add(pwtext);
- 	      pwtext.setBorder(border);
+ 	      cardtext.setColumns(10);
+ 	      cardtext.setBounds(284, 282, 286, 24);
+ 	      add(cardtext);
+ 	      cardtext.setBorder(border);
  	        
 // 	    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\user\\Desktop\\uNBuJu4mVBZQ1ozdrHpUPJ.png");
 //	        // 배경 이미지 아이콘을 JLabel에 설정
@@ -156,9 +211,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "q";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 		  	}
 		  });
@@ -178,9 +233,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "w";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 		  	}
 		  });
@@ -200,9 +255,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "e";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 		  	}
 		  });
@@ -222,9 +277,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "r";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 		  	}
 		  });
@@ -244,9 +299,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "t";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 		  	}
 		  });
@@ -266,9 +321,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "y";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -288,9 +343,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "u";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -310,9 +365,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "i";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -332,9 +387,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "o";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -354,9 +409,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "p";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -376,9 +431,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "a";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -398,9 +453,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "s";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -420,9 +475,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "d";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -442,9 +497,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "f";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -464,9 +519,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "g";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -486,9 +541,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "h";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -508,9 +563,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "j";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -531,9 +586,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "k";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -552,9 +607,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "l";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -574,9 +629,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "z";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -596,9 +651,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "x";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -618,9 +673,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "c";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -640,9 +695,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "v";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -662,9 +717,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "b";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -684,9 +739,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "n";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -706,9 +761,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "m";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -762,9 +817,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "2";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -783,9 +838,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "3";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -804,9 +859,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "4";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -825,9 +880,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "5";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -846,9 +901,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "6";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -867,9 +922,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "7";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -888,9 +943,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "8";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -909,9 +964,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "9";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -930,9 +985,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "0";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -953,10 +1008,10 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-					String currentText = pwtext.getText();
+					String currentText = cardtext.getText();
 					if (!currentText.isEmpty()) {
 					    String newText = currentText.substring(0, currentText.length() - 1);
-					    pwtext.setText(newText);
+					    cardtext.setText(newText);
 					}
 	      		}
 			
@@ -977,9 +1032,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "1";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 	     	}
 	     });
@@ -1000,9 +1055,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "Q";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1022,9 +1077,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "W";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1044,9 +1099,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "E";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1066,9 +1121,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "R";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1088,9 +1143,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "T";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1110,9 +1165,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "Y";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1132,9 +1187,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "U";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1154,9 +1209,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "I";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1176,9 +1231,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "O";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1198,9 +1253,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "P";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1220,9 +1275,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "A";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1242,9 +1297,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "S";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1264,9 +1319,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "D";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1286,9 +1341,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "F";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1308,9 +1363,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "G";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1330,9 +1385,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "H";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1352,9 +1407,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "J";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1374,9 +1429,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "K";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1396,9 +1451,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "L";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1418,9 +1473,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "Z";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1440,9 +1495,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "X";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1462,9 +1517,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "C";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1484,9 +1539,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "V";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1506,9 +1561,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "B";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1528,9 +1583,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "N";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1550,9 +1605,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "M";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1610,9 +1665,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "@";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1631,9 +1686,9 @@ public class Loginpanel extends JPanel {
 	      		}
 	      		else if(focusTextFeild == 2)
 	      		{
-			  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+			  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 					String newText = currentText + "#";  // 기존 문자열에 "~" 추가
-					pwtext.setText(newText); 
+					cardtext.setText(newText); 
 	      		}
 		    }
 	 	        });
@@ -1653,9 +1708,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "$";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1675,9 +1730,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "%";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1697,9 +1752,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "^";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1719,9 +1774,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "&";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1741,9 +1796,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "*";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1763,9 +1818,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "(";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1785,9 +1840,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + ")";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1809,10 +1864,10 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-				String currentText = pwtext.getText();
+				String currentText = cardtext.getText();
 				if (!currentText.isEmpty()) {
 				    String newText = currentText.substring(0, currentText.length() - 1);
-				    pwtext.setText(newText);
+				    cardtext.setText(newText);
 				}
 	 	        		}
 	 	        	
@@ -1833,9 +1888,9 @@ public class Loginpanel extends JPanel {
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
-		  		String currentText = pwtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
+		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
 				String newText = currentText + "!";  // 기존 문자열에 "~" 추가
-				pwtext.setText(newText); 
+				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
@@ -1851,10 +1906,27 @@ public class Loginpanel extends JPanel {
 	}
 	private void adjustUIElements(int deltaY) {
 	    phonetext.setLocation(phonetext.getX(), phonetext.getY() + deltaY);
-	    pwtext.setLocation(pwtext.getX(), pwtext.getY() + deltaY);
+	    cardtext.setLocation(cardtext.getX(), cardtext.getY() + deltaY);
 	    phonelabel.setLocation(phonelabel.getX(), phonelabel.getY() + deltaY);
 	    pwlabel.setLocation(pwlabel.getX(), pwlabel.getY() + deltaY);
 //	    label.setLocation(label.getX(), label.getY() + deltaY);
 	    Loginbutton.setLocation(Loginbutton.getX(), Loginbutton.getY() + deltaY);
 	}
+    private void switchPanel(JPanel newPanel) {
+        borderPanel.removeAll();
+        borderPanel.add(homeButton);
+        borderPanel.add(newPanel);
+        borderPanel.revalidate();
+        borderPanel.repaint();
+        modifyButton.setEnabled(true);
+        seatButton.setEnabled(true);
+        lockButton.setEnabled(true);
+        ticketButton.setEnabled(true);
+        memberButton.setEnabled(true);
+        salesButton.setEnabled(true);
+        faqButton.setEnabled(true);
+        qaButton.setEnabled(true);
+        caffeButton.setEnabled(true);
+        homeButton.setEnabled(true);
+    }
 }

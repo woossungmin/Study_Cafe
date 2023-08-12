@@ -30,6 +30,8 @@ public class Manager {
 	private JFrame frame;
     private JPanel borderPanel;
     private JButton homeButton;
+    private Loginpanel loginPanel;
+    private Homepanel homePanel;
 
 	/**
 	 * Launch the application.
@@ -79,11 +81,8 @@ public class Manager {
 	      borderpanel.setLayout(null);
 	      borderpanel.setBackground(new Color(255,255,255));
 	      borderpanel.setBorder(border);
-	      borderPanel = borderpanel; // borderpanel 변수를 borderPanel 변수에 할당
-	      
-	      Loginpanel lo = new Loginpanel();
-	      lo.setBounds(23, 45, 813, 568);
-	      borderpanel.add(lo);
+	      borderPanel = borderpanel; 
+	      Homepanel homepanel = new Homepanel(); 
 	      
 	      JButton homebutton = new JButton("");
 	      homebutton.addActionListener(new ActionListener() {
@@ -101,7 +100,25 @@ public class Manager {
 	      homebutton.setBounds(813, 10, 32, 32);
 	      borderpanel.add(homebutton);
 	      homeButton = homebutton;
+	      homePanel = homepanel;
+	      
 	      ImageIcon icon = new ImageIcon("C:\\Users\\user\\Desktop");
+	      
+	      JButton modifybutton = new JButton(" 비밀번호 수정");
+	      JButton memberbutton = new JButton("회원");
+	      JButton seatbutton = new JButton("좌석 ");
+	  	  JButton lockbutton = new JButton("사물함");
+	  	  JButton ticketbutton = new JButton("이용권");
+	  	  JButton salesbutton = new JButton("매출");
+	  	  JButton faqbutton = new JButton("FAQ");
+	  	  JButton qabutton = new JButton("Q&A");
+	  	  JButton caffebutton = new JButton("카페");
+	  	  
+	      Loginpanel lo = new Loginpanel(homePanel,borderPanel,homebutton,modifybutton,memberbutton,seatbutton,lockbutton,ticketbutton,
+	    		  salesbutton,faqbutton,qabutton,caffebutton);
+	      lo.setBounds(23, 45, 813, 568);
+	      borderpanel.add(lo);
+	      loginPanel = lo;
 	      
 	      JPanel panel = new JPanel();
 	      panel.setBounds(12, 93, 231, 540);
@@ -110,7 +127,6 @@ public class Manager {
 	      panel.setBorder(border);
 	      panel.setLayout(null);
 	      
-	  	  JButton modifybutton = new JButton(" 비밀번호 수정");
 	  	  modifybutton.setBounds(24, 21, 197, 43);
 	      modifybutton.getModel().addChangeListener(new ChangeListener() {
 	    	    @Override
@@ -131,7 +147,6 @@ public class Manager {
 	  	  modifybutton.setBorderPainted(false);
 	  	  panel.add(modifybutton);
 	      
-	      JButton memberbutton = new JButton("회원");
 	      memberbutton.addActionListener(new ActionListener() {
 	      	public void actionPerformed(ActionEvent e) {
 	      	}
@@ -157,10 +172,9 @@ public class Manager {
 	  	  memberbutton.setContentAreaFilled(false);
 	  	  memberbutton.setFocusPainted(false);
 	      
-	      JButton seatbutton = new JButton("좌석 ");
 	      seatbutton.addActionListener(new ActionListener() {
 	      	public void actionPerformed(ActionEvent e) {
-		      	  Seatpanel seatPanel = new Seatpanel(); 
+		      	  Seatpanel seatPanel = new Seatpanel(borderpanel, homebutton); 
 	               switchPanel(seatPanel);
 	      	}
 	      });
@@ -184,7 +198,6 @@ public class Manager {
 	  	  seatbutton.setContentAreaFilled(false);
 	  	  seatbutton.setFocusPainted(false);
 	  	  
-	  	  JButton lockbutton = new JButton("사물함");
 	  	  lockbutton.setBounds(46, 189, 100, 43);
 	      lockbutton.getModel().addChangeListener(new ChangeListener() {
 	    	    @Override
@@ -205,7 +218,6 @@ public class Manager {
 	  	  lockbutton.setBorderPainted(false);
 	  	  panel.add(lockbutton);
 	  	  
-	  	  JButton ticketbutton = new JButton("이용권");
 	  	  ticketbutton.setBounds(46,244, 100, 43);
 	      ticketbutton.getModel().addChangeListener(new ChangeListener() {
 	    	    @Override
@@ -226,7 +238,6 @@ public class Manager {
 	  	  ticketbutton.setBorderPainted(false);
 	  	  panel.add(ticketbutton);
 	  	  
-	  	  JButton salesbutton = new JButton("매출");
 	  	  salesbutton.setBounds(37, 299, 100, 43);
 	      salesbutton.getModel().addChangeListener(new ChangeListener() {
 	    	    @Override
@@ -246,8 +257,7 @@ public class Manager {
 	  	  salesbutton.setContentAreaFilled(false);
 	  	  salesbutton.setBorderPainted(false);
 	  	  panel.add(salesbutton);
-	  	  
-	  	  JButton faqbutton = new JButton("FAQ");
+
 	  	  faqbutton.setBounds(37, 354, 100, 43);
 	      faqbutton.getModel().addChangeListener(new ChangeListener() {
 	    	    @Override
@@ -268,7 +278,6 @@ public class Manager {
 	  	  faqbutton.setBorderPainted(false);
 	  	  panel.add(faqbutton);
 	  	  
-	  	  JButton qabutton = new JButton("Q&A");
 	  	  qabutton.setBounds(37, 409, 100, 43);
 	      qabutton.getModel().addChangeListener(new ChangeListener() {
 	    	    @Override
@@ -289,7 +298,6 @@ public class Manager {
 	  	  qabutton.setBorderPainted(false);
 	  	  panel.add(qabutton);
 	  	  
-	  	  JButton caffebutton = new JButton("카페");
 	  	  caffebutton.setBounds(37, 464, 100, 43);
 	      caffebutton.getModel().addChangeListener(new ChangeListener() {
 	    	    @Override
