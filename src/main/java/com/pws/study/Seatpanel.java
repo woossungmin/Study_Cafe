@@ -22,13 +22,14 @@ import javax.swing.JLabel;
 public class Seatpanel extends JPanel {
 	JPanel borderpanel;
 	JButton homebutton;
+	JButton closebutton;
 	/**
 	 * Create the panel.
 	 */
 	/**
 	 * 
 	 */
-	public Seatpanel(JPanel borderpanel, JButton homebutton) {
+	public Seatpanel(JPanel borderpanel, JButton homebutton, JButton closebutton) {
 		this.borderpanel = borderpanel;
 		this.homebutton = homebutton;
 		int count = 0;
@@ -82,23 +83,29 @@ public class Seatpanel extends JPanel {
 	      panel_1_1_1.setBounds(354, 375, 458, 188);
 	      add(panel_1_1_1);
 	      panel_1_1_1.setBorder(border);
-	      
+	        
 	      RoundedButton s1 = new RoundedButton("1" + "<br>" +"1인석");
 			s1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 1","s1",borderpanel,homebutton);
+					 if (s1.isBackgroundColorEqual(new Color(200, 196, 196))) {
+				            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+				            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+				            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 1", "s1", borderpanel, homebutton, closebutton);
+				        }
 				}
 			});
 			s1.setFont(new Font("굴림", Font.BOLD, 13));
 			s1.setBounds(12, 38, 50, 44);
 			panel.add(s1); 
-			
+			 
 			RoundedButton s2 = new RoundedButton("2" + "<br>" +"1인석");
 			s2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 2","s2",borderpanel,homebutton);
+					if (s2.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 2", "s2", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s2.setFont(new Font("굴림", Font.BOLD, 13));
@@ -108,8 +115,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s3 = new RoundedButton("3" + "<br>" +"1인석");
 			s3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 3","s3",borderpanel,homebutton);
+					if (s3.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 3", "s3", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s3.setFont(new Font("굴림", Font.BOLD, 13));
@@ -119,8 +129,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s4 = new RoundedButton("4" + "<br>" +"1인석");
 			s4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 4","s4",borderpanel,homebutton);
+					if (s4.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 4", "s4", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s4.setFont(new Font("굴림", Font.BOLD, 13));
@@ -130,8 +143,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s5 = new RoundedButton("5" + "<br>" +"1인석");
 			s5.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 5","s5",borderpanel,homebutton);
+					if (s5.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 5", "s5", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s5.setFont(new Font("굴림", Font.BOLD, 13));
@@ -141,8 +157,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s6 = new RoundedButton("6" + "<br>" +"1인석");
 			s6.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 6","s6",borderpanel,homebutton);
+					if (s6.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 6", "s6", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s6.setFont(new Font("굴림", Font.BOLD, 13));
@@ -152,8 +171,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s7 = new RoundedButton("7" + "<br>" +"1인석");
 			s7.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 7","s7",borderpanel,homebutton);
+					if (s7.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 7", "s7", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s7.setFont(new Font("굴림", Font.BOLD, 13));
@@ -163,8 +185,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s8 = new RoundedButton("8" + "<br>" +"1인석");
 			s8.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 8","s8",borderpanel,homebutton);
+					if (s8.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 8", "s8", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s8.setFont(new Font("굴림", Font.BOLD, 13));
@@ -174,8 +199,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s9 = new RoundedButton("9" + "<br>" +"1인석");
 			s9.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 9","s9",borderpanel,homebutton);
+					if (s9.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 9", "s9", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s9.setFont(new Font("굴림", Font.BOLD, 13));
@@ -185,8 +213,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s10 = new RoundedButton("10" + "<br>" +"1인석");
 			s10.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 10","s10",borderpanel,homebutton);
+					if (s10.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 10", "s10", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s10.setFont(new Font("굴림", Font.BOLD, 13));
@@ -202,8 +233,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton1 s27 = new RoundedButton1(""); 
 			s27.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ROOM , 27","s27",borderpanel,homebutton);
+					if (s27.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ROOM , 27", "s27", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s27.setText(" 스터디룸 1 <br><br>4~8 인실");
@@ -226,8 +260,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s11 = new RoundedButton("11" + "<br>" +"1인석");
 			s11.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 11","s11",borderpanel,homebutton);
+					if (s11.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 11", "s11", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s11.setFont(new Font("굴림", Font.BOLD, 13));
@@ -237,8 +274,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s12 = new RoundedButton("12" + "<br>" +"1인석");
 			s12.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 12","s12",borderpanel,homebutton);
+					if (s12.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 12", "s12", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s12.setFont(new Font("굴림", Font.BOLD, 13));
@@ -248,8 +288,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s13 = new RoundedButton("13" + "<br>" +"1인석");
 			s13.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 13","s13",borderpanel,homebutton);
+					if (s13.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 13", "s13", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s13.setFont(new Font("굴림", Font.BOLD, 13));
@@ -259,8 +302,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s14 = new RoundedButton("14" + "<br>" +"1인석");
 			s14.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 14","s14",borderpanel,homebutton);
+					if (s14.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 14", "s14", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s14.setFont(new Font("굴림", Font.BOLD, 13));
@@ -270,8 +316,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s15 = new RoundedButton("15" + "<br>" +"1인석");
 			s15.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 15","s15",borderpanel,homebutton);
+					if (s15.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 15", "s15", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s15.setFont(new Font("굴림", Font.BOLD, 13));
@@ -281,8 +330,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s16 = new RoundedButton("16" + "<br>" +"1인석");
 			s16.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 16","s16",borderpanel,homebutton);
+					if (s16.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 16", "s16", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s16.setFont(new Font("굴림", Font.BOLD, 13));
@@ -292,8 +344,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s17 = new RoundedButton("17" + "<br>" +"1인석");
 			s17.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 17","s17",borderpanel,homebutton);
+					if (s17.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 17", "s17", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s17.setFont(new Font("굴림", Font.BOLD, 13));
@@ -303,8 +358,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s18 = new RoundedButton("18" + "<br>" +"1인석");
 			s18.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 18","s18",borderpanel,homebutton);
+					if (s18.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 18", "s18", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s18.setFont(new Font("굴림", Font.BOLD, 13));
@@ -314,8 +372,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s19 = new RoundedButton("19" + "<br>" +"1인석");
 			s19.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 19","s19",borderpanel,homebutton);
+					if (s19.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 19", "s19", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s19.setFont(new Font("굴림", Font.BOLD, 13));
@@ -325,8 +386,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s20 = new RoundedButton("20" + "<br>" +"1인석");
 			s20.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 20","s20",borderpanel,homebutton);
+					if (s20.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 20", "s20", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s20.setFont(new Font("굴림", Font.BOLD, 13));
@@ -336,8 +400,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s21 = new RoundedButton("21" + "<br>" +"1인석");
 			s21.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 21","s21",borderpanel,homebutton);
+					if (s21.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 21", "s21", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s21.setFont(new Font("굴림", Font.BOLD, 13));
@@ -347,8 +414,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s22 = new RoundedButton("22" + "<br>" +"1인석");
 			s22.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 22","s22",borderpanel,homebutton);
+					if (s22.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 22", "s22", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s22.setFont(new Font("굴림", Font.BOLD, 13));
@@ -358,8 +428,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s23 = new RoundedButton("23" + "<br>" +"1인석");
 			s23.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 23","s23",borderpanel,homebutton);
+					if (s23.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 23", "s23", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s23.setFont(new Font("굴림", Font.BOLD, 13));
@@ -369,8 +442,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s24 = new RoundedButton("24" + "<br>" +"1인석");
 			s24.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 24","s24",borderpanel,homebutton);
+					if (s24.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 24", "s24", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s24.setFont(new Font("굴림", Font.BOLD, 13));
@@ -380,8 +456,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s25 = new RoundedButton("25" + "<br>" +"1인석");
 			s25.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 25","s25",borderpanel,homebutton);
+					if (s25.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 25", "s25", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s25.setFont(new Font("굴림", Font.BOLD, 13));
@@ -391,8 +470,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s26 = new RoundedButton("26" + "<br>" +"1인석");
 			s26.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ZONE , 26","s26",borderpanel,homebutton);
+					if (s26.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 26", "s26", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s26.setFont(new Font("굴림", Font.BOLD, 13));
@@ -402,8 +484,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton1 s28 = new RoundedButton1("");
 			s28.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Seatpanel sa = new Seatpanel(borderpanel,homebutton);
-					SeatDeactivation se = new SeatDeactivation("STUDY ROOM , 28","s28",borderpanel,homebutton);
+					if (s28.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 28", "s28", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s28.setText(" 스터디룸 2 <br><br>6~12 인실");
@@ -470,29 +555,20 @@ public class Seatpanel extends JPanel {
 					Map<String, RoundedButton1> buttonMap1 = new HashMap<>(); //hashMap으로 문자열과 버튼 객체 매칭함
 						buttonMap1.put("s27",s27);
 						buttonMap1.put("s28", s28);
-					
-				        Color selectedColor = new Color(114, 166, 255);
-				        Color defaultColor = new Color(200, 196, 196);
 
 				        for(int i = 0; i < jArray.length(); i++) {
 				            String seatNumber = (String) jArray.get(i); // 좌석 번호를 가져옵니다.
 
 				            if (seatNumber.equals("s27") || seatNumber.equals("s28")) {
-				                RoundedButton1 button1 = buttonMap1.get(seatNumber);
-				                if (Info.seat_number.equals(seatNumber)) {
-				                    button1.setBackgroundColor(selectedColor);
-				                } else {
-				                    button1.setBackgroundColor(defaultColor);
-				                }
-				                button1.setBorderPainted(false);
+				                	RoundedButton1 button1 = buttonMap1.get(seatNumber);
+				                	button1.setBorderPainted(false);
+				                	button1.setBackgroundColor(new Color(200, 196, 196));
+				                	button1.repaint();
 				            } else {
-				                RoundedButton button = buttonMap.get(seatNumber);
-				                if (Info.seat_number.equals(seatNumber)) {
-				                    button.setBackgroundColor(selectedColor);
-				                } else {
-				                    button.setBackgroundColor(defaultColor);
-				                }
-				                button.setBorderPainted(false);
+				                	RoundedButton button = buttonMap.get(seatNumber);
+			                    	button.setBorderPainted(false);
+			                    	button.setBackgroundColor(new Color(200, 196, 196));
+			                    	button.repaint();
 				            }
 				        }
 
@@ -511,16 +587,16 @@ public class Seatpanel extends JPanel {
 			panel_1_1_1.add(label4_1);
 			
 			JPanel panel_2 = new JPanel();
-			panel_2.setBounds(0, 0, 71, 71);
+			panel_2.setBounds(0, 0, 64, 64);
 			panel_1_2.add(panel_2);
 			panel_2.setBackground(new Color(255,255,255));
 			panel_2.setBorder(border);
 			panel_2.setLayout(null);
 			
 			JLabel label18 = new JLabel("");
-			label18.setBounds(5, 5, 62, 62);
+			label18.setBounds(5, 4, 54, 54);
 			panel_2.add(label18);
-			label18.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\coffee-cup (2).png"));
+			label18.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\espresso.png"));
 			
 			
 			JLabel label18_1 = new JLabel("");
@@ -587,8 +663,8 @@ public class Seatpanel extends JPanel {
 			panel_1_2_1.add(label12);
 			
 			JLabel label13 = new JLabel("");
-			label13.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\계단.png"));
-			label13.setBounds(81, 185, 64, 100);
+			label13.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\stairs (1).png"));
+			label13.setBounds(81, 190, 64, 100);
 			panel_1_2_1.add(label13);
 			
 			JLabel label14 = new JLabel("계단");

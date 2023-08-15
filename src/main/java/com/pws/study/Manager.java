@@ -30,6 +30,7 @@ public class Manager {
 	private JFrame frame;
     private JPanel borderPanel;
     private JButton homeButton;
+    private JButton closeButton;
     private Loginpanel loginPanel;
     private Homepanel homePanel;
 
@@ -97,14 +98,14 @@ public class Manager {
 	      homebutton.setFocusPainted(false);
 	      homebutton.setContentAreaFilled(false);
 	      homebutton.setBorderPainted(false);
-	      homebutton.setBounds(813, 10, 32, 32);
+	      homebutton.setBounds(12, 10, 32, 32);
 	      borderpanel.add(homebutton);
 	      homeButton = homebutton;
 	      homePanel = homepanel;
 	      
 	      ImageIcon icon = new ImageIcon("C:\\Users\\user\\Desktop");
 	      
-	      JButton modifybutton = new JButton(" 비밀번호 수정");
+	      JButton modifybutton = new JButton(" 카드번호 찾기");
 	      JButton memberbutton = new JButton("회원");
 	      JButton seatbutton = new JButton("좌석 ");
 	  	  JButton lockbutton = new JButton("사물함");
@@ -114,7 +115,25 @@ public class Manager {
 	  	  JButton qabutton = new JButton("Q&A");
 	  	  JButton caffebutton = new JButton("카페");
 	  	  
-	      Loginpanel lo = new Loginpanel(homePanel,borderPanel,homebutton,modifybutton,memberbutton,seatbutton,lockbutton,ticketbutton,
+	      JButton closebutton = new JButton("");
+	      closebutton.addActionListener(new ActionListener() {
+	      	public void actionPerformed(ActionEvent e) {
+	      		frame.dispose();
+	      		Login lo = new Login();
+	      		Info2.phone = "NULL";
+	      	}
+	      });
+	      closebutton.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\cross.png"));
+	      closebutton.setForeground(new Color(114, 166, 255));
+	      closebutton.setFont(new Font("굴림", Font.BOLD, 20));
+	      closebutton.setFocusPainted(false);
+	      closebutton.setContentAreaFilled(false);
+	      closebutton.setBorderPainted(false);
+	      closebutton.setBounds(813, 10, 32, 32);
+	      borderpanel.add(closebutton);
+	      closeButton = closebutton;
+	  	  
+	      Loginpanel lo = new Loginpanel(homePanel,borderPanel,homebutton,closeButton,modifybutton,memberbutton,seatbutton,lockbutton,ticketbutton,
 	    		  salesbutton,faqbutton,qabutton,caffebutton);
 	      lo.setBounds(23, 45, 813, 568);
 	      borderpanel.add(lo);
@@ -174,7 +193,7 @@ public class Manager {
 	      
 	      seatbutton.addActionListener(new ActionListener() {
 	      	public void actionPerformed(ActionEvent e) {
-		      	  Seatpanel seatPanel = new Seatpanel(borderpanel, homebutton); 
+		      	  Seatpanel seatPanel = new Seatpanel(borderpanel,homebutton,closebutton); 
 	               switchPanel(seatPanel);
 	      	}
 	      });
@@ -198,6 +217,12 @@ public class Manager {
 	  	  seatbutton.setContentAreaFilled(false);
 	  	  seatbutton.setFocusPainted(false);
 	  	  
+	  	  lockbutton.addActionListener(new ActionListener() {
+		  	  	public void actionPerformed(ActionEvent e) {
+			      	  Lockerpanel lockpanel = new Lockerpanel(borderpanel,homebutton); 
+		               switchPanel(lockpanel);
+		  	  	}
+		  	  });
 	  	  lockbutton.setBounds(46, 189, 100, 43);
 	      lockbutton.getModel().addChangeListener(new ChangeListener() {
 	    	    @Override
@@ -416,28 +441,11 @@ public class Manager {
     private void switchPanel(JPanel newPanel) {
         borderPanel.removeAll();
         borderPanel.add(homeButton);
+        borderPanel.add(closeButton);
         borderPanel.add(newPanel);
         borderPanel.revalidate();
         borderPanel.repaint();
     }
 }
 
-class BackgroundPanel extends JPanel {
-    private Image backgroundImage;
 
-    public BackgroundPanel(String imagePath) {
-        try {
-            backgroundImage = ImageIO.read(new File(imagePath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if (backgroundImage != null) {
-            g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-        }
-    }
-}

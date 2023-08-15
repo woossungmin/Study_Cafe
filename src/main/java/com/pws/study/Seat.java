@@ -562,8 +562,8 @@ public class Seat {
 			panel_1_2_1.add(label12);
 			
 			JLabel label13 = new JLabel("");
-			label13.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\계단.png"));
-			label13.setBounds(81, 185, 64, 100);
+			label13.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\stairs (1).png"));
+			label13.setBounds(81, 190, 64, 100);
 			panel_1_2_1.add(label13);
 			
 			JLabel label14 = new JLabel("계단");
@@ -586,16 +586,16 @@ public class Seat {
 			panel_1_2.add(label15);
 			
 			JPanel panel_2 = new JPanel();
-			panel_2.setBounds(0, 0, 71, 71);
+			panel_2.setBounds(0, 0, 64, 64);
 			panel_1_2.add(panel_2);
 			panel_2.setBackground(new Color(255,255,255));
 			panel_2.setBorder(border);
 			panel_2.setLayout(null);
 			
 			JLabel label18 = new JLabel("");
-			label18.setBounds(5, 5, 62, 62);
+			label18.setBounds(5, 4, 54, 54);
 			panel_2.add(label18);
-			label18.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\coffee-cup (2).png"));
+			label18.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\espresso.png"));
 			
 			JPanel panel_2_1 = new JPanel();
 			panel_2_1.setLayout(null);

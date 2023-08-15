@@ -32,6 +32,7 @@ public class Loginpanel extends JPanel {
     private Homepanel homePanel; // Homepanel 인스턴스를 저장할 필드 선언
 	private JPanel borderPanel;
 	private JButton homeButton;
+	private JButton closeButton;
 	private JButton modifyButton;
 	private JButton memberButton;
 	private JButton seatButton;
@@ -43,7 +44,7 @@ public class Loginpanel extends JPanel {
 	private JButton caffeButton;
 	
     
-	public Loginpanel(Homepanel homePanel, JPanel borderPanel, JButton homebutton,JButton modifybutton,JButton memberbutton,JButton seatbutton,
+	public Loginpanel(Homepanel homePanel, JPanel borderPanel, JButton homebutton,JButton closebutton,JButton modifybutton,JButton memberbutton,JButton seatbutton,
 			JButton lockbutton,JButton ticketbutton,JButton salesbutton,JButton faqbutton,JButton qabutton,JButton cafebutton) {
 		addMouseListener(new MouseAdapter() {
 			@Override
@@ -72,6 +73,7 @@ public class Loginpanel extends JPanel {
 		this.faqButton = faqbutton;
 		this.qaButton = qabutton;
 		this.caffeButton = cafebutton;
+		this.closeButton = closebutton;
 		
         phonelabel = new JLabel("전 화 번 호 : ");
 		phonelabel.setFont(new Font("굴림", Font.BOLD, 20));
@@ -79,7 +81,7 @@ public class Loginpanel extends JPanel {
 		phonelabel.setBounds(139, 230, 133, 24);
 		add(phonelabel);
       
-		pwlabel = new JLabel("카 드  번 호 : "); 
+		pwlabel = new JLabel("카 드 번 호 : "); 
 		pwlabel.setForeground(new Color(114, 166, 255));
 		pwlabel.setFont(new Font("굴림", Font.BOLD, 20));
 		pwlabel.setBounds(139, 282, 133, 24);
@@ -128,7 +130,7 @@ public class Loginpanel extends JPanel {
 	        keypadpanel.setBounds(12, 287, 789, 253);
 	       keypadpanel.setBorder(border);
 	        keypadpanel.setLayout(null);
-	        keypadpanel.setBackground(new Color(255, 255, 255));
+	        keypadpanel.setBackground(new Color(217,231,255));
 	        add(keypadpanel);
 	        keypadpanel.setVisible(false);
 	        Keypadpanel = keypadpanel;
@@ -143,7 +145,7 @@ public class Loginpanel extends JPanel {
 	        doublekeypadpanel.setBounds(5, 20, 775, 208);
 	        keypadpanel.add(doublekeypadpanel);
 	        doublekeypadpanel.setLayout(null);
-	        doublekeypadpanel.setBackground(new Color(255, 255, 255));
+	        doublekeypadpanel.setBackground(new Color(217,231,255));
 	        doublekeypadpanel.setVisible(true);
 	      
  	        JPanel doublekeypadpanel_1 = new JPanel();
@@ -156,7 +158,7 @@ public class Loginpanel extends JPanel {
  	        doublekeypadpanel_1.setBounds(5, 20, 775, 208);
  	        keypadpanel.add(doublekeypadpanel_1);
  	        doublekeypadpanel_1.setLayout(null);
- 	        doublekeypadpanel_1.setBackground(Color.WHITE);
+ 	        doublekeypadpanel_1.setBackground(new Color(217,231,255));
  	        doublekeypadpanel_1.setVisible(false);
  	        
  	       phonetext = new JTextField();
@@ -1791,18 +1793,18 @@ public class Loginpanel extends JPanel {
 	 	        		if(focusTextFeild == 1)
 	 	        		{
 		  		String currentText = phonetext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
-				String newText = currentText + "*";  // 기존 문자열에 "~" 추가
+				String newText = currentText + "-";  // 기존 문자열에 "~" 추가
 				phonetext.setText(newText); 
 	 	        		}
 	 	        		else if(focusTextFeild == 2)
 	 	        		{
 		  		String currentText = cardtext.getText();  // 현재 텍스트 필드에 있는 문자열 가져오기
-				String newText = currentText + "*";  // 기존 문자열에 "~" 추가
+				String newText = currentText + "-";  // 기존 문자열에 "~" 추가
 				cardtext.setText(newText); 
 	 	        		}
 	 	        	}
 	 	        });
-	 	        one_11_7_1.setText("*");
+	 	        one_11_7_1.setText("-");
 	 	        one_11_7_1.setFont(new Font("굴림", Font.BOLD, 20));
 	 	        one_11_7_1.setBounds(467, 2, 43, 43);
 	 	        doublekeypadpanel_1.add(one_11_7_1);
@@ -1915,6 +1917,7 @@ public class Loginpanel extends JPanel {
     private void switchPanel(JPanel newPanel) {
         borderPanel.removeAll();
         borderPanel.add(homeButton);
+        borderPanel.add(closeButton);
         borderPanel.add(newPanel);
         borderPanel.revalidate();
         borderPanel.repaint();

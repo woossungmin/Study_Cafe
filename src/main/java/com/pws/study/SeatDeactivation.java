@@ -32,7 +32,7 @@ public class SeatDeactivation {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SeatDeactivation window = new SeatDeactivation("","",new JPanel(),new JButton());
+					SeatDeactivation window = new SeatDeactivation("","",new JPanel(),new JButton(),new JButton());
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,16 +41,16 @@ public class SeatDeactivation {
 		});
 	}
 
-	public SeatDeactivation(String seat, String seatnumber, JPanel borderpanel, JButton homebutton) {
-		initialize(seat,seatnumber,borderpanel,homebutton);
+	public SeatDeactivation(String seat, String seatnumber, JPanel borderpanel, JButton homebutton,JButton closebutton) {
+		initialize(seat,seatnumber,borderpanel,homebutton,closebutton);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(String seat, String seatnumber, JPanel borderpanel, JButton homebutton) {
+	private void initialize(String seat, String seatnumber, JPanel borderpanel, JButton homebutton, JButton closebutton) {
 		frame = new JFrame();
-		frame.setBounds(620, 230, 360, 200);
+		frame.setBounds(550, 230, 360, 200);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 	      frame.setResizable(false);
@@ -105,7 +105,7 @@ public class SeatDeactivation {
 		                Timer timer = new Timer(2000, new ActionListener() {
 		                    public void actionPerformed(ActionEvent evt) {
 		                    	frame.dispose();
-								Seatpanel sa = new Seatpanel(borderpanel,homebutton);
+								Seatpanel sa = new Seatpanel(borderpanel,homebutton,closebutton);
 								switchPanel(sa,borderpanel, homebutton);
 		                    }
 		                });

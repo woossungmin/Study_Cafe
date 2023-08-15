@@ -121,4 +121,17 @@ public class RoundedButton extends JButton {
         this.textColor  = textColor;
         repaint(); // 테두리 여부 변경 후 다시 그리기
     }
+    public boolean isBackgroundColorEqual(Color targetColor) { //색상의 미세한 값을 조정해주는 함수
+        Color currentColor = getBackgroundColor();
+        return currentColor.getRed() == targetColor.getRed() &&
+               currentColor.getGreen() == targetColor.getGreen() &&
+               currentColor.getBlue() == targetColor.getBlue();
+    }
+
+	private Color getBackgroundColor() { //현재 배경색 가져오는 함수
+		// TODO Auto-generated method stub
+		return backgroundColor;
+	}
+
+
 }

@@ -121,7 +121,7 @@ public class Membership {
 	      keypadpanel.setBorder(border1);
 	      borderpanel.add(keypadpanel);
 	      keypadpanel.setLayout(null);
-	      keypadpanel.setBackground(new Color(255,255,255));
+	      keypadpanel.setBackground(new Color(217,231,255));
 	      
 	      Border border2 =  BorderFactory.createLineBorder(new Color(114,166,250),2);
 	      JPanel servepanel = new JPanel();
@@ -135,14 +135,14 @@ public class Membership {
 	      doublekeypadpanel_1.setBounds(12, 10, 789, 208);
 	      keypadpanel.add(doublekeypadpanel_1);
 	      doublekeypadpanel_1.setLayout(null);
-	      doublekeypadpanel_1.setBackground(Color.WHITE);
+	      doublekeypadpanel_1.setBackground(new Color(217,231,255));
 	      doublekeypadpanel_1.setVisible(false);
 	      
 	      JPanel doublekeypadpanel = new JPanel();
 	      doublekeypadpanel.setBounds(12, 10, 789, 208);
 	      keypadpanel.add(doublekeypadpanel);
 	      doublekeypadpanel.setLayout(null);
-	      doublekeypadpanel.setBackground(new Color(255,255,255));
+	      doublekeypadpanel.setBackground(new Color(217,231,255));
 	      doublekeypadpanel.setVisible(true);
 	      
 	      JLabel namelabel = new JLabel("전화번호 : ");
