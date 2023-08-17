@@ -77,9 +77,7 @@ public class Payment {
 	      lblNewLabel_1.setFont(new Font("굴림", Font.BOLD, 20));
 	      lblNewLabel_1.setBounds(75, 313, 366, 35);
 	      borderpanel.add(lblNewLabel_1);
-	      
-
-	      
+	     
 	      JPanel borderpanel2 = new JPanel();
 	      borderpanel2.setBounds(12, 10, 462, 384);
 	      panel.add(borderpanel2);

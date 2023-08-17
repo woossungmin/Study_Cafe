@@ -85,21 +85,23 @@ public class RoundedButton3 extends JButton {
         }
     }
 
+    // 외부에서 배경색을 변경할 수 있는 메서드 추가
     public void setBackgroundColor(Color backgroundColor) {
         this.backgroundColor = backgroundColor;
-        super.setBackground(backgroundColor);
+        repaint(); // 배경색 변경 후 다시 그리기
     }
 
     public void setTextColor(Color textColor) {
-        this.textColor = textColor;
-        repaint();
+        this.textColor  = textColor;
+        repaint(); // 테두리 여부 변경 후 다시 그리기
     }
-    public boolean isBackgroundColorEqual(Color targetColor) { //색상의 미세한 값을 조정해주는 함수
+    public boolean isBackgroundColorEqual(Color targetColor) {
         Color currentColor = getBackgroundColor();
         return currentColor.getRed() == targetColor.getRed() &&
                currentColor.getGreen() == targetColor.getGreen() &&
                currentColor.getBlue() == targetColor.getBlue();
     }
+
 	private Color getBackgroundColor() { //현재 배경색 가져오는 함수
 		// TODO Auto-generated method stub
 		return backgroundColor;

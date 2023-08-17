@@ -187,6 +187,30 @@ public class Homepanel extends JPanel {
 		lblNewLabel_4_1_1.setFont(new Font("굴림", Font.BOLD, 15));
 		lblNewLabel_4_1_1.setBounds(12, 10, 102, 24);
 		lockpanel.add(lblNewLabel_4_1_1);
+		
+		JLabel lblNewLabel_4_1_1_1 = new JLabel("비 활성화 : ");
+		lblNewLabel_4_1_1_1.setForeground(new Color(114, 166, 255));
+		lblNewLabel_4_1_1_1.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel_4_1_1_1.setBounds(12, 40, 102, 24);
+		lockpanel.add(lblNewLabel_4_1_1_1);
+		
+		JLabel lock_1 = new JLabel("");
+		lock_1.setForeground(new Color(255, 128, 128));
+		lock_1.setFont(new Font("굴림", Font.BOLD, 15));
+		lock_1.setBounds(145, 39, 27, 27);
+		lockpanel.add(lock_1);
+		
+		JLabel lblNewLabel_3_1_1_1 = new JLabel("/");
+		lblNewLabel_3_1_1_1.setForeground(new Color(114, 166, 255));
+		lblNewLabel_3_1_1_1.setFont(new Font("굴림", Font.BOLD, 20));
+		lblNewLabel_3_1_1_1.setBounds(168, 39, 17, 27);
+		lockpanel.add(lblNewLabel_3_1_1_1);
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel(" 20");
+		lblNewLabel_1_1_1.setForeground(new Color(114, 166, 255));
+		lblNewLabel_1_1_1.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel_1_1_1.setBounds(180, 39, 34, 27);
+		lockpanel.add(lblNewLabel_1_1_1);
 		JLabel lblNewLabel_4 = new JLabel("회  원");
 		lblNewLabel_4.setBounds(45, 38, 62, 24);
 		add(lblNewLabel_4);
@@ -266,5 +290,19 @@ public class Homepanel extends JPanel {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		String activations = "2";
+		try {
+			data.put("activations", activations);
+			Post po = new Post();
+			JSONObject check = po.jsonpost("/Count", data);
+			int lockcount = (int) check.get("count_Lock");
+			LockCount = Integer.toString(lockcount);
+			lock_1.setText(LockCount);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

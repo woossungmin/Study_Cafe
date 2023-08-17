@@ -90,7 +90,7 @@ public class Seatpanel extends JPanel {
 					 if (s1.isBackgroundColorEqual(new Color(200, 196, 196))) {
 				            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 				            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-				            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 1", "s1", borderpanel, homebutton, closebutton);
+				            SeatCompulsory se = new SeatCompulsory("LAPTOP ZONE , 1", "s1", borderpanel, homebutton, closebutton);
 				        }
 				}
 			});
@@ -104,7 +104,7 @@ public class Seatpanel extends JPanel {
 					if (s2.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 2", "s2", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("LAPTOP ZONE , 2", "s2", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -118,7 +118,7 @@ public class Seatpanel extends JPanel {
 					if (s3.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 3", "s3", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("LAPTOP ZONE , 3", "s3", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -132,7 +132,7 @@ public class Seatpanel extends JPanel {
 					if (s4.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 4", "s4", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("LAPTOP ZONE , 4", "s4", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -146,7 +146,7 @@ public class Seatpanel extends JPanel {
 					if (s5.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 5", "s5", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("LAPTOP ZONE , 5", "s5", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -160,7 +160,7 @@ public class Seatpanel extends JPanel {
 					if (s6.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 6", "s6", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("LAPTOP ZONE , 6", "s6", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -174,7 +174,7 @@ public class Seatpanel extends JPanel {
 					if (s7.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 7", "s7", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("LAPTOP ZONE , 7", "s7", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -188,7 +188,7 @@ public class Seatpanel extends JPanel {
 					if (s8.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 8", "s8", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("LAPTOP ZONE , 8", "s8", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -202,7 +202,7 @@ public class Seatpanel extends JPanel {
 					if (s9.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 9", "s9", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("LAPTOP ZONE , 9", "s9", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -216,7 +216,7 @@ public class Seatpanel extends JPanel {
 					if (s10.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("LAPTOP ZONE , 10", "s10", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("LAPTOP ZONE , 10", "s10", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -236,7 +236,7 @@ public class Seatpanel extends JPanel {
 					if (s27.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ROOM , 27", "s27", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ROOM , 27", "s27", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -263,7 +263,7 @@ public class Seatpanel extends JPanel {
 					if (s11.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 11", "s11", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 11", "s11", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -277,7 +277,7 @@ public class Seatpanel extends JPanel {
 					if (s12.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 12", "s12", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 12", "s12", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -291,7 +291,7 @@ public class Seatpanel extends JPanel {
 					if (s13.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 13", "s13", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 13", "s13", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -305,7 +305,7 @@ public class Seatpanel extends JPanel {
 					if (s14.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 14", "s14", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 14", "s14", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -319,7 +319,7 @@ public class Seatpanel extends JPanel {
 					if (s15.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 15", "s15", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 15", "s15", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -333,7 +333,7 @@ public class Seatpanel extends JPanel {
 					if (s16.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 16", "s16", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 16", "s16", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -347,7 +347,7 @@ public class Seatpanel extends JPanel {
 					if (s17.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 17", "s17", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 17", "s17", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -361,7 +361,7 @@ public class Seatpanel extends JPanel {
 					if (s18.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 18", "s18", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 18", "s18", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -375,7 +375,7 @@ public class Seatpanel extends JPanel {
 					if (s19.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 19", "s19", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 19", "s19", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -389,7 +389,7 @@ public class Seatpanel extends JPanel {
 					if (s20.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 20", "s20", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 20", "s20", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -403,7 +403,7 @@ public class Seatpanel extends JPanel {
 					if (s21.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 21", "s21", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 21", "s21", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -417,7 +417,7 @@ public class Seatpanel extends JPanel {
 					if (s22.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 22", "s22", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 22", "s22", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -431,7 +431,7 @@ public class Seatpanel extends JPanel {
 					if (s23.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 23", "s23", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 23", "s23", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -445,7 +445,7 @@ public class Seatpanel extends JPanel {
 					if (s24.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 24", "s24", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 24", "s24", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -459,7 +459,7 @@ public class Seatpanel extends JPanel {
 					if (s25.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 25", "s25", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 25", "s25", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -473,7 +473,7 @@ public class Seatpanel extends JPanel {
 					if (s26.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 26", "s26", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 26", "s26", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});
@@ -487,7 +487,7 @@ public class Seatpanel extends JPanel {
 					if (s28.isBackgroundColorEqual(new Color(200, 196, 196))) {
 			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
 			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-			            SeatDeactivation se = new SeatDeactivation("STUDY ZOON , 28", "s28", borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("STUDY ZOON , 28", "s28", borderpanel, homebutton, closebutton);
 			        }
 				}
 			});

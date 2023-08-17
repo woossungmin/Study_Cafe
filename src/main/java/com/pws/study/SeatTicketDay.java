@@ -152,7 +152,7 @@ public class SeatTicketDay {
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			System.out.println("asdasdsasad");
+
 		}
 		
 	    JLabel circle = new JLabel("");
@@ -455,7 +455,6 @@ public class SeatTicketDay {
 							      Payment pa = new Payment();
 							  }
 						  }
-					      System.out.println(add_time);
 					      data.put("phone", Info.phone);
 					      data.put("add_time",add_time);
 					      check = po.jsonpost("/AddSeatTime", data);
@@ -470,7 +469,7 @@ public class SeatTicketDay {
 		});
 		pay.setText("결제");
 		pay.setFont(new Font("굴림", Font.BOLD, 20));
-		pay.setBounds(631, 530, 170, 43);
+		pay.setBounds(631, 540, 170, 43);
 		borderpanel.add(pay);
 
 	}

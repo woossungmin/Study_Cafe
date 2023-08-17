@@ -219,7 +219,7 @@ public class Manager {
 	  	  
 	  	  lockbutton.addActionListener(new ActionListener() {
 		  	  	public void actionPerformed(ActionEvent e) {
-			      	  Lockerpanel lockpanel = new Lockerpanel(borderpanel,homebutton); 
+			      	  Lockerpanel lockpanel = new Lockerpanel(borderpanel,homebutton,closebutton); 
 		               switchPanel(lockpanel);
 		  	  	}
 		  	  });
