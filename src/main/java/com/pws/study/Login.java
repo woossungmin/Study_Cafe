@@ -418,7 +418,6 @@ public class Login {
 	    		if(lock_time.equals("0 0 0 0 0"))
 	    		{
 	    			Memberlabel_1.setText("           사물함 사용 가능 시간이 남아 있지 않습니다!");
-	    			ticketbutton1.setEnabled(false);
 	    			lock_time = "0 0 0 0 0";
 	    		}
 	    		else {
@@ -632,7 +631,6 @@ public class Login {
 			  	    		if(lock_time.equals("0 0 0 0 0"))
 			  	    		{
 			  	    			Memberlabel_1.setText("           사물함 사용 가능 시간이 남아 있지 않습니다!");
-			  	    			ticketbutton1.setEnabled(false);
 			  	    			lock_time = "0 0 0 0 0";
 			  	    		}
 			  	    		else {
@@ -1587,86 +1585,5 @@ public class Login {
 	faq.setContentAreaFilled(false);
 	faq.setFocusPainted(false);
 	
-	
-//	ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-//
-//    Runnable serverRequestTask = new Runnable() {
-//        @Override
-//        public void run() {
-//        	if(!Info.phone.equals("NULL")) {
-//        		try {
-//    	    		data.put("phone", Info.phone);
-//    	    		check = po.jsonpost("/FindSeatTime", data);
-//    	    		String seat_time = check.getString("seat_time");
-//    	    		if(seat_time.equals("0 0 0 0 0"))
-//    	    		{
-//    	    			Memberlabel.setText("            좌석 사용 가능 시간이 남아 있지 않습니다!");
-//    	    			ticketbutton1.setEnabled(false);
-//    	    		}
-//    	    		else {
-//   	    			 String arr[] = seat_time.split(" ");
-//   		    		  for(String cut : arr) {
-//   		    			  year = Integer.valueOf(arr[0]);
-//   		    			  month = Integer.valueOf(arr[1]);
-//   		    			  day = Integer.valueOf(arr[2]);
-//   		    			  hour = Integer.valueOf(arr[3]);
-//   		    			  minute = Integer.valueOf(arr[4]);
-//   		    			  
-//   		    		  }
-//   		    		  if (currentYear > year
-//   		    				    || (currentYear == year && currentMonth > month)
-//   		    				    || (currentYear == year && currentMonth == month && currentDay > day)
-//   		    				    || (currentYear == year && currentMonth == month && currentDay == day && currentHour > hour)
-//   		    				    || (currentYear == year && currentMonth == month && currentDay == day && currentHour == hour && currentMinute > minute)) {
-//   		    			  String add_time = "0 0 0 0 0";
-//   		    			  data.put("phone", Info.phone);
-//   					      data.put("add_time",add_time);
-//   					      check = po.jsonpost("/AddSeatTime", data);
-//   					      if((check.get("check")).equals("true"))
-//   							{
-//   					    	  Memberlabel.setText("            좌석 사용 가능 시간이 남아 있지 않습니다!");
-//   	    					data.put("phone", "NULL");
-//   	    					data.put("seatnumber", Info.seat_number);
-//   	    					data.put("activations", "1");
-//   	    					check = po.jsonpost("/UpdateSeat", data);
-//   							}
-//   					      else
-//   							{
-//   							}
-//   		    		  }
-//   		    		  else {
-//   		    			  String formattedMonth = String.format("%02d", month);
-//   			    		  String formattedDay = String.format("%02d", day);
-//   			    		  String formattedHour = String.format("%02d", hour);
-//   			    		  String formattedMinute = String.format("%02d", minute);
-//   			    		  Memberlabel.setText("좌    석 : " + year + "년 " + formattedMonth + "월 " + formattedDay + "일 " + formattedHour + "시 " + formattedMinute + "분까지 사용 가능합니다.");
-//   		    		  }
-//   		    			try {
-//   							data.put("phone", Info.phone);
-//   				   		check = po.jsonpost("/FindSeatPhone", data);
-//   				   		Info.seat_number = check.getString("seat_number");
-//   				    	if((Info.seat_number.equals("NULL")) && !seat_time.equals("null"))
-//   				    	{
-//   				    		ticketbutton1.setEnabled(true);
-//   				    	}
-//   				    	else if ((Info.seat_number.equals("NULL")) && (seat_time.equals("null"))) {
-//   				    		ticketbutton1.setEnabled(false);
-//   				    	}
-//   				    	else {
-//   				    	}
-//   				    	} catch (JSONException e1) {
-//   							// TODO Auto-generated catch block
-//   							e1.printStackTrace();
-//   				    	}
-//   	    				}
-//   	    		}catch(JSONException e1) {
-//   	    			
-//   	    		}
-//        	}
-//        }
-//    };
-//
-//    // 30초마다 서버에게 동작 요청
-//    scheduler.scheduleWithFixedDelay(serverRequestTask, 0, 30, TimeUnit.SECONDS);
    }
 }

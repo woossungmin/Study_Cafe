@@ -284,7 +284,6 @@ public class Homepanel extends JPanel {
 				studyzone.setText(Integer.toString(count2));
 				studyroom.setText(Integer.toString(count3));
 			}else {
-				System.out.println(1234);
 			}
 		}catch (JSONException e1) {
 			// TODO Auto-generated catch block

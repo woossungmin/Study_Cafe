@@ -173,8 +173,18 @@ public class LockDeactivation {
 				}
 			}
 		});
-		btnNewButton.setBounds(108, 110, 95, 23);
+		btnNewButton.setBounds(43, 110, 95, 23);
 		panel_1.add(btnNewButton);
+		
+		RoundedButton2 btnNewButton_1 = new RoundedButton2("확인");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		btnNewButton_1.setText("취소");
+		btnNewButton_1.setBounds(185, 110, 95, 23);
+		panel_1.add(btnNewButton_1);
 		
 	}
 	

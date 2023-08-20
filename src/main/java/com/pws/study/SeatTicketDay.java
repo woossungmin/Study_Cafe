@@ -101,9 +101,9 @@ public class SeatTicketDay {
       	projectname2.setFont(new Font("굴림", Font.BOLD, 30));
       	projectname2.setBounds(265, 54, 398, 37);
       	borderpanel.add(projectname2);
+      	
 		JPanel borderpanel2 = new JPanel();
 		
-	    
 		JLabel moneylabel = new JLabel("결제금액 : ");
 		moneylabel.setFont(new Font("굴림", Font.BOLD, 20));
 		moneylabel.setForeground(new Color(0,0,255));

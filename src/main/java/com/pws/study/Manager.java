@@ -110,6 +110,12 @@ public class Manager {
 	      JButton seatbutton = new JButton("좌석 ");
 	  	  JButton lockbutton = new JButton("사물함");
 	  	  JButton ticketbutton = new JButton("이용권");
+	  	  ticketbutton.addActionListener(new ActionListener() {
+	  	  	public void actionPerformed(ActionEvent e) {
+	  	  		Ticketpanel ti = new Ticketpanel();
+	  	  		switchPanel(ti);
+	  	  	}
+	  	  });
 	  	  JButton salesbutton = new JButton("매출");
 	  	  JButton faqbutton = new JButton("FAQ");
 	  	  JButton qabutton = new JButton("Q&A");
@@ -168,6 +174,8 @@ public class Manager {
 	      
 	      memberbutton.addActionListener(new ActionListener() {
 	      	public void actionPerformed(ActionEvent e) {
+	      		Memberpanel me = new Memberpanel();
+	            switchPanel(me);
 	      	}
 	      });
 	      memberbutton.setBounds(37, 79, 100, 43);

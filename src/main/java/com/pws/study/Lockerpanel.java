@@ -75,7 +75,7 @@ public class Lockerpanel extends JPanel {
 					  LockInformation lo = new LockInformation("사물함 3 ", "l1");
 			        }
 				 else if(l3.isBackgroundColorEqual(new Color(114, 166, 255))){
-					  LockDeactivation de = new LockDeactivation("사물함 3","l1",borderpanel,homebutton,closebutton);
+					  LockDeactivation de = new LockDeactivation("사물함 3","l3",borderpanel,homebutton,closebutton);
 				 }
 				 else if(l3.isBackgroundColorEqual(new Color(255, 128, 128))){
 					 Lockactivation de = new Lockactivation("사물함 3","l3",borderpanel,homebutton,closebutton);
@@ -165,7 +165,7 @@ public class Lockerpanel extends JPanel {
 					  LockInformation lo = new LockInformation("사물함 8 ", "l8");
 			        }
 				 else if(l8.isBackgroundColorEqual(new Color(114, 166, 255))){
-					  LockDeactivation de = new LockDeactivation("사물함 8","l1",borderpanel,homebutton,closebutton);
+					  LockDeactivation de = new LockDeactivation("사물함 8","l8",borderpanel,homebutton,closebutton);
 				 }
 				 else if(l8.isBackgroundColorEqual(new Color(255, 128, 128))){
 					 Lockactivation de = new Lockactivation("사물함 8","l8",borderpanel,homebutton,closebutton);
