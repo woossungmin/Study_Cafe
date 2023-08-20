@@ -526,12 +526,12 @@ public class Ticketpanel extends JPanel {
 	    timelabel.setForeground(new Color(114,166,255));
 	    
 	    JLabel timeimage = new JLabel("");
-	    timeimage.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\sand-clock.png"));
+	    timeimage.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\sand-clock.png"));
 	    timeimage.setBounds(23, 10, 24, 24);
 	    add(timeimage);
 	    
 	    JLabel timeimage_1 = new JLabel("");
-	    timeimage_1.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\weekly-calendar-outline-event-interface-symbol.png"));
+	    timeimage_1.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\weekly-calendar-outline-event-interface-symbol.png"));
 	    timeimage_1.setBounds(218, 10, 24, 24);
 	    add(timeimage_1);
 	    
@@ -548,7 +548,7 @@ public class Ticketpanel extends JPanel {
 	    add(timelabel_1_1);
 	    
 	    JLabel timeimage_1_1 = new JLabel("");
-	    timeimage_1_1.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\padlock.png"));
+	    timeimage_1_1.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\padlock.png"));
 	    timeimage_1_1.setBounds(416, 12, 24, 24);
 	    add(timeimage_1_1);
 	    
@@ -559,7 +559,7 @@ public class Ticketpanel extends JPanel {
 	    add(timelabel_1_1_1);
 	    
 	    JLabel timeimage_1_1_1 = new JLabel("");
-	    timeimage_1_1_1.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\study-room.png"));
+	    timeimage_1_1_1.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\study-room.png"));
 	    timeimage_1_1_1.setBounds(610, 12, 24, 24);
 	    add(timeimage_1_1_1);
 	    
