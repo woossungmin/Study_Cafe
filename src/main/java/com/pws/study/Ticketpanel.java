@@ -36,8 +36,14 @@ public class Ticketpanel extends JPanel {
     RoundedButton2 ticketbutton_3 = null;
     RoundedButton2 ticketbutton_4 = null;
     RoundedButton2 ticketbutton_5 = null;
+    String tMoney1 = "";
+    String tMoney2 = "";
+    String tMoney3 = "";
+    String tMoney4 = "";
+    String tMoney5 = "";
+    String tMoney6 = "";
     
-	public Ticketpanel() {
+	public Ticketpanel(JPanel borderpanel, JButton homeButton, JButton closeButton) {
         Border border =  BorderFactory.createLineBorder(new Color(114,166,250), 2);
         setBackground(new Color(255, 255, 255));
         setBounds(23, 40, 816, 580);
@@ -80,7 +86,14 @@ public class Ticketpanel extends JPanel {
 		borderpanel2.setBackground(new Color(217,231,255));
 		
 		try {			
+			    tMoney1 = (String) b1.get("t_money");
 				ticketbutton = new RoundedButton2((String) b1.get("t_name") + "<br>" + (String) b1.get("t_money") + "원");
+				ticketbutton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+							ModifyTicket mo = new ModifyTicket(borderpanel,homeButton,closeButton,tMoney1);
+						
+					}
+				});
 				ticketbutton.setFont(new Font("굴림", Font.BOLD, 20));
 				ticketbutton.setBounds(49, 84, 186, 107); 
 				borderpanel2.add(ticketbutton);
@@ -93,7 +106,13 @@ public class Ticketpanel extends JPanel {
 		}
 	      
 		try {
+				tMoney2 = (String) b2.get("t_money");
 				ticketbutton_1 = new RoundedButton2((String) b2.get("t_name") + "<br>" + (String) b2.get("t_money") + "원");
+				ticketbutton_1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ModifyTicket mo = new ModifyTicket(borderpanel,homeButton,closeButton,tMoney2);
+					}
+				});
 				ticketbutton_1.setFont(new Font("굴림", Font.BOLD, 20));
 				ticketbutton_1.setBounds(289, 84, 186, 107);
 				borderpanel2.add(ticketbutton_1);
@@ -103,7 +122,13 @@ public class Ticketpanel extends JPanel {
 		}
 	      
 		try {
+				tMoney3 = (String) b3.get("t_money");
 				ticketbutton_2 = new RoundedButton2((String) b3.get("t_name") + "<br>" + (String) b3.get("t_money") + "원");
+				ticketbutton_2.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ModifyTicket mo = new ModifyTicket(borderpanel,homeButton,closeButton,tMoney3);
+					}
+				});
 				ticketbutton_2.setFont(new Font("굴림", Font.BOLD, 20));
 				ticketbutton_2.setBounds(529, 84, 186, 107);
 		      borderpanel2.add(ticketbutton_2);
@@ -113,7 +138,13 @@ public class Ticketpanel extends JPanel {
 		}
 	      
 		try {
+				tMoney4 = (String) b4.get("t_money");
 				ticketbutton_3 = new RoundedButton2((String) b4.get("t_name") + "<br>" + (String) b4.get("t_money") + "원");
+				ticketbutton_3.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ModifyTicket mo = new ModifyTicket(borderpanel,homeButton,closeButton,tMoney4);
+					}
+				});
 				ticketbutton_3.setFont(new Font("굴림", Font.BOLD, 20));
 				ticketbutton_3.setBounds(49, 239, 186, 107);
 				borderpanel2.add(ticketbutton_3);
@@ -123,7 +154,13 @@ public class Ticketpanel extends JPanel {
 		}
 	      
 		try {
+				tMoney5 = (String) b5.get("t_money");
 				ticketbutton_4 = new RoundedButton2((String) b5.get("t_name") + "<br>" + (String) b5.get("t_money") + "원");
+				ticketbutton_4.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ModifyTicket mo = new ModifyTicket(borderpanel,homeButton,closeButton,tMoney5);
+					}
+				});
 				ticketbutton_4.setFont(new Font("굴림", Font.BOLD, 20));
 				ticketbutton_4.setBounds(289, 239, 186, 107);
 				borderpanel2.add(ticketbutton_4);
@@ -133,7 +170,13 @@ public class Ticketpanel extends JPanel {
 		}
 	      
 		try {
+				tMoney6 = (String) b6.get("t_money");
 				ticketbutton_5 = new RoundedButton2((String) b6.get("t_name") + "<br>" + (String) b6.get("t_money") + "원");
+				ticketbutton_5.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ModifyTicket mo = new ModifyTicket(borderpanel,homeButton,closeButton,tMoney6);
+					}
+				});
 			    ticketbutton_5.setFont(new Font("굴림", Font.BOLD, 20));
 			    ticketbutton_5.setBounds(529, 239, 186, 107);
 			    borderpanel2.add(ticketbutton_5);
@@ -165,12 +208,20 @@ public class Ticketpanel extends JPanel {
 					b4 = (JSONObject) jArray.get(3);
 					b5 = (JSONObject) jArray.get(4);
 					b6 = (JSONObject) jArray.get(5);	
+					
 		            ticketbutton.setText((String) b1.get("t_name") + "<br>" + (String) b1.get("t_money") + "원");
 		            ticketbutton_1.setText((String) b2.get("t_name") + "<br>" + (String) b2.get("t_money") + "원");
 		            ticketbutton_2.setText((String) b3.get("t_name") + "<br>" + (String) b3.get("t_money") + "원");
 		            ticketbutton_3.setText((String) b4.get("t_name") + "<br>" + (String) b4.get("t_money") + "원");
 		            ticketbutton_4.setText((String) b5.get("t_name") + "<br>" + (String) b5.get("t_money") + "원");
 		            ticketbutton_5.setText((String) b6.get("t_name") + "<br>" + (String) b6.get("t_money") + "원");
+		            
+		            tMoney1 = (String) b1.get("t_money");
+	                tMoney2 = (String) b2.get("t_money");
+	                tMoney3 = (String) b3.get("t_money");
+	                tMoney4 = (String) b4.get("t_money");
+	                tMoney5 = (String) b5.get("t_money");
+	                tMoney6 = (String) b6.get("t_money");
 				}
 				else
 				{
@@ -214,6 +265,13 @@ public class Ticketpanel extends JPanel {
 		            ticketbutton_3.setText((String) b4.get("t_name") + "<br>" + (String) b4.get("t_money") + "원");
 		            ticketbutton_4.setText((String) b5.get("t_name") + "<br>" + (String) b5.get("t_money") + "원");
 		            ticketbutton_5.setText((String) b6.get("t_name") + "<br>" + (String) b6.get("t_money") + "원");
+		            
+		            tMoney1 = (String) b1.get("t_money");
+	                tMoney2 = (String) b2.get("t_money");
+	                tMoney3 = (String) b3.get("t_money");
+	                tMoney4 = (String) b4.get("t_money");
+	                tMoney5 = (String) b5.get("t_money");
+	                tMoney6 = (String) b6.get("t_money");
 				}
 				else
 				{
@@ -247,8 +305,8 @@ public class Ticketpanel extends JPanel {
 				{
 					JSONArray jArray = new JSONArray();
 					jArray = (JSONArray) check.get("tickets");
-					b1 = (JSONObject) jArray.get(1);
-					b2 = (JSONObject) jArray.get(0);
+					b1 = (JSONObject) jArray.get(0);
+					b2 = (JSONObject) jArray.get(1);
 					b3 = (JSONObject) jArray.get(2);
 					b4 = (JSONObject) jArray.get(3);
 					b5 = (JSONObject) jArray.get(4);
@@ -259,6 +317,13 @@ public class Ticketpanel extends JPanel {
 		            ticketbutton_3.setText((String) b4.get("t_name") + "<br>" + (String) b4.get("t_money") + "원");
 		            ticketbutton_4.setText((String) b5.get("t_name") + "<br>" + (String) b5.get("t_money") + "원");
 		            ticketbutton_5.setText((String) b6.get("t_name") + "<br>" + (String) b6.get("t_money") + "원");
+		            
+		            tMoney1 = (String) b1.get("t_money");
+	                tMoney2 = (String) b2.get("t_money");
+	                tMoney3 = (String) b3.get("t_money");
+	                tMoney4 = (String) b4.get("t_money");
+	                tMoney5 = (String) b5.get("t_money");
+	                tMoney6 = (String) b6.get("t_money");
 				}
 				else
 				{
@@ -491,8 +556,8 @@ public class Ticketpanel extends JPanel {
 		{
 			JSONArray jArray = new JSONArray();
 			jArray = (JSONArray) check.get("tickets");
-			b1 = (JSONObject) jArray.get(0);
-			b2 = (JSONObject) jArray.get(1);
+			b1 = (JSONObject) jArray.get(1);
+			b2 = (JSONObject) jArray.get(0);
 			b3 = (JSONObject) jArray.get(2);
 			b4 = (JSONObject) jArray.get(3);
 			b5 = (JSONObject) jArray.get(4);
@@ -612,4 +677,12 @@ public class Ticketpanel extends JPanel {
 	        }
 	    });
 	}
+    private void switchPanel(JPanel newPanel,JPanel borderpanel, JButton homebutton, JButton closebutton) {
+        borderpanel.removeAll();
+        borderpanel.add(homebutton);
+        borderpanel.add(closebutton);
+        borderpanel.add(newPanel);
+        borderpanel.revalidate();
+        borderpanel.repaint();
+    }
 }

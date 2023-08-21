@@ -139,9 +139,9 @@ public class LockerCheck {
 		        JSONObject data = new JSONObject();
 		        Post po = new Post();
 		        try {
-		            Info.lock_number = lock_number;
+		        	Info.lock_number = lock_number;
 		            data.put("phone", Info.phone);
-		            data.put("locknumber", lock_number);
+		            data.put("lock_number", lock_number);
 		            data.put("activations", "0");
 		            JSONObject check = po.jsonpost("/UpdateLock", data);
 
@@ -158,7 +158,6 @@ public class LockerCheck {
 		            });
 		            timer.setRepeats(false); // 타이머를 단 한 번만 실행
 		            timer.start();
-		            System.out.println(Info.seat_number);
 		        } catch (JSONException e1) {
 		            e1.printStackTrace();
 		        }

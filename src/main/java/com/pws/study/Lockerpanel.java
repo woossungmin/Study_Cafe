@@ -428,13 +428,8 @@ public class Lockerpanel extends JPanel {
 			        for(int i = 0; i < jArray.length(); i++) {
 			            String lockNumber = (String) jArray.get(i); // 좌석 번호를 가져옵니다.
 			                RoundedButton3 button = buttonMap.get(lockNumber);
-			                if (Info.lock_number.equals(lockNumber)) {
-			                    button.setBackgroundColor(new Color(114,166,255));
-			                    button.repaint();
-			                } else {
-			                    button.setBackgroundColor(new Color(200,196,196));
-			                    button.repaint();
-			                }
+			                button.setBackgroundColor(new Color(200,196,196));
+			                button.repaint();
 			                button.setBorderPainted(false);
 			        }
 			    } else {
@@ -481,13 +476,8 @@ public class Lockerpanel extends JPanel {
 			        for(int i = 0; i < jArray.length(); i++) {
 			            String lockNumber = (String) jArray.get(i); // 좌석 번호를 가져옵니다.
 			                RoundedButton3 button = buttonMap.get(lockNumber);
-			                if (Info.lock_number.equals(lockNumber)) {
-			                    button.setBackgroundColor(new Color(114,166,255));
-			                    button.repaint();
-			                } else {
-			                    button.setBackgroundColor(new Color(255,128,128));
-			                    button.repaint();
-			                }
+			                button.setBackgroundColor(new Color(255,128,128));
+			                button.repaint();
 			                button.setBorderPainted(false);
 			        }
 			    } else {

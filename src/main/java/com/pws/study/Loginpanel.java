@@ -108,12 +108,12 @@ public class Loginpanel extends JPanel {
 				JSONObject check = po.jsonpost("/ManagerLogin", data);
 				if((check.get("check")).equals("true")) {
 					Message ms = new Message("    관리자님 환영합니다!");
-					ms.frame.setBounds(620, 230, ms.frame.getWidth(), ms.frame.getHeight());
+					ms.frame.setBounds(590, 240, ms.frame.getWidth(), ms.frame.getHeight());
 					Info2.phone = phone;
 					switchPanel(homePanel);
 				}else {
 					Message ms = new Message(" 로그인을 실패하였습니다.");
-					ms.frame.setBounds(620, 230, ms.frame.getWidth(), ms.frame.getHeight());
+					ms.frame.setBounds(590, 240, ms.frame.getWidth(), ms.frame.getHeight());
 				}
  	  	 	}catch (JSONException e1) {
 	    		// TODO Auto-generated catch block

@@ -472,6 +472,7 @@ public class Login {
 					data.put("phone", Info.phone);
 			   		check = po.jsonpost("/FindLockPhone", data);
 			   		Info.lock_number = check.getString("lock_number");
+			   		System.out.println(Info.lock_number);
 				} catch (JSONException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

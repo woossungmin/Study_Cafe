@@ -147,20 +147,21 @@ public class UpdateLock {
 
 	            try {
 			        data.put("phone", "NULL");
-					data.put("locknumber", originlock);
+					data.put("lock_number", originlock);
 		            data.put("activations", "1");
+		            JSONObject check = po.jsonpost("/UpdateLock", data);
 				} catch (JSONException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
-	            JSONObject check = po.jsonpost("/UpdateLock", data);
+	           
 		        
 		        try {
 		            Info.lock_number = lock_number;
 		            data.put("phone", Info.phone);
-		            data.put("locknumber", lock_number);
+		            data.put("lock_number", lock_number);
 		            data.put("activations", "0");
-		            /*J8SONObject*/ check = po.jsonpost("/UpdateLock", data);
+		            JSONObject check = po.jsonpost("/UpdateLock", data);
 
 		            panel_3.setVisible(true);
 		            panel_1.setVisible(false);
@@ -175,7 +176,6 @@ public class UpdateLock {
 		            });
 		            timer.setRepeats(false); // 타이머를 단 한 번만 실행
 		            timer.start();
-		            System.out.println(Info.seat_number);
 		        } catch (JSONException e1) {
 		            e1.printStackTrace();
 		        }

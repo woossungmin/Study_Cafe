@@ -50,11 +50,11 @@ public class LockInformation {
 	 */
 	private void initialize(String lock, String locknumber) {
 		frame = new JFrame();
-		frame.setBounds(550, 230, 360, 200);
+		frame.setBounds(560, 230, 360, 200);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-	      frame.setResizable(false);
-	      frame.setVisible(true);
+	    frame.setResizable(false);
+	    frame.setVisible(true);
 		Border border =  BorderFactory.createLineBorder(new Color(114,166,250),2);
 		
 		JPanel panel = new JPanel();

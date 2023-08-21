@@ -112,7 +112,7 @@ public class Manager {
 	  	  JButton ticketbutton = new JButton("이용권");
 	  	  ticketbutton.addActionListener(new ActionListener() {
 	  	  	public void actionPerformed(ActionEvent e) {
-	  	  		Ticketpanel ti = new Ticketpanel();
+	  	  		Ticketpanel ti = new Ticketpanel(borderpanel,homeButton,closeButton);
 	  	  		switchPanel(ti);
 	  	  	}
 	  	  });
@@ -201,7 +201,7 @@ public class Manager {
 	      
 	      seatbutton.addActionListener(new ActionListener() {
 	      	public void actionPerformed(ActionEvent e) {
-		      	  Seatpanel seatPanel = new Seatpanel(borderpanel,homebutton,closebutton); 
+		      	  Seatpanel seatPanel = new Seatpanel(borderpanel,homeButton,closeButton); 
 	               switchPanel(seatPanel);
 	      	}
 	      });

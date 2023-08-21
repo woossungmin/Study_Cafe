@@ -227,7 +227,7 @@ public class SeatCheck {
 		panel_1.add(backbutton);
 		
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("좌석을 선택하시겠습니까?");
-		lblNewLabel_1_1_1_1.setForeground(new Color(255, 72, 72));
+		lblNewLabel_1_1_1_1.setForeground(new Color(255, 128, 128));
 		lblNewLabel_1_1_1_1.setFont(new Font("굴림", Font.BOLD, 20));
 		lblNewLabel_1_1_1_1.setBounds(134, 340, 259, 28);
 		panel_1.add(lblNewLabel_1_1_1_1);
