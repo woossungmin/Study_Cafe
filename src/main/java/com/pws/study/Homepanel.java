@@ -79,7 +79,7 @@ public class Homepanel extends JPanel {
 		seatpanel.add(lblNewLabel_3_1);
 		lblNewLabel_3_1.setForeground(new Color(114, 166, 255));
 		lblNewLabel_3_1.setFont(new Font("굴림", Font.BOLD, 15));
-		JLabel lblNewLabel_1 = new JLabel(" 28");
+		JLabel lblNewLabel_1 = new JLabel(" 56");
 		lblNewLabel_1.setBounds(180, 10, 34, 27);
 		seatpanel.add(lblNewLabel_1);
 		lblNewLabel_1.setForeground(new Color(114, 166, 255));
@@ -133,7 +133,7 @@ public class Homepanel extends JPanel {
 		lblNewLabel_1_3.setBounds(180, 70, 34, 27);
 		seatpanel.add(lblNewLabel_1_3);
 		
-		JLabel studyroomlabel = new JLabel("STUDY ROOM  : ");
+		JLabel studyroomlabel = new JLabel("CAFE    ZONE  : ");
 		studyroomlabel.setForeground(new Color(114, 166, 255));
 		studyroomlabel.setFont(new Font("굴림", Font.BOLD, 15));
 		studyroomlabel.setBounds(12, 100, 128, 24);
@@ -151,7 +151,7 @@ public class Homepanel extends JPanel {
 		lblNewLabel_3_1_4.setBounds(168, 100, 17, 27);
 		seatpanel.add(lblNewLabel_3_1_4);
 		
-		JLabel lblNewLabel_1_4 = new JLabel(" 2");
+		JLabel lblNewLabel_1_4 = new JLabel("30");
 		lblNewLabel_1_4.setForeground(new Color(114, 166, 255));
 		lblNewLabel_1_4.setFont(new Font("굴림", Font.BOLD, 15));
 		lblNewLabel_1_4.setBounds(188, 100, 19, 27);
@@ -276,7 +276,7 @@ public class Homepanel extends JPanel {
 				check = po.jsonpost("/FindSeatType", data);
 				int count2 = (int) check.get("count");
 				data.put("activations", activations);
-				data.put("id", "STUDY ROOM");
+				data.put("id", "CAFE ZONE");
 				check = po.jsonpost("/FindSeatType", data);
 				int count3 = (int) check.get("count");
 				
@@ -297,7 +297,6 @@ public class Homepanel extends JPanel {
 			JSONObject check = po.jsonpost("/Count", data);
 			int lockcount = (int) check.get("count_Lock");
 			LockCount = Integer.toString(lockcount);
-			lock_1.setText(LockCount);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

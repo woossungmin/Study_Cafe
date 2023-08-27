@@ -85,7 +85,7 @@ public class Explanation {
 	      projectname2_2.setBounds(39, 141, 15, 25);
 	      panel.add(projectname2_2);
 	      
-	      JLabel projectname2_2_1 = new JLabel("스터디 카페를 사용할 수 있는 공간입니다");
+	      JLabel projectname2_2_1 = new JLabel("스터디 카페를 사용할 수 있는 공간입니다.");
 	      projectname2_2_1.setForeground(new Color(114, 166, 255));
 	      projectname2_2_1.setFont(new Font("굴림", Font.BOLD, 15));
 	      projectname2_2_1.setBounds(57, 166, 327, 25);
@@ -97,7 +97,7 @@ public class Explanation {
 	      projectname2_2_1_1.setBounds(58, 241, 377, 25);
 	      panel.add(projectname2_2_1_1);
 	      
-	      JLabel projectname2_2_1_1_1 = new JLabel("가벼운 이야기와 함께 공부 할 수 있는 공간입니다.");
+	      JLabel projectname2_2_1_1_1 = new JLabel("입장하여 사용할 수 있는 공간입니다.");
 	      projectname2_2_1_1_1.setForeground(new Color(114, 166, 255));
 	      projectname2_2_1_1_1.setFont(new Font("굴림", Font.BOLD, 15));
 	      projectname2_2_1_1_1.setBounds(57, 316, 377, 25);
@@ -139,13 +139,13 @@ public class Explanation {
 	      projectname2_2_2_1.setBounds(39, 291, 15, 25);
 	      panel.add(projectname2_2_2_1);
 	      
-	      JLabel projectname2_2_3_2_1 = new JLabel("STUDY ROOM");
+	      JLabel projectname2_2_3_2_1 = new JLabel(" CAFE  ZOON");
 	      projectname2_2_3_2_1.setForeground(Color.BLUE);
 	      projectname2_2_3_2_1.setFont(new Font("굴림", Font.BOLD, 15));
 	      projectname2_2_3_2_1.setBounds(57, 291, 113, 25);
 	      panel.add(projectname2_2_3_2_1);
 	      
-	      JLabel projectname2_2_3_1_1_1 = new JLabel("은 여러 인원이 함께 입장하여");
+	      JLabel projectname2_2_3_1_1_1 = new JLabel("은 다른 좌석과 달리 음료를 갖고");
 	      projectname2_2_3_1_1_1.setForeground(new Color(114, 166, 255));
 	      projectname2_2_3_1_1_1.setFont(new Font("굴림", Font.BOLD, 15));
 	      projectname2_2_3_1_1_1.setBounds(163, 291, 253, 25);

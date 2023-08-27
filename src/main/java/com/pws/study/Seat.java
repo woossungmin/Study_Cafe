@@ -80,13 +80,6 @@ public class Seat {
 	      borderpanel.setBackground(new Color(255,255,255));
 	      borderpanel.setBorder(border);
 	      
-	      JPanel panel_1_1_1 = new JPanel();
-	      panel_1_1_1.setLayout(null);
-	      panel_1_1_1.setBackground(Color.WHITE);
-	      panel_1_1_1.setBounds(367, 394, 458, 188);
-	      borderpanel.add(panel_1_1_1);
-	      panel_1_1_1.setBorder(border);
-	      
 	      ImageIcon icon = new ImageIcon("C:\\Users\\user\\Desktop");
 	      JLabel label = new JLabel(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\clock.png"));
 	      label.setBounds(265,10,43,43);
@@ -407,38 +400,310 @@ public class Seat {
 			
 			JPanel panel_1_1 = new JPanel();
 			panel_1_1.setLayout(null);
-			panel_1_1.setBounds(12, 394, 357, 188);
+			panel_1_1.setBounds(12, 394, 813, 188);
 			borderpanel.add(panel_1_1);
 			panel_1_1.setBorder(border);
 			panel_1_1.setBackground(new Color(255,255,255));
 			
-			RoundedButton1 s27 = new RoundedButton1(""); 
+			RoundedButton s27 = new RoundedButton("27<br>1인석");
 			s27.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					SeatCheck se = new SeatCheck("STUDY ZONE , 27","s27",frame);
+					SeatCheck se = new SeatCheck("CAFE ZONE , 27","s27",frame);
 				}
 			});
-			s27.setText(" 스터디룸 1 <br><br>4~8 인실");
-			s27.setFont(new Font("굴림", Font.BOLD, 20));
-			s27.setBounds(56, 35, 248, 118);
+			s27.setFont(new Font("굴림", Font.BOLD, 13));
+			s27.setBounds(12, 10, 50, 44);
 			panel_1_1.add(s27);
 			
-			RoundedButton1 s28 = new RoundedButton1("");
+			RoundedButton s28 = new RoundedButton("28<br>1인석");
 			s28.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					SeatCheck se = new SeatCheck("STUDY ZONE , 28","s28",frame);
+					SeatCheck se = new SeatCheck("CAFE ZONE , 28","s28",frame);
 				}
 			});
-			s28.setText(" 스터디룸 2 <br><br>6~12 인실");
-			s28.setFont(new Font("굴림", Font.BOLD, 20));
-			s28.setBounds(80, 35, 306, 118);
-			panel_1_1_1.add(s28);
+			s28.setFont(new Font("굴림", Font.BOLD, 13));
+			s28.setBounds(68, 10, 50, 44);
+			panel_1_1.add(s28);
 			
-			JLabel label4_1 = new JLabel("Study Room");
-			label4_1.setForeground(Color.BLUE);
-			label4_1.setFont(new Font("굴림", Font.BOLD, 13));
-			label4_1.setBounds(189, 6, 101, 29);
-			panel_1_1_1.add(label4_1);
+			RoundedButton s29 = new RoundedButton("29<br>1인석");
+			s29.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 29","s29",frame);
+				}
+			});
+			s29.setFont(new Font("굴림", Font.BOLD, 13));
+			s29.setBounds(152, 10, 50, 44);
+			panel_1_1.add(s29);
+			
+			RoundedButton s30 = new RoundedButton("30<br>1인석");
+			s30.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 30","s30",frame);
+				}
+			});
+			s30.setFont(new Font("굴림", Font.BOLD, 13));
+			s30.setBounds(208, 10, 50, 44);
+			panel_1_1.add(s30);
+			
+			RoundedButton s31 = new RoundedButton("31<br>1인석");
+			s31.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 31","s31",frame);
+				}
+			});
+			s31.setFont(new Font("굴림", Font.BOLD, 13));
+			s31.setBounds(264, 10, 50, 44);
+			panel_1_1.add(s31);
+			
+			RoundedButton s32 = new RoundedButton("32<br>1인석");
+			s32.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 32","s32",frame);
+				}
+			});
+			s32.setFont(new Font("굴림", Font.BOLD, 13));
+			s32.setBounds(348, 10, 50, 44);
+			panel_1_1.add(s32);
+			
+			RoundedButton s33 = new RoundedButton("33<br>1인석");
+			s33.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 33","s33",frame);
+				}
+			});
+			s33.setFont(new Font("굴림", Font.BOLD, 13));
+			s33.setBounds(404, 10, 50, 44);
+			panel_1_1.add(s33);
+			
+			RoundedButton s34 = new RoundedButton("34<br>1인석");
+			s34.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 34","s34",frame);
+				}
+			});
+			s34.setFont(new Font("굴림", Font.BOLD, 13));
+			s34.setBounds(488, 10, 50, 44);
+			panel_1_1.add(s34);
+			
+			RoundedButton s35 = new RoundedButton("35<br>1인석");
+			s35.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 35","s35",frame);
+				}
+			});
+			s35.setFont(new Font("굴림", Font.BOLD, 13));
+			s35.setBounds(544, 10, 50, 44);
+			panel_1_1.add(s35);
+			
+			RoundedButton s36 = new RoundedButton("36<br>1인석");
+			s36.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 36","s36",frame);
+				}
+			});
+			s36.setFont(new Font("굴림", Font.BOLD, 13));
+			s36.setBounds(628, 10, 50, 44);
+			panel_1_1.add(s36);
+			
+			RoundedButton s37 = new RoundedButton("37<br>1인석");
+			s37.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 37","s37",frame);
+				}
+			});
+			s37.setFont(new Font("굴림", Font.BOLD, 13));
+			s37.setBounds(684, 10, 50, 44);
+			panel_1_1.add(s37);
+			
+			RoundedButton s38 = new RoundedButton("38<br>1인석");
+			s38.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 38","s38",frame);
+				}
+			});
+			s38.setFont(new Font("굴림", Font.BOLD, 13));
+			s38.setBounds(740, 10, 50, 44);
+			panel_1_1.add(s38);
+			
+			RoundedButton s39 = new RoundedButton("39<br>1인석");
+			s39.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 39","s39",frame);
+				}
+			});
+			s39.setFont(new Font("굴림", Font.BOLD, 13));
+			s39.setBounds(12, 77, 50, 44);
+			panel_1_1.add(s39);
+			
+			RoundedButton s40 = new RoundedButton("40<br>1인석");
+			s40.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 40","s40",frame);
+				}
+			});
+			s40.setFont(new Font("굴림", Font.BOLD, 13));
+			s40.setBounds(68, 77, 50, 44);
+			panel_1_1.add(s40);
+			
+			RoundedButton s41 = new RoundedButton("41<br>1인석");
+			s41.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 41","s41",frame);
+				}
+			});
+			s41.setFont(new Font("굴림", Font.BOLD, 13));
+			s41.setBounds(12, 131, 50, 44);
+			panel_1_1.add(s41);
+			
+			RoundedButton s42 = new RoundedButton("42<br>1인석");
+			s42.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 42","s42",frame);
+				}
+			});
+			s42.setFont(new Font("굴림", Font.BOLD, 13));
+			s42.setBounds(68, 131, 50, 44);
+			panel_1_1.add(s42);
+			
+			RoundedButton s43 = new RoundedButton("43<br>1인석");
+			s43.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 43","s43",frame);
+				}
+			});
+			s43.setFont(new Font("굴림", Font.BOLD, 13));
+			s43.setBounds(152, 77, 50, 44);
+			panel_1_1.add(s43);
+			
+			RoundedButton s44 = new RoundedButton("44<br>1인석");
+			s44.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 44","s44",frame);
+				}
+			});
+			s44.setFont(new Font("굴림", Font.BOLD, 13));
+			s44.setBounds(208, 77, 50, 44);
+			panel_1_1.add(s44);
+			
+			RoundedButton s45 = new RoundedButton("45<br>1인석");
+			s45.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 45","s45",frame);
+				}
+			});
+			s45.setFont(new Font("굴림", Font.BOLD, 13));
+			s45.setBounds(264, 77, 50, 44);
+			panel_1_1.add(s45);
+			
+			RoundedButton s46 = new RoundedButton("46<br>1인석");
+			s46.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 46","s46",frame);
+				}
+			});
+			s46.setFont(new Font("굴림", Font.BOLD, 13));
+			s46.setBounds(152, 131, 50, 44);
+			panel_1_1.add(s46);
+			
+			RoundedButton s47 = new RoundedButton("47<br>1인석");
+			s47.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 47","s47",frame);
+				}
+			});
+			s47.setFont(new Font("굴림", Font.BOLD, 13));
+			s47.setBounds(208, 131, 50, 44);
+			panel_1_1.add(s47);
+			
+			RoundedButton s48 = new RoundedButton("48<br>1인석");
+			s48.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 48","s48",frame);
+				}
+			});
+			s48.setFont(new Font("굴림", Font.BOLD, 13));
+			s48.setBounds(264, 131, 50, 44);
+			panel_1_1.add(s48);
+			
+			RoundedButton s49 = new RoundedButton("49<br>1인석");
+			s49.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 49","s49",frame);
+				}
+			});
+			s49.setFont(new Font("굴림", Font.BOLD, 13));
+			s49.setBounds(572, 77, 50, 44);
+			panel_1_1.add(s49);
+			
+			RoundedButton s50 = new RoundedButton("50<br>1인석");
+			s50.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 50","s50",frame);
+				}
+			});
+			s50.setFont(new Font("굴림", Font.BOLD, 13));
+			s50.setBounds(628, 77, 50, 44);
+			panel_1_1.add(s50);
+			
+			RoundedButton s51 = new RoundedButton("51<br>1인석");
+			s51.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 51","s51",frame);
+				}
+			});
+			s51.setFont(new Font("굴림", Font.BOLD, 13));
+			s51.setBounds(684, 77, 50, 44);
+			panel_1_1.add(s51);
+			
+			RoundedButton s52 = new RoundedButton("52<br>1인석");
+			s52.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 52","s52",frame);
+				}
+			});
+			s52.setFont(new Font("굴림", Font.BOLD, 13));
+			s52.setBounds(740, 77, 50, 44);
+			panel_1_1.add(s52);
+			
+			RoundedButton s53 = new RoundedButton("53<br>1인석");
+			s53.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 53","s53",frame);
+				}
+			});
+			s53.setFont(new Font("굴림", Font.BOLD, 13));
+			s53.setBounds(572, 131, 50, 44);
+			panel_1_1.add(s53);
+			
+			RoundedButton s54 = new RoundedButton("54<br>1인석");
+			s54.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 54","s54",frame);
+				}
+			});
+			s54.setFont(new Font("굴림", Font.BOLD, 13));
+			s54.setBounds(628, 131, 50, 44);
+			panel_1_1.add(s54);
+			
+			RoundedButton s55 = new RoundedButton("55<br>1인석");
+			s55.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 55","s55",frame);
+				}
+			});
+			s55.setFont(new Font("굴림", Font.BOLD, 13));
+			s55.setBounds(684, 131, 50, 44);
+			panel_1_1.add(s55);
+			
+			RoundedButton s56 = new RoundedButton("56<br>1인석");
+			s56.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					SeatCheck se = new SeatCheck("CAFE ZONE , 56","s56",frame);
+				}
+			});
+			s56.setFont(new Font("굴림", Font.BOLD, 13));
+			s56.setBounds(740, 131, 50, 44);
+			panel_1_1.add(s56);
 			
 			JSONObject data = new JSONObject();
 			try {
@@ -479,38 +744,52 @@ public class Seat {
 					buttonMap.put("s24",s24);
 					buttonMap.put("s25",s25);
 					buttonMap.put("s26",s26);
+					buttonMap.put("s27",s27);
+					buttonMap.put("s28",s28);
+					buttonMap.put("s29",s29);
+					buttonMap.put("s30",s30);
+					buttonMap.put("s31",s31);
+					buttonMap.put("s32",s32);
+					buttonMap.put("s33",s33);
+					buttonMap.put("s34",s34);
+					buttonMap.put("s35",s35);
+					buttonMap.put("s36",s36);
+					buttonMap.put("s37",s37);
+					buttonMap.put("s38",s38);
+					buttonMap.put("s39",s39);
+					buttonMap.put("s40",s40);
+					buttonMap.put("s41",s41);
+					buttonMap.put("s42",s42);
+					buttonMap.put("s43",s43);
+					buttonMap.put("s44",s44);
+					buttonMap.put("s45",s45);
+					buttonMap.put("s46",s46);
+					buttonMap.put("s47",s47);
+					buttonMap.put("s48",s48);
+					buttonMap.put("s49",s49);
+					buttonMap.put("s50",s50);
+					buttonMap.put("s51",s51);
+					buttonMap.put("s52",s52);
+					buttonMap.put("s53",s53);
+					buttonMap.put("s54",s54);
+					buttonMap.put("s55",s55);
+					buttonMap.put("s56",s56);
 					
-					Map<String, RoundedButton1> buttonMap1 = new HashMap<>(); //hashMap으로 문자열과 버튼 객체 매칭함
-						buttonMap1.put("s27",s27);
-						buttonMap1.put("s28", s28);
-					
-				        Color selectedColor = new Color(114, 166, 255);
-				        Color defaultColor = new Color(200, 196, 196);
+			        Color selectedColor = new Color(114, 166, 255);
+			        Color defaultColor = new Color(200, 196, 196);
 
-				        for(int i = 0; i < jArray.length(); i++) {
-				            String seatNumber = (String) jArray.get(i); // 좌석 번호를 가져옵니다.
+			        for(int i = 0; i < jArray.length(); i++) {
+			            String seatNumber = (String) jArray.get(i); // 좌석 번호를 가져옵니다.
 
-				            if (seatNumber.equals("s27") || seatNumber.equals("s28")) {
-				                RoundedButton1 button1 = buttonMap1.get(seatNumber);
-				                if (Info.seat_number.equals(seatNumber)) {
-				                    button1.setBackgroundColor(selectedColor);
-				                } else {
-				                    button1.setBackgroundColor(defaultColor);
-				                }
-				                button1.setBorderPainted(false);
-				                button1.setEnabled(false);
-				            } else {
-				                RoundedButton button = buttonMap.get(seatNumber);
-				                if (Info.seat_number.equals(seatNumber)) {
-				                    button.setBackgroundColor(selectedColor);
-				                } else {
-				                    button.setBackgroundColor(defaultColor);
-				                }
-				                button.setBorderPainted(false);
-				                button.setEnabled(false);
-				            }
-				        }
-
+			                RoundedButton button = buttonMap.get(seatNumber);
+			                if (Info.seat_number.equals(seatNumber)) {
+			                    button.setBackgroundColor(selectedColor);
+			                } else {
+			                    button.setBackgroundColor(defaultColor);
+			                }
+			                button.setBorderPainted(false);
+			                button.setEnabled(false);
+			        }
 				    } else {
 				        // ...
 				    }
@@ -605,8 +884,8 @@ public class Seat {
 			panel_2_1.setBorder(border);
 			panel_2_1.setBackground(new Color(255,255,255));
 			
-			JLabel label4 = new JLabel("Study Room");
-			label4.setBounds(130, 6, 101, 29);
+			JLabel label4 = new JLabel("CAFE ZONE");
+			label4.setBounds(404, 110, 101, 29);
 			panel_1_1.add(label4);
 			label4.setFont(new Font("굴림", Font.BOLD, 13));
 			label4.setForeground(new Color(0,0,255));
@@ -677,5 +956,4 @@ public class Seat {
 			  }	   
 			  
 	}
-	
 }

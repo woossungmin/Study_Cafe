@@ -187,7 +187,7 @@ public class Ticketpanel extends JPanel {
 		
 		
 	    JButton timeticket = new JButton("시간 이용권");
-	    timeticket.setBounds(35, 28, 145, 33);
+	    timeticket.setBounds(71, 28, 145, 33);
 	    borderpanel2.add(timeticket);
 	    timeticket.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
@@ -283,7 +283,7 @@ public class Ticketpanel extends JPanel {
 			}
 	    	}
 	    });
-	    seasonticket.setBounds(192, 28, 158, 33);
+	    seasonticket.setBounds(299, 28, 158, 33);
 	    borderpanel2.add(seasonticket);
 	    seasonticket.setFont(new Font("굴림", Font.BOLD, 20));
 	    seasonticket.setContentAreaFilled(false);
@@ -335,7 +335,7 @@ public class Ticketpanel extends JPanel {
 			}
 	    	}
 	    });
-	    lockticket.setBounds(362, 28, 165, 33);
+	    lockticket.setBounds(539, 28, 165, 33);
 	    borderpanel2.add(lockticket);
 	    lockticket.setFont(new Font("굴림", Font.BOLD, 20));
 	    lockticket.setContentAreaFilled(false);
@@ -343,17 +343,8 @@ public class Ticketpanel extends JPanel {
 	    lockticket.setForeground(new Color(114,166,255));
 	    lockticket.setFocusPainted(false);
 	    
-	    JButton roomticket = new JButton("스터디룸 이용권");
-	    roomticket.setBounds(539, 28, 186, 33);
-	    borderpanel2.add(roomticket);
-	    roomticket.setFont(new Font("굴림", Font.BOLD, 20));
-	    roomticket.setContentAreaFilled(false);
-	    roomticket.setBorderPainted(false);
-	    roomticket.setForeground(new Color(114,166,255));
-	    roomticket.setFocusPainted(false);
-	    
         JPanel timepanel = new JPanel();
-		timepanel.setBounds(23, 36, 179, 154);
+		timepanel.setBounds(23, 36, 223, 154);
 		add(timepanel);
 		timepanel.setBackground(new Color(255,255,255));
 		timepanel.setBorder(border);
@@ -430,7 +421,7 @@ public class Ticketpanel extends JPanel {
 	    JPanel seasonpanel = new JPanel();
 	    seasonpanel.setLayout(null);
 	    seasonpanel.setBackground(Color.WHITE);
-	    seasonpanel.setBounds(218, 36, 179, 154);
+	    seasonpanel.setBounds(295, 36, 223, 154);
 	    add(seasonpanel);
 	    seasonpanel.setBorder(border);
 	    
@@ -505,7 +496,7 @@ public class Ticketpanel extends JPanel {
 	    JPanel lockpanel = new JPanel();
 	    lockpanel.setLayout(null);
 	    lockpanel.setBackground(Color.WHITE);
-	    lockpanel.setBounds(416, 38, 179, 152);
+	    lockpanel.setBounds(566, 36, 223, 152);
 	    add(lockpanel);
 	    lockpanel.setBorder(border);
 	    
@@ -577,13 +568,6 @@ public class Ticketpanel extends JPanel {
 		e1.printStackTrace();
 		}
 	    
-	    JPanel roompanel = new JPanel();
-	    roompanel.setLayout(null);
-	    roompanel.setBackground(Color.WHITE);
-	    roompanel.setBounds(610, 38, 179, 152);
-	    add(roompanel);
-	    roompanel.setBorder(border);
-	    
 	    JLabel timelabel = new JLabel("시간 이용권");
 	    timelabel.setFont(new Font("굴림", Font.BOLD, 16));
 	    timelabel.setBounds(55, 12, 128, 24);
@@ -597,49 +581,25 @@ public class Ticketpanel extends JPanel {
 	    
 	    JLabel timeimage_1 = new JLabel("");
 	    timeimage_1.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\weekly-calendar-outline-event-interface-symbol.png"));
-	    timeimage_1.setBounds(218, 10, 24, 24);
+	    timeimage_1.setBounds(295, 10, 24, 24);
 	    add(timeimage_1);
 	    
 	    JLabel timelabel_1 = new JLabel("정기 이용권");
 	    timelabel_1.setForeground(new Color(114, 166, 255));
 	    timelabel_1.setFont(new Font("굴림", Font.BOLD, 16));
-	    timelabel_1.setBounds(252, 12, 128, 24);
+	    timelabel_1.setBounds(329, 12, 128, 24);
 	    add(timelabel_1);
 	    
 	    JLabel timelabel_1_1 = new JLabel("사물함 이용권");
 	    timelabel_1_1.setForeground(new Color(114, 166, 255));
 	    timelabel_1_1.setFont(new Font("굴림", Font.BOLD, 16));
-	    timelabel_1_1.setBounds(448, 14, 128, 24);
+	    timelabel_1_1.setBounds(598, 12, 191, 24);
 	    add(timelabel_1_1);
 	    
 	    JLabel timeimage_1_1 = new JLabel("");
 	    timeimage_1_1.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\padlock.png"));
-	    timeimage_1_1.setBounds(416, 12, 24, 24);
+	    timeimage_1_1.setBounds(566, 10, 223, 24);
 	    add(timeimage_1_1);
-	    
-	    JLabel timelabel_1_1_1 = new JLabel("스터디룸 이용권");
-	    timelabel_1_1_1.setForeground(new Color(114, 166, 255));
-	    timelabel_1_1_1.setFont(new Font("굴림", Font.BOLD, 16));
-	    timelabel_1_1_1.setBounds(641, 14, 128, 24);
-	    add(timelabel_1_1_1);
-	    
-	    JLabel timeimage_1_1_1 = new JLabel("");
-	    timeimage_1_1_1.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\study-room.png"));
-	    timeimage_1_1_1.setBounds(610, 12, 24, 24);
-	    add(timeimage_1_1_1);
-	    
-	    roomticket.getModel().addChangeListener(new ChangeListener() {
-	        @Override
-	        public void stateChanged(ChangeEvent e) {
-	            ButtonModel model = (ButtonModel) e.getSource();
-	            
-	            if (model.isRollover()) {
-	                roomticket.setForeground(new Color(255,255,255)); // 글자 색상 변경
-	            } else {
-	                roomticket.setForeground(new Color(114, 166, 255)); // 원래 글자 색상으로 변경
-	            }
-	        }
-	    });
 	    lockticket.getModel().addChangeListener(new ChangeListener() {
 	        @Override
 	        public void stateChanged(ChangeEvent e) {

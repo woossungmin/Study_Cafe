@@ -248,6 +248,17 @@ public class Login {
       borderpanel.add(one);
       
       RoundedButton2 move = new RoundedButton2("자리이동");
+      move.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+      		if(Info.seat_number.equals("NULL")){
+      			Message ms = new Message("    좌석을 선택해주세요!");
+      		}
+      		else if(!Info.seat_number.equals("NULL")) {
+      			frame.dispose();
+          		MoveSeat ms = new MoveSeat();
+      		}
+      	}
+      });
       move.setFont(new Font("굴림", Font.BOLD, 20));
       move.setText("자리이동");
       move.setBounds(137, 267, 170, 95);
