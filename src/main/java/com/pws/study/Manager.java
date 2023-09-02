@@ -174,7 +174,7 @@ public class Manager {
 	      
 	      memberbutton.addActionListener(new ActionListener() {
 	      	public void actionPerformed(ActionEvent e) {
-	      		Memberpanel me = new Memberpanel();
+	      		Memberpanel me = new Memberpanel(homebutton,closebutton,borderpanel);
 	            switchPanel(me);
 	      	}
 	      });
