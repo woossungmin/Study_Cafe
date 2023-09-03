@@ -2,8 +2,10 @@ package com.pws.study;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -14,8 +16,16 @@ import javax.swing.border.Border;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.CategoryLabelPositions;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.block.BlockContainer;
 import org.jfree.chart.block.BorderArrangement;
+import org.jfree.chart.labels.CategoryItemLabelGenerator;
+import org.jfree.chart.labels.ItemLabelAnchor;
+import org.jfree.chart.labels.ItemLabelPosition;
+import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot;
@@ -24,15 +34,19 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
+import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.chart.renderer.xy.XYSplineRenderer;
 import org.jfree.chart.title.CompositeTitle;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.chart.ui.RectangleEdge;
+import org.jfree.chart.ui.RectangleInsets;
+import org.jfree.chart.ui.TextAnchor;
 import org.jfree.chart.util.Rotation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import javax.swing.ImageIcon;
@@ -68,7 +82,7 @@ public class Homepanel extends JPanel {
 		memberpanel.setLayout(null);
 		
 		JLabel member = new JLabel("");
-		member.setBounds(145, 10, 37, 27);
+		member.setBounds(150, 10, 37, 27);
 		memberpanel.add(member);
 		member.setFont(new Font("굴림", Font.BOLD, 15));
 		member.setForeground(new Color(255, 128, 128));
@@ -384,112 +398,205 @@ public class Homepanel extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		drawPieChart(chartpanel, 2, 2, 400, 300, mancount, girlcount); //원형그래프
-		drawBarChart(chartpanel, 400, 10, 387, 300,
-                Arrays.asList(10, 20, 30, 40, 50, 60, 70),
-                Arrays.asList(10.0, 20.0, 30.0, 25.0, 15.0, 10.0, 5.0)); //막대그래프
-	}
-	
-	// 막대그래프 그리는 메서드들
-    public static void drawBarChart(JPanel panel, int x, int y, int width, int height, List<Integer> ages, List<Double> values) {
-        DefaultCategoryDataset dataset = createDataset(ages, values);
-        JFreeChart chart = createChart(dataset);
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setBounds(x, y, width, height);
-        chartPanel.setOpaque(false);
-        panel.add(chartPanel);
-    }
+		JSONArray managerInfoArray;
+		Post po = new Post();
 
-    private static DefaultCategoryDataset createDataset(List<Integer> ages, List<Double> values) {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        for (int i = 0; i < ages.size(); i++) {
-            dataset.addValue(values.get(i), "Age Group", String.valueOf(ages.get(i)));
-        }
-        return dataset;
-    }
+		// 연령대별 카운트를 저장할 변수 초기화
+		int count10s = 0;
+		int count20s = 0;
+		int count30s = 0;
+		int count40s = 0;
+		int count50s = 0;
+		int count60s = 0;
+		int count70s = 0;
+
+		try {
+		    data.put("0", "0");
+		    JSONObject response = po.jsonpost("/FindManager", data);
+
+		    managerInfoArray = response.getJSONArray("manager_info");
+		    for (int i = 0; i < managerInfoArray.length(); i++) {
+		        JSONObject managerInfo = managerInfoArray.getJSONObject(i);
+		        String birth = managerInfo.getString("birth");
+		        // birth 값에서 연도 추출
+		        String birthYear = birth.substring(0, 4);
+		        // 현재 연도 구하기 (예: 2023)
+		        Calendar calendar = Calendar.getInstance();
+		        int currentYear = calendar.get(Calendar.YEAR);
+		        // 연령 계산
+		        int age = currentYear - Integer.parseInt(birthYear);
+		        // 연령대에 따라 카운트 증가
+		        if (age >= 70) {
+		            count70s++;
+		        } else if (age >= 60 && age < 70) {
+		            count60s++;
+		        } else if (age >= 50 && age < 60) {
+		            count50s++;
+		        } else if (age >= 40 && age < 50) {
+		            count40s++;
+		        } else if (age >= 30 && age < 40) {
+		            count30s++;
+		        } else if (age >= 20 && age < 30) {
+		            count20s++;
+		        } else if (age >= 10 && age < 20) {
+		            count10s++;
+		        }
+		    }
+
+		} catch (JSONException e1) {
+		    e1.printStackTrace();
+		}
+		drawPieChart(chartpanel, 1, 12, 380, 280, mancount, girlcount); //원형그래프
+		drawBarChart(chartpanel, 380, 10, 387, 300,
+		        List.of("10대", "20대", "30대", "40대", "50대", "60대", "70대"),
+		        List.of((double) count10s, (double) count20s, (double) count30s, (double) count40s, (double) count50s, (double) count60s, (double) count70s));
+		}
+
+		public static void drawBarChart(JPanel panel, int x, int y, int width, int height, List<String> ageRanges, List<Double> values) {
+		    DefaultCategoryDataset dataset = createDataset(ageRanges, values);
+		    JFreeChart chart = createChart(dataset);
+		    ChartPanel chartPanel = new ChartPanel(chart);
+		    chartPanel.setBounds(x, y, width, height);
+		    chartPanel.setOpaque(false);
+		    panel.add(chartPanel);
+		}
+
+		private static DefaultCategoryDataset createDataset(List<String> ageRanges, List<Double> values) {
+		    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+		    for (int i = 0; i < ageRanges.size(); i++) {
+		        dataset.addValue(values.get(i), "", ageRanges.get(i));
+		    }
+
+		    return dataset;
+		}
 
     private static JFreeChart createChart(DefaultCategoryDataset dataset) {
         JFreeChart chart = ChartFactory.createBarChart(
-                null, // Chart title (null로 설정)
-                null, // Domain axis label (null로 설정)
-                null, // Range axis label (null로 설정)
+                "", // Chart title (타이틀은 빈 문자열로 설정)
+                "", // Domain axis label
+                "", // Range axis label
                 dataset, // Dataset
                 PlotOrientation.VERTICAL, // Plot orientation
-                true, // Show legend
-                true,
-                false
+                false, // Show legend
+                true, // Use tooltips
+                false // Configure chart to generate URLs
         );
+
+        // 한글 폰트 설정
+        Font koreanFont = new Font("Malgun Gothic", Font.BOLD, 12);
+        CategoryPlot plot = chart.getCategoryPlot();
+        plot.getDomainAxis().setLabelFont(koreanFont);
+        plot.getRangeAxis().setLabelFont(koreanFont);
+        plot.setBackgroundPaint(new Color(217, 231, 255));
+
+        // 타이틀 폰트와 색상 설정
+        TextTitle title = new TextTitle("회원 연령별 비율", koreanFont);
+        title.setPaint(new Color(83, 144, 255));
+        chart.setTitle(title);
 
         // Customize chart appearance
         chart.setBackgroundPaint(Color.white);
 
-        CategoryPlot plot = chart.getCategoryPlot();
-        plot.setBackgroundPaint(new Color(255, 255, 255, 0));
-        plot.setOutlineVisible(false);
+        CategoryAxis domainAxis = plot.getDomainAxis();
+        domainAxis.setTickLabelFont(koreanFont);
+        domainAxis.setTickLabelPaint(new Color(83, 144, 255)); // x축 레이블 색상 변경
 
+        NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+        rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+        rangeAxis.setRange(0, 100); // Y-axis maximum value set to 100
+
+        // Customize Y-axis label format
+        rangeAxis.setTickUnit(new NumberTickUnit(10)); // Set the interval to 10
+        rangeAxis.setNumberFormatOverride(new DecimalFormat("#명"));
+        rangeAxis.setTickLabelFont(koreanFont);
+        rangeAxis.setTickLabelPaint(new Color(83, 144, 255)); // Y-축 레이블 색상 변경
+        // Customize graph renderer
         CategoryItemRenderer renderer = new BarRenderer();
+
+        // Create and set label generator for the bar chart
+        StandardCategoryItemLabelGenerator labelGenerator = new StandardCategoryItemLabelGenerator("{2}", new DecimalFormat("#명"));
+        renderer.setDefaultItemLabelGenerator(labelGenerator);
+        renderer.setDefaultItemLabelsVisible(true);
+        renderer.setDefaultPositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.OUTSIDE12, TextAnchor.BOTTOM_CENTER));
+        renderer.setDefaultItemLabelPaint(new Color(255, 128, 128));
+        // Set font for item labels
+        Font labelFont = new Font("Malgun Gothic", Font.BOLD, 8); // 폰트 설정
+        renderer.setDefaultItemLabelFont(labelFont); // 아이템 라벨 폰트 설정
+
         plot.setRenderer(renderer);
+
+        // Customize bar color
+        BarRenderer barRenderer = (BarRenderer) renderer;
+        barRenderer.setBarPainter(new StandardBarPainter());
+        barRenderer.setSeriesPaint(0, new Color(83, 144, 255));
 
         return chart;
     }
-	
-	// 원형 그래프 메서드드
-	public static void drawPieChart(JPanel panel, int x, int y, int width, int height, double man, double girl) {
-	    // 데이터셋 생성
-	    PieDataset dataset = createDataset(man, girl);
-	    // 차트 생성
-	    JFreeChart chart = createChart(dataset);
-	    // 차트 패널 생성 및 설정
-	    ChartPanel chartPanel = new ChartPanel(chart);
-	    chartPanel.setBounds(2, 2, 387, 300);
-	    chartPanel.setOpaque(false);
-	    // 패널에 차트 패널 추가
-	    panel.add(chartPanel);
-	    
 
-	}
 
-	private static PieDataset createDataset(double man, double girl) {
-	    DefaultPieDataset dataset = new DefaultPieDataset();
-	    dataset.setValue("남자", man);
-	    dataset.setValue("여자", girl);
-	    return dataset;
-	}
 
-	private static JFreeChart createChart(PieDataset dataset) {
-	    JFreeChart chart = ChartFactory.createPieChart("", dataset, false, false, false);
-	    PiePlot plot = (PiePlot) chart.getPlot();
-	    plot.setBackgroundPaint(new Color(255, 255, 255, 0));
-	    plot.setOutlineVisible(false);
-	    // 라벨 포맷 설정
-	    plot.setLabelGenerator(new StandardPieSectionLabelGenerator("({2})", NumberFormat.getNumberInstance(), NumberFormat.getPercentInstance()));
-	    plot.setLabelBackgroundPaint(new Color(0, 0, 0, 0));
-	    plot.setLabelShadowPaint(null);
-	    plot.setLabelPaint(new Color(83,144,255)); //라벨 글자색 설정
-	    plot.setLabelOutlinePaint(new Color(0, 0, 0, 0)); // 라벨 테두리 색 설정
-	    Font labelFont = plot.getLabelFont();  // 현재 라벨 글꼴 가져오기
-	    Font boldLabelFont = labelFont.deriveFont(Font.BOLD);  // 더 두껍게 설정
-	    plot.setLabelFont(boldLabelFont);  // 라벨 글꼴을 더 두껍게 설정
-	    
-	    plot.setSectionPaint("남자", new Color(114, 166, 255));
-	    plot.setSectionPaint("여자", new Color(255, 128, 128));
+	//원형 그래프
+    public static void drawPieChart(JPanel panel, int x, int y, int width, int height, double man, double girl) {
+        // 데이터셋 생성
+        PieDataset dataset = createDataset(man, girl);
+        // 차트 생성
+        JFreeChart chart = createChart(dataset);
+        // 차트 패널 생성 및 설정
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setBounds(x, y, width, height);
+        chartPanel.setOpaque(false);
+        // 패널에 차트 패널 추가
+        panel.add(chartPanel);
+    }
 
-	    
-	    LegendTitle legend = new LegendTitle(plot);
-	    legend.setPosition(RectangleEdge.BOTTOM);
-	    chart.addLegend(legend);
-	    
-	 // 기존 코드에서 CompositeTitle 생성 부분을 가져옵니다.
-	    BlockContainer labels = new BlockContainer(new BorderArrangement());
-	    labels.setPadding(0, 0, 0, 0);
+    private static PieDataset createDataset(double man, double girl) {
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("남자", man);
+        dataset.setValue("여자", girl);
+        return dataset;
+    }
 
-	    CompositeTitle compositeTitle = new CompositeTitle(labels);
-	    compositeTitle.setPosition(RectangleEdge.BOTTOM);
-	    chart.addSubtitle(compositeTitle);
-	    
-	    plot.setDirection(Rotation.ANTICLOCKWISE);
-	    plot.setStartAngle(90);
+    private static JFreeChart createChart(PieDataset dataset) {
+        JFreeChart chart = ChartFactory.createPieChart("", dataset, false, false, false);
+        PiePlot plot = (PiePlot) chart.getPlot();
+        plot.setBackgroundPaint(new Color(255, 255, 255, 0));
+        plot.setOutlineVisible(false);
 
-	    return chart;
-	}
+        // 라벨 포맷 설정
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator("({2})", NumberFormat.getNumberInstance(), NumberFormat.getPercentInstance()));
+        plot.setLabelBackgroundPaint(new Color(0, 0, 0, 0));
+        plot.setLabelShadowPaint(null);
+        plot.setLabelPaint(new Color(83, 144, 255)); // 라벨 글자색 설정
+        plot.setLabelOutlinePaint(new Color(0, 0, 0, 0)); // 라벨 테두리 색 설정
+        Font labelFont = plot.getLabelFont(); // 현재 라벨 글꼴 가져오기
+        Font boldLabelFont = labelFont.deriveFont(Font.BOLD); // 더 두껍게 설정
+        plot.setLabelFont(boldLabelFont); // 라벨 글꼴을 더 두껍게 설정
+
+        plot.setSectionPaint("남자", new Color(114, 166, 255));
+        plot.setSectionPaint("여자", new Color(255, 128, 128));
+
+        // 타이틀 폰트와 색상 설정
+        TextTitle title = new TextTitle("회원 남여 비율");
+        title.setFont(new Font("Malgun Gothic", Font.BOLD, 12));
+        title.setPaint(new Color(83, 144, 255));
+        chart.setTitle(title);
+
+        // 범례 위치 설정
+        LegendTitle legend = new LegendTitle(plot);
+        legend.setPosition(RectangleEdge.BOTTOM);
+        chart.addLegend(legend);
+
+        // 그래프 방향 및 시작 각도 설정
+        plot.setDirection(Rotation.ANTICLOCKWISE);
+        plot.setStartAngle(90);
+
+        // 그래프 패딩 설정
+        plot.setInteriorGap(0.04);
+
+        // 타이틀과 차트의 간격 조정
+        chart.setPadding(new RectangleInsets(0, 0, 0, 0));
+
+        return chart;
+    }
 }
