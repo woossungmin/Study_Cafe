@@ -245,7 +245,7 @@ public class Seat {
 				}
 			});
 			s11.setFont(new Font("굴림", Font.BOLD, 13));
-			s11.setBounds(30, 15, 50, 44);
+			s11.setBounds(28, 15, 50, 44);
 			panel_1.add(s11);
 			
 			RoundedButton s12 = new RoundedButton("12" + "<br>" +"1인석");

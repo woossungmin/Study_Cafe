@@ -117,7 +117,17 @@ public class Manager {
 	  	  	}
 	  	  });
 	  	  JButton salesbutton = new JButton("매출");
+	  	  salesbutton.addActionListener(new ActionListener() {
+	  	  	public void actionPerformed(ActionEvent e) {
+	  	  		Paymentpanel pa = new Paymentpanel();
+	  	  		switchPanel(pa);
+	  	  	}
+	  	  });
 	  	  JButton faqbutton = new JButton("FAQ");
+	  	  faqbutton.addActionListener(new ActionListener() {
+	  	  	public void actionPerformed(ActionEvent e) {
+	  	  	}
+	  	  });
 	  	  JButton qabutton = new JButton("Q&A");
 	  	  JButton caffebutton = new JButton("카페");
 	  	  
