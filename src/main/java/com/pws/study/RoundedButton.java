@@ -76,7 +76,7 @@ public class RoundedButton extends JButton {
         String[] lines = text.split("<br/>"); // 줄바꿈을 기준으로 텍스트를 나눔
 
         int totalHeight = fontMetrics.getHeight() * lines.length;
-        int textY = (height - totalHeight) / 2 + fontMetrics.getAscent() + 5;
+        int textY = (height - totalHeight) / 2 + fontMetrics.getAscent()-5;
         for (String line : lines) {
             Rectangle stringBounds = fontMetrics.getStringBounds(line, graphics).getBounds();
             int textX = (width - stringBounds.width) / 2;

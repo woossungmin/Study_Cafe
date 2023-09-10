@@ -458,6 +458,9 @@ public class SeatTicketDay {
 					      data.put("phone", Info.phone);
 					      data.put("add_time",add_time);
 					      check = po.jsonpost("/AddSeatTime", data);
+						  data.put("t_money",t_money);
+						  data.put("phone", Info.phone);
+						  check = po.jsonpost("/AddPayment", data);
 					}
 					else
 					{
