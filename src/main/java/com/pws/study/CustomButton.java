@@ -17,7 +17,7 @@ public class CustomButton extends JButton {
         setContentAreaFilled(true);
         setBorderPainted(true);
         // HTML 렌더링 활성화
-        /*setHorizontalAlignment(SwingConstants.CENTER);
+        setHorizontalAlignment(SwingConstants.CENTER);
 
         // 금액 텍스트가 "원"으로 끝나는 경우에 가운데 정렬 설정
         if (text.contains("원")) {
@@ -25,7 +25,7 @@ public class CustomButton extends JButton {
             String totalMoney = parts[0]; // "total_money" 부분 추출
             String formattedText = "<html><center>" + totalMoney + "</center>원</html>";
             setText(formattedText);
-        }*/
+        }
     }
 
     @Override

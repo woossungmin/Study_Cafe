@@ -76,10 +76,9 @@ public class Paymentpanel extends JPanel {
         nextButton.setContentAreaFilled(false);
         nextButton.setBorderPainted(false);
 
-        // 35개의 CustomButton 생성
-        dayButtons = new CustomButton[35];
-        for (int i = 0; i < 35; i++) {
-            dayButtons[i] = new CustomButton("");
+        dayButtons = new CustomButton[42];
+        for (int i = 0; i < 42; i++) {
+            dayButtons[i] = new CustomButton(""); // CustomButton 생성
             dayButtons[i].setBorder(BorderFactory.createLineBorder(new Color(114, 166, 250), 2));
             add(dayButtons[i]);
             dayButtons[i].addActionListener(new ActionListener() {
@@ -114,52 +113,64 @@ public class Paymentpanel extends JPanel {
         // 현재 달력의 첫 번째 요일 계산 (일요일: 1, 월요일: 2, 화요일: 3, ... , 토요일: 7)
         int firstDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
-        int x = (firstDayOfWeek - 1) * 111 + 100; // 첫 번째 요일에 따라 x 좌표 설정
+        // 현재 달력의 첫 번째 날짜를 계산합니다.
+        calendar.add(Calendar.DAY_OF_MONTH, -firstDayOfWeek + 1);
+
+        int x = 100;
         int y = 100;
         int buttonWidth = 110;
         int buttonHeight = 80;
 
-        for (int i = 0; i < 35; i++) {
-            if (i < calendar.getActualMaximum(Calendar.DAY_OF_MONTH)) {
-                calendar.set(Calendar.DAY_OF_MONTH, i + 1);
-                Date date = calendar.getTime();
-                
-                // 날짜 포맷 적용하여 일자를 가져옴
-                String dayOfMonth = sdf.format(date);
-                
-                // 일자와 금액을 줄바꿈으로 나눠서 출력
-                dayButtons[i].setText(dayOfMonth + "<br><br>0원");
-                dayButtons[i].setBounds(x - 80, y - 25, buttonWidth, buttonHeight);
-                dayButtons[i].setVisible(true);
+        for (int i = 0; i < 42; i++) {
+            // 현재 달의 날짜를 그립니다.
+            Date date = calendar.getTime();
 
-                // 일요일과 토요일의 텍스트 색상 변경
-                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-                if (dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.SATURDAY) {
-                    dayButtons[i].setTextColor(dayOfWeek == Calendar.SUNDAY ? Color.RED : Color.BLUE);
-                } else {
-                    dayButtons[i].setTextColor(Color.BLACK);
-                }
+            // 날짜 포맷 적용하여 일자를 가져옴
+            String dayOfMonth = sdf.format(date);
 
-                // 날짜 정보 설정
-                SimpleDateFormat customDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String customDate = customDateFormat.format(date);
-                dayButtons[i].setCustomDate(customDate);
+            // 일자와 금액을 줄바꿈으로 나눠서 출력
+            dayButtons[i].setText(dayOfMonth + "<br><br>0원");
+            dayButtons[i].setBounds(x - 80, y - 25, buttonWidth, buttonHeight);
+            dayButtons[i].setVisible(true);
 
+            // 일요일과 토요일의 텍스트 색상 변경
+            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+            if (dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.SATURDAY) {
+                dayButtons[i].setTextColor(dayOfWeek == Calendar.SUNDAY ? Color.RED : Color.BLUE);
             } else {
-                dayButtons[i].setText("");
-                dayButtons[i].setVisible(false);
+                dayButtons[i].setTextColor(Color.BLACK);
+            }
+
+            // 날짜 정보 설정
+            SimpleDateFormat customDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String customDate = customDateFormat.format(date);
+            dayButtons[i].setCustomDate(customDate);
+
+            // 현재 월의 버튼인지 확인
+            boolean isCurrentMonth = (calendar.get(Calendar.MONTH) == currentMonth - 1);
+
+            // 이전달과 다음달에서 가져온 버튼일 경우 회색으로 설정
+            if (!isCurrentMonth) {
+                dayButtons[i].setBackgroundColor(new Color(219,219,219));
+            } else {
+                dayButtons[i].setBackgroundColor(new Color(217,231,255));
             }
 
             x += buttonWidth + 1;
 
-            if ((i + firstDayOfWeek) % 7 == 0) {
+            if ((i + 1) % 7 == 0) {
                 x = 100;
                 y += buttonHeight + 1;
             }
+
+            // 다음 날짜로 이동
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 
         yearMonthLabel.setText(currentYear + "년 " + currentMonth + "월");
     }
+
+
 
     private void sendYearMonthToServer() {
         JSONObject data = new JSONObject();
