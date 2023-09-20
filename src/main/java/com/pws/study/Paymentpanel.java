@@ -17,11 +17,11 @@ public class Paymentpanel extends JPanel {
     private int currentYear;
     private int currentMonth;
     private CustomButton[] dayButtons; // CustomButton 사용
-
+    private JLabel paymentlabel;
     // 날짜 포맷 설정
     private SimpleDateFormat sdf = new SimpleDateFormat("d");
-
-    public Paymentpanel() {
+    
+    public Paymentpanel(JPanel borderPanel, JButton homeButton, JButton closeButton) {
         Border border = BorderFactory.createLineBorder(new Color(114, 166, 250), 2);
         setBackground(new Color(255, 255, 255));
         setLayout(null);
@@ -33,7 +33,7 @@ public class Paymentpanel extends JPanel {
         currentMonth = calendar.get(Calendar.MONTH) + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
 
         JButton previousButton = new JButton("");
-        previousButton.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\left-arrow.png"));
+        previousButton.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\left-arrow.png"));
         previousButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 currentMonth--;
@@ -57,7 +57,7 @@ public class Paymentpanel extends JPanel {
         yearMonthLabel.setFont(new Font("굴림", Font.BOLD, 18));
 
         JButton nextButton = new JButton("");
-        nextButton.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\right-arrow.png"));
+        nextButton.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\right-arrow.png"));
         // 다음 버튼의 ActionListener에서 년 월 정보를 서버에 전달
         nextButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -75,6 +75,34 @@ public class Paymentpanel extends JPanel {
         nextButton.setFocusPainted(false);
         nextButton.setContentAreaFilled(false);
         nextButton.setBorderPainted(false);
+        
+        JButton btnNewButton = new JButton("매출 그래프");
+        btnNewButton.setIcon(null);
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		VisualPaymentpanel vi = new VisualPaymentpanel();
+        		switchPanel(vi,borderPanel,homeButton,closeButton);
+        	}
+        });
+        btnNewButton.setFont(new Font("굴림", Font.BOLD, 18));
+        btnNewButton.setBounds(79, 2, 141, 32);
+        add(btnNewButton);
+        btnNewButton.setFocusPainted(false);
+        btnNewButton.setContentAreaFilled(false);
+        btnNewButton.setBorderPainted(false);
+        btnNewButton.setForeground(new Color(87, 147, 255));
+        
+        JLabel payment = new JLabel("월 매출 : ");
+        payment.setFont(new Font("굴림", Font.BOLD, 18));
+        payment.setBounds(536, 1, 220, 35);
+        add(payment);
+        payment.setForeground(new Color(87, 147, 255));
+        
+        paymentlabel = new JLabel("");
+        paymentlabel.setForeground(new Color(255, 128, 128));
+        paymentlabel.setFont(new Font("굴림", Font.BOLD, 18));
+        paymentlabel.setBounds(633, 1, 122, 35);
+        add(paymentlabel);
 
         dayButtons = new CustomButton[42];
         for (int i = 0; i < 42; i++) {
@@ -176,6 +204,7 @@ public class Paymentpanel extends JPanel {
         JSONObject data = new JSONObject();
         JSONObject check;
         Post po = new Post();
+        int total = 0;
 
         // 현재 년 월 정보를 가져와서 서버에 전달
         String yearMonth = String.format("%04d-%02d", currentYear, currentMonth);
@@ -191,6 +220,7 @@ public class Paymentpanel extends JPanel {
                 JSONObject item = jsonArray.getJSONObject(i);
                 String dateStr = item.getString("date");
                 int totalMoney = item.getInt("total_money");
+                total +=  totalMoney;
 
                 // 서버에서 받아온 "yyyy-MM-dd" 형식의 날짜와 버튼에 설정된 날짜를 비교하여 매칭되면 텍스트 업데이트
                 for (CustomButton dayButton : dayButtons) {
@@ -207,10 +237,20 @@ public class Paymentpanel extends JPanel {
                     }
                 }
             }
+            paymentlabel.setText(total + "원");
         } catch (JSONException e1) {
             e1.printStackTrace();
         } catch (java.text.ParseException e2) {
             e2.printStackTrace();
         }
+    }
+    
+    private void switchPanel(JPanel newPanel,JPanel borderpanel, JButton homebutton, JButton closebutton) {
+        borderpanel.removeAll();
+        borderpanel.add(homebutton);
+        borderpanel.add(closebutton);
+        borderpanel.add(newPanel);
+        borderpanel.revalidate();
+        borderpanel.repaint();
     }
 }

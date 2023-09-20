@@ -385,7 +385,78 @@ public class Ticketpanel extends JPanel {
 		timelabel6.setFont(new Font("굴림", Font.BOLD, 14));
 		timelabel6.setBounds(12, 128, 86, 20);
 		timepanel.add(timelabel6);
-	    
+		
+		JLabel timelabel1_1 = new JLabel("");
+		timelabel1_1.setForeground(new Color(255, 128, 128));
+		timelabel1_1.setFont(new Font("굴림", Font.BOLD, 14));
+		timelabel1_1.setBounds(150, 8, 40, 20);
+		timepanel.add(timelabel1_1);
+		
+		JLabel timelabel2_1 = new JLabel("");
+		timelabel2_1.setForeground(new Color(255, 128, 128));
+		timelabel2_1.setFont(new Font("굴림", Font.BOLD, 14));
+		timelabel2_1.setBounds(150, 32, 40, 20);
+		timepanel.add(timelabel2_1);
+		
+		JLabel timelabel3_1 = new JLabel("");
+		timelabel3_1.setForeground(new Color(255, 128, 128));
+		timelabel3_1.setFont(new Font("굴림", Font.BOLD, 14));
+		timelabel3_1.setBounds(150, 56, 40, 20);
+		timepanel.add(timelabel3_1);
+		
+		JLabel timelabel4_1 = new JLabel("");
+		timelabel4_1.setForeground(new Color(255, 128, 128));
+		timelabel4_1.setFont(new Font("굴림", Font.BOLD, 14));
+		timelabel4_1.setBounds(150, 80, 40, 20);
+		timepanel.add(timelabel4_1);
+		
+		JLabel timelabel5_1 = new JLabel("");
+		timelabel5_1.setForeground(new Color(255, 128, 128));
+		timelabel5_1.setFont(new Font("굴림", Font.BOLD, 14));
+		timelabel5_1.setBounds(150, 104, 40, 20);
+		timepanel.add(timelabel5_1);
+		
+		JLabel timelabel6_1 = new JLabel("");
+		timelabel6_1.setForeground(new Color(255, 128, 128));
+		timelabel6_1.setFont(new Font("굴림", Font.BOLD, 14));
+		timelabel6_1.setBounds(150, 128, 40, 20);
+		timepanel.add(timelabel6_1);
+		
+		JLabel lblNewLabel = new JLabel("개");
+		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel.setBounds(189, 12, 22, 15);
+		timepanel.add(lblNewLabel);
+		lblNewLabel.setForeground(new Color(114,166,255));
+		
+		JLabel lblNewLabel_1 = new JLabel("개");
+		lblNewLabel_1.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(189, 36, 22, 15);
+		timepanel.add(lblNewLabel_1);
+		lblNewLabel_1.setForeground(new Color(114,166,255));
+		
+		JLabel lblNewLabel_2 = new JLabel("개");
+		lblNewLabel_2.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(189, 60, 22, 15);
+		timepanel.add(lblNewLabel_2);
+		lblNewLabel_2.setForeground(new Color(114,166,255));
+		
+		JLabel lblNewLabel_2_1 = new JLabel("개");
+		lblNewLabel_2_1.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel_2_1.setBounds(189, 84, 22, 15);
+		timepanel.add(lblNewLabel_2_1);
+		lblNewLabel_2_1.setForeground(new Color(114,166,255));
+		
+		JLabel lblNewLabel_2_2 = new JLabel("개");
+		lblNewLabel_2_2.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel_2_2.setBounds(189, 108, 22, 15);
+		timepanel.add(lblNewLabel_2_2);
+		lblNewLabel_2_2.setForeground(new Color(114,166,255));
+		
+		JLabel lblNewLabel_2_3 = new JLabel("개");
+		lblNewLabel_2_3.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel_2_3.setBounds(189, 132, 22, 15);
+		timepanel.add(lblNewLabel_2_3);
+		lblNewLabel_2_3.setForeground(new Color(114,166,255));
 		try {
 			String id = "a";
 		data.put("id", id);
@@ -409,6 +480,25 @@ public class Ticketpanel extends JPanel {
             timelabel4.setText((String) b4.get("t_name") + " :");
             timelabel5.setText((String) b5.get("t_name") + " :");
             timelabel6.setText((String) b6.get("t_name") + " :");
+			String[] t_moneyValues = {
+				    (String) b1.get("t_money"), // b1에 해당하는 값
+				    (String) b2.get("t_money"), // b2에 해당하는 값
+				    (String) b3.get("t_money"), // b3에 해당하는 값
+				    (String) b4.get("t_money"), // b4에 해당하는 값
+				    (String) b5.get("t_money"), // b5에 해당하는 값
+				    (String) b6.get("t_money")  // b6에 해당하는 값
+				};
+
+				JLabel[] TimeLabels = {timelabel1_1, timelabel2_1, timelabel3_1, timelabel4_1, timelabel5_1, timelabel6_1};
+
+				for (int i = 0; i < t_moneyValues.length; i++) {
+				    String t_money = t_moneyValues[i];
+				    data.put("t_money", t_money);
+				    check = po.jsonpost("/CountTicket", data);
+				    int count = (int) check.get("count_Member");
+				    TimeLabels[i].setText(String.valueOf(count));
+				}
+
 		}
 		else
 		{
@@ -416,6 +506,7 @@ public class Ticketpanel extends JPanel {
 		} catch (JSONException e1) {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
+		
 		}
 		
 	    JPanel seasonpanel = new JPanel();
@@ -461,6 +552,78 @@ public class Ticketpanel extends JPanel {
 	    seasonlabel6.setBounds(12, 128, 86, 20);
 	    seasonpanel.add(seasonlabel6);
 	    
+	    JLabel seasonlabel1_1 = new JLabel("");
+	    seasonlabel1_1.setForeground(new Color(255, 128, 128));
+	    seasonlabel1_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    seasonlabel1_1.setBounds(150, 8, 40, 20);
+	    seasonpanel.add(seasonlabel1_1);
+	    
+	    JLabel seasonlabel2_1 = new JLabel("");
+	    seasonlabel2_1.setForeground(new Color(255, 128, 128));
+	    seasonlabel2_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    seasonlabel2_1.setBounds(150, 32, 40, 20);
+	    seasonpanel.add(seasonlabel2_1);
+	    
+	    JLabel lblNewLabel_3 = new JLabel("개");
+	    lblNewLabel_3.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_3.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_3.setBounds(189, 12, 22, 15);
+	    seasonpanel.add(lblNewLabel_3);
+	    
+	    JLabel lblNewLabel_1_1 = new JLabel("개");
+	    lblNewLabel_1_1.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_1_1.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_1_1.setBounds(189, 36, 22, 15);
+	    seasonpanel.add(lblNewLabel_1_1);
+	    
+	    JLabel lblNewLabel_2_4 = new JLabel("개");
+	    lblNewLabel_2_4.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_2_4.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_2_4.setBounds(189, 60, 22, 15);
+	    seasonpanel.add(lblNewLabel_2_4);
+	    
+	    JLabel lblNewLabel_2_1_1 = new JLabel("개");
+	    lblNewLabel_2_1_1.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_2_1_1.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_2_1_1.setBounds(189, 84, 22, 15);
+	    seasonpanel.add(lblNewLabel_2_1_1);
+	    
+	    JLabel lblNewLabel_2_2_1 = new JLabel("개");
+	    lblNewLabel_2_2_1.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_2_2_1.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_2_2_1.setBounds(189, 108, 22, 15);
+	    seasonpanel.add(lblNewLabel_2_2_1);
+	    
+	    JLabel lblNewLabel_2_3_1 = new JLabel("개");
+	    lblNewLabel_2_3_1.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_2_3_1.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_2_3_1.setBounds(189, 132, 22, 15);
+	    seasonpanel.add(lblNewLabel_2_3_1);
+	    
+	    JLabel seasonlabel6_1 = new JLabel("");
+	    seasonlabel6_1.setForeground(new Color(255, 128, 128));
+	    seasonlabel6_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    seasonlabel6_1.setBounds(150, 128, 40, 20);
+	    seasonpanel.add(seasonlabel6_1);
+	    
+	    JLabel seasonlabel5_1 = new JLabel("");
+	    seasonlabel5_1.setForeground(new Color(255, 128, 128));
+	    seasonlabel5_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    seasonlabel5_1.setBounds(150, 104, 40, 20);
+	    seasonpanel.add(seasonlabel5_1);
+	    
+	    JLabel seasonlabel4_1 = new JLabel("");
+	    seasonlabel4_1.setForeground(new Color(255, 128, 128));
+	    seasonlabel4_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    seasonlabel4_1.setBounds(150, 80, 40, 20);
+	    seasonpanel.add(seasonlabel4_1);
+	    
+	    JLabel seasonlabel3_1 = new JLabel("");
+	    seasonlabel3_1.setForeground(new Color(255, 128, 128));
+	    seasonlabel3_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    seasonlabel3_1.setBounds(150, 56, 40, 20);
+	    seasonpanel.add(seasonlabel3_1);
+	    
 	    try {
 			String id = "b";
 		data.put("id", id);
@@ -484,6 +647,25 @@ public class Ticketpanel extends JPanel {
             seasonlabel4.setText((String) b4.get("t_name") + " :");
             seasonlabel5.setText((String) b5.get("t_name") + " :");
             seasonlabel6.setText((String) b6.get("t_name") + " :");
+			String[] t_moneyValues = {
+				    (String) b1.get("t_money"), // b1에 해당하는 값
+				    (String) b2.get("t_money"), // b2에 해당하는 값
+				    (String) b3.get("t_money"), // b3에 해당하는 값
+				    (String) b4.get("t_money"), // b4에 해당하는 값
+				    (String) b5.get("t_money"), // b5에 해당하는 값
+				    (String) b6.get("t_money")  // b6에 해당하는 값
+				};
+
+				JLabel[] SeasonLabels = {seasonlabel1_1, seasonlabel2_1, seasonlabel3_1, seasonlabel4_1, seasonlabel5_1, seasonlabel6_1};
+
+				for (int i = 0; i < t_moneyValues.length; i++) {
+				    String t_money = t_moneyValues[i];
+				    data.put("t_money", t_money);
+				    check = po.jsonpost("/CountTicket", data);
+				    int count = (int) check.get("count_Member");
+				    SeasonLabels[i].setText(String.valueOf(count));
+				}
+
 		}
 		else
 		{
@@ -500,17 +682,17 @@ public class Ticketpanel extends JPanel {
 	    add(lockpanel);
 	    lockpanel.setBorder(border);
 	    
-	    JLabel locklabel1 = new JLabel("");
-	    locklabel1.setForeground(new Color(114, 166, 255));
-	    locklabel1.setFont(new Font("굴림", Font.BOLD, 14));
-	    locklabel1.setBounds(12, 32, 86, 20);
-	    lockpanel.add(locklabel1);
-	    
 	    JLabel locklabel2 = new JLabel("");
 	    locklabel2.setForeground(new Color(114, 166, 255));
 	    locklabel2.setFont(new Font("굴림", Font.BOLD, 14));
-	    locklabel2.setBounds(12, 8, 86, 20);
+	    locklabel2.setBounds(12, 32, 86, 20);
 	    lockpanel.add(locklabel2);
+	    
+	    JLabel locklabel1 = new JLabel("");
+	    locklabel1.setForeground(new Color(114, 166, 255));
+	    locklabel1.setFont(new Font("굴림", Font.BOLD, 14));
+	    locklabel1.setBounds(12, 8, 86, 20);
+	    lockpanel.add(locklabel1);
 	    
 	    JLabel locklabel3 = new JLabel("");
 	    locklabel3.setForeground(new Color(114, 166, 255));
@@ -518,23 +700,95 @@ public class Ticketpanel extends JPanel {
 	    locklabel3.setBounds(12, 56, 86, 20);
 	    lockpanel.add(locklabel3);
 	    
-	    JLabel locklabel4 = new JLabel("");
-	    locklabel4.setForeground(new Color(114, 166, 255));
-	    locklabel4.setFont(new Font("굴림", Font.BOLD, 14));
-	    locklabel4.setBounds(12, 104, 86, 20);
-	    lockpanel.add(locklabel4);
-	    
 	    JLabel locklabel5 = new JLabel("");
 	    locklabel5.setForeground(new Color(114, 166, 255));
 	    locklabel5.setFont(new Font("굴림", Font.BOLD, 14));
-	    locklabel5.setBounds(12, 80, 86, 20);
+	    locklabel5.setBounds(12, 104, 86, 20);
 	    lockpanel.add(locklabel5);
+	    
+	    JLabel locklabel4 = new JLabel("");
+	    locklabel4.setForeground(new Color(114, 166, 255));
+	    locklabel4.setFont(new Font("굴림", Font.BOLD, 14));
+	    locklabel4.setBounds(12, 80, 86, 20);
+	    lockpanel.add(locklabel4);
 	    
 	    JLabel locklabel6 = new JLabel("");
 	    locklabel6.setForeground(new Color(114, 166, 255));
 	    locklabel6.setFont(new Font("굴림", Font.BOLD, 14));
 	    locklabel6.setBounds(12, 128, 86, 20);
 	    lockpanel.add(locklabel6);
+	    
+	    JLabel locklabel1_1 = new JLabel("");
+	    locklabel1_1.setForeground(new Color(255, 128, 128));
+	    locklabel1_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    locklabel1_1.setBounds(150, 8, 40, 20);
+	    lockpanel.add(locklabel1_1);
+	    
+	    JLabel lblNewLabel_3_1 = new JLabel("개");
+	    lblNewLabel_3_1.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_3_1.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_3_1.setBounds(189, 12, 22, 15);
+	    lockpanel.add(lblNewLabel_3_1);
+	    
+	    JLabel locklabel2_1 = new JLabel("");
+	    locklabel2_1.setForeground(new Color(255, 128, 128));
+	    locklabel2_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    locklabel2_1.setBounds(150, 32, 40, 20);
+	    lockpanel.add(locklabel2_1);
+	    
+	    JLabel lblNewLabel_1_1_1 = new JLabel("개");
+	    lblNewLabel_1_1_1.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_1_1_1.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_1_1_1.setBounds(189, 36, 22, 15);
+	    lockpanel.add(lblNewLabel_1_1_1);
+	    
+	    JLabel locklabel3_1 = new JLabel("");
+	    locklabel3_1.setForeground(new Color(255, 128, 128));
+	    locklabel3_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    locklabel3_1.setBounds(150, 56, 40, 20);
+	    lockpanel.add(locklabel3_1);
+	    
+	    JLabel lblNewLabel_2_4_1 = new JLabel("개");
+	    lblNewLabel_2_4_1.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_2_4_1.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_2_4_1.setBounds(189, 60, 22, 15);
+	    lockpanel.add(lblNewLabel_2_4_1);
+	    
+	    JLabel locklabel4_1 = new JLabel("");
+	    locklabel4_1.setForeground(new Color(255, 128, 128));
+	    locklabel4_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    locklabel4_1.setBounds(150, 80, 40, 20);
+	    lockpanel.add(locklabel4_1);
+	    
+	    JLabel lblNewLabel_2_1_1_1 = new JLabel("개");
+	    lblNewLabel_2_1_1_1.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_2_1_1_1.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_2_1_1_1.setBounds(189, 84, 22, 15);
+	    lockpanel.add(lblNewLabel_2_1_1_1);
+	    
+	    JLabel locklabel5_1 = new JLabel("");
+	    locklabel5_1.setForeground(new Color(255, 128, 128));
+	    locklabel5_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    locklabel5_1.setBounds(150, 104, 40, 20);
+	    lockpanel.add(locklabel5_1);
+	    
+	    JLabel lblNewLabel_2_2_1_1 = new JLabel("개");
+	    lblNewLabel_2_2_1_1.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_2_2_1_1.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_2_2_1_1.setBounds(189, 108, 22, 15);
+	    lockpanel.add(lblNewLabel_2_2_1_1);
+	    
+	    JLabel locklabel6_1 = new JLabel("");
+	    locklabel6_1.setForeground(new Color(255, 128, 128));
+	    locklabel6_1.setFont(new Font("굴림", Font.BOLD, 14));
+	    locklabel6_1.setBounds(150, 128, 40, 20);
+	    lockpanel.add(locklabel6_1);
+	    
+	    JLabel lblNewLabel_2_3_1_1 = new JLabel("개");
+	    lblNewLabel_2_3_1_1.setForeground(new Color(114, 166, 255));
+	    lblNewLabel_2_3_1_1.setFont(new Font("굴림", Font.BOLD, 15));
+	    lblNewLabel_2_3_1_1.setBounds(189, 132, 22, 15);
+	    lockpanel.add(lblNewLabel_2_3_1_1);
 	    
 	    try {
 			String id = "c";
@@ -553,12 +807,31 @@ public class Ticketpanel extends JPanel {
 			b4 = (JSONObject) jArray.get(3);
 			b5 = (JSONObject) jArray.get(4);
 			b6 = (JSONObject) jArray.get(5);		
-			locklabel1.setText((String) b1.get("t_name") + " :");
-			locklabel2.setText((String) b2.get("t_name") + " :");
+			locklabel2.setText((String) b1.get("t_name") + " :");
+			locklabel1.setText((String) b2.get("t_name") + " :");
 			locklabel3.setText((String) b3.get("t_name") + " :");
-			locklabel4.setText((String) b4.get("t_name") + " :");
 			locklabel5.setText((String) b5.get("t_name") + " :");
+			locklabel4.setText((String) b4.get("t_name") + " :");
 			locklabel6.setText((String) b6.get("t_name") + " :");
+			String[] t_moneyValues = {
+				    (String) b1.get("t_money"), // b1에 해당하는 값
+				    (String) b2.get("t_money"), // b2에 해당하는 값
+				    (String) b3.get("t_money"), // b3에 해당하는 값
+				    (String) b4.get("t_money"), // b4에 해당하는 값
+				    (String) b5.get("t_money"), // b5에 해당하는 값
+				    (String) b6.get("t_money")  // b6에 해당하는 값
+				};
+
+				JLabel[] lockLabels = {locklabel1_1, locklabel2_1, locklabel3_1, locklabel4_1, locklabel5_1, locklabel6_1};
+
+				for (int i = 0; i < t_moneyValues.length; i++) {
+				    String t_money = t_moneyValues[i];
+				    data.put("t_money", t_money);
+				    check = po.jsonpost("/CountTicket", data);
+				    int count = (int) check.get("count_Member");
+				    lockLabels[i].setText(String.valueOf(count));
+				}
+
 		}
 		else
 		{

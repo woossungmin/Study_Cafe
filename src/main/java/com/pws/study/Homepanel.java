@@ -123,8 +123,7 @@ public class Homepanel extends JPanel {
 		lblNewLabel_5.setBounds(180, 70, 27, 30);
 		memberpanel.add(lblNewLabel_5);
 		
-		JLabel member_1 = 
-				new JLabel("");
+		JLabel member_1 = new JLabel("");
 		member_1.setForeground(new Color(255, 128, 128));
 		member_1.setFont(new Font("굴림", Font.BOLD, 15));
 		member_1.setBounds(150, 40, 37, 27);

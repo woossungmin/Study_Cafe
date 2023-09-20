@@ -119,7 +119,7 @@ public class Manager {
 	  	  JButton salesbutton = new JButton("매출");
 	  	  salesbutton.addActionListener(new ActionListener() {
 	  	  	public void actionPerformed(ActionEvent e) {
-	  	  		Paymentpanel pa = new Paymentpanel();
+	  	  		Paymentpanel pa = new Paymentpanel(borderPanel,homeButton,closeButton);
 	  	  		switchPanel(pa);
 	  	  	}
 	  	  });
