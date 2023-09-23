@@ -80,7 +80,7 @@ public class Paymentpanel extends JPanel {
         btnNewButton.setIcon(null);
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		VisualPaymentpanel vi = new VisualPaymentpanel();
+        		VisualPaymentpanel vi = new VisualPaymentpanel(borderPanel,homeButton,closeButton);
         		switchPanel(vi,borderPanel,homeButton,closeButton);
         	}
         });

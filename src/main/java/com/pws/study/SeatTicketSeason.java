@@ -155,7 +155,6 @@ public class SeatTicketSeason {
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			System.out.println("asdasdsasad");
 		}
 		
 	    JLabel circle = new JLabel("");
@@ -468,7 +467,6 @@ public class SeatTicketSeason {
 					
 					else
 					{
-						System.out.println("오류");
 					}
       			} catch (JSONException e1) {
 						e1.printStackTrace();

@@ -55,7 +55,6 @@ public class SeatCompulsory {
 		frame.getContentPane().setLayout(null);
 	      frame.setResizable(false);
 	      frame.setVisible(true);
-		System.out.println(seatnumber);
 		Border border =  BorderFactory.createLineBorder(new Color(114,166,250),2);
 		
 		JPanel panel = new JPanel();

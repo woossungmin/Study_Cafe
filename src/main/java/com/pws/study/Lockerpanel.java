@@ -545,7 +545,6 @@ public class Lockerpanel extends JPanel {
 				Lockcount = Integer.toString(lockcount);
 				locklabel.setText(Lockcount);
 			}else {
-				System.out.println(1234);
 			}
 			activations = "2";
 			data.put("activations", activations);

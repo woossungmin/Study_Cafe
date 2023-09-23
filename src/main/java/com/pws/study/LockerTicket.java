@@ -289,7 +289,6 @@ public class LockerTicket {
 					}
 					else
 					{
-						System.out.println("오류");
 					}
       			} catch (JSONException e1) {
 						e1.printStackTrace();
