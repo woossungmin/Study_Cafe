@@ -9,20 +9,26 @@ import java.util.Calendar;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.annotations.CategoryTextAnnotation;
 import org.jfree.chart.annotations.XYTextAnnotation;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.CategoryItemRendererState;
+import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.chart.ui.RectangleInsets;
 import org.jfree.chart.ui.TextAnchor;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.axis.ValueAxis;
@@ -60,7 +66,7 @@ public class VisualPaymentpanel extends JPanel {
 
         Calendar calendar = Calendar.getInstance();
         currentYear = calendar.get(Calendar.YEAR);
-        currentYear1 = calendar.get(Calendar.YEAR);
+        currentYear1 = calendar.get(Calendar.YEAR)-3;
         currentYear2 = calendar.get(Calendar.YEAR);
 
         JFreeChart chart = createChart();
@@ -78,6 +84,10 @@ public class VisualPaymentpanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 currentYear1--;
                 yearMonthLabel.setText(currentYear1 + "년 ");
+                int startYear = Integer.parseInt(yearMonthLabel.getText().replace("년 ", ""));
+                int endYear = Integer.parseInt(yearMonthLabel2.getText().replace("년 ", ""));
+                
+                updateYearlyChart(startYear, endYear); // 년별 차트 업데이트
                 }
         });
         previousButton1.setBounds(0, 2, 32, 32);
@@ -93,6 +103,10 @@ public class VisualPaymentpanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 currentYear1++;
                 yearMonthLabel.setText(currentYear1 + "년 ");
+                int startYear = Integer.parseInt(yearMonthLabel.getText().replace("년 ", ""));
+                int endYear = Integer.parseInt(yearMonthLabel2.getText().replace("년 ", ""));
+                
+                updateYearlyChart(startYear, endYear); // 년별 차트 업데이트
             }
         });
         nextButton1.setBounds(158, 2, 32, 32);
@@ -108,6 +122,10 @@ public class VisualPaymentpanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 currentYear2--;
                 yearMonthLabel2.setText(currentYear2 + "년 ");
+                int startYear = Integer.parseInt(yearMonthLabel.getText().replace("년 ", ""));
+                int endYear = Integer.parseInt(yearMonthLabel2.getText().replace("년 ", ""));
+                
+                updateYearlyChart(startYear, endYear); // 년별 차트 업데이트
             }
         });
         previousButton2.setBounds(275, 2, 32, 32);
@@ -123,6 +141,10 @@ public class VisualPaymentpanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 currentYear2++;
                 yearMonthLabel2.setText(currentYear2 + "년 ");
+                int startYear = Integer.parseInt(yearMonthLabel.getText().replace("년 ", ""));
+                int endYear = Integer.parseInt(yearMonthLabel2.getText().replace("년 ", ""));
+                
+                updateYearlyChart(startYear, endYear); // 년별 차트 업데이트
             }
         });
         nextButton2.setBounds(433, 2, 32, 32);
@@ -232,30 +254,39 @@ public class VisualPaymentpanel extends JPanel {
         group.add(yearButton);
         add(yearButton);
 
+     // 월별 버튼 액션 리스너
         monthButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(true);
                 panel_1.setVisible(false);
-                chartPanel.setVisible(monthButton.isSelected()); // 월 별 버튼 선택 시 chartPanel 표시
+                chartPanel.setVisible(true); // 월 별 버튼 선택 시 월별 차트 표시
                 revalidate();
                 repaint();
+                updateChart(); // 월별 차트 업데이트
             }
         });
 
+        // 년별 버튼 액션 리스너
         yearButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
                 panel_1.setVisible(true);
-                chartPanel.setVisible(false); // 년 별 버튼 선택 시 chartPanel 숨김
+                chartPanel.setVisible(true); // 년 별 버튼 선택 시 년별 차트 표시
                 revalidate();
                 repaint();
+                
+                int startYear = Integer.parseInt(yearMonthLabel.getText().replace("년 ", ""));
+                int endYear = Integer.parseInt(yearMonthLabel2.getText().replace("년 ", ""));
+                
+                updateYearlyChart(startYear, endYear); // 년별 차트 업데이트
             }
         });
 
         // 초기 그래프 표시
         updateChart();
     }
-
+    
+    //월별 버튼이 선택되었을때 그리는 차트
     private JFreeChart createChart() {
         // 그래프 생성 로직
         XYSeriesCollection dataset = new XYSeriesCollection();
@@ -338,9 +369,9 @@ public class VisualPaymentpanel extends JPanel {
         yAxis.setTickLabelFont(tickLabelFont);
 
         // Y 축 범위를 0부터 150만원까지, 10만원 간격으로 설정
-        yAxis.setRange(0.0, 1500000.0);
+        yAxis.setRange(0.0, 2000000.0);
         NumberAxis yAxis2 = (NumberAxis) plot.getRangeAxis();
-        yAxis2.setTickUnit(new NumberTickUnit(100000.0));
+        yAxis2.setTickUnit(new NumberTickUnit(200000.0));
 
         // 차트 배경색 변경
         plot.setBackgroundPaint(new Color(217, 231, 255)); // 배경색 변경
@@ -366,6 +397,109 @@ public class VisualPaymentpanel extends JPanel {
         this.chartPanel.setChart(chart); // chartPanel 필드를 사용하여 차트를 업데이트합니다.
     }
     
+    
+    private JFreeChart createYearlyChart(int startYear, int endYear) {
+        // 그래프 생성 로직 (년별 버전)
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        // 서버에서 데이터 가져오기
+        JSONObject data = new JSONObject();
+        JSONObject check;
+        Post po = new Post();
+        try {
+            data.put("startYear", startYear); // 시작 연도를 전달
+            data.put("endYear", endYear); // 끝 연도를 전달
+            check = po.jsonpost("/SelectYearlyPayment", data); // 년별 데이터 가져오기 API 호출
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+            return null; // 오류가 발생하면 null을 반환하여 그래프를 생성하지 않음
+        }
+
+        JSONArray resultArray;
+        try {
+            resultArray = check.getJSONArray("result");
+            for (int i = 0; i < resultArray.length(); i++) {
+                JSONObject item = resultArray.getJSONObject(i);
+                int year = item.getInt("year");
+                int totalMoney = item.getInt("total_money");
+
+                // 연도별로 데이터 추가
+                dataset.addValue(totalMoney, "매출 (만원)", Integer.toString(year));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JFreeChart chart = ChartFactory.createLineChart(
+            "", // 그래프 제목 (비워두기)
+            "년도", // X 축 레이블
+            "매출 (만원)", // Y 축 레이블
+            dataset, // 데이터셋
+            PlotOrientation.VERTICAL,
+            true,
+            true,
+            false
+        );
+
+        chart.removeLegend(); // 범례를 숨김
+
+        CategoryPlot plot = (CategoryPlot) chart.getPlot();
+        LineAndShapeRenderer renderer = new LineAndShapeRenderer();
+        plot.setRenderer(renderer);
+
+        // X, Y 축 레이블 및 텍스트 색상 변경
+        Font axisLabelFont = new Font("Malgun Gothic", Font.BOLD, 12);
+        Font tickLabelFont = new Font("Malgun Gothic", Font.BOLD, 10);
+
+        CategoryAxis xAxis = plot.getDomainAxis();
+        xAxis.setLabelPaint(new Color(83, 114, 255)); // X 축 레이블 색상 변경
+        xAxis.setTickLabelPaint(new Color(83, 114, 255)); // X 축 틱 레이블 색상 변경
+        xAxis.setLabelFont(axisLabelFont);
+        xAxis.setTickLabelFont(tickLabelFont);
+
+        // X 축 범위 설정 (startYear에서 endYear까지)
+        xAxis.setLowerMargin(0.0);
+        xAxis.setUpperMargin(0.0);
+
+        ValueAxis yAxis = plot.getRangeAxis();
+        yAxis.setLabelPaint(new Color(83, 114, 255)); // Y 축 레이블 색상 변경
+        yAxis.setTickLabelPaint(new Color(83, 114, 255)); // Y 축 틱 레이블 색상 변경
+        yAxis.setLabelFont(axisLabelFont);
+        yAxis.setTickLabelFont(tickLabelFont);
+
+        // Y 축 범위를 0부터 150만원까지, 10만원 간격으로 설정
+        yAxis.setRange(0.0, 5000000.0);
+        NumberAxis yAxis2 = (NumberAxis) plot.getRangeAxis();
+        yAxis2.setTickUnit(new NumberTickUnit(500000.0));
+
+        // 차트 배경색 변경
+        plot.setBackgroundPaint(new Color(217, 231, 255)); // 배경색 변경
+        renderer.setSeriesPaint(0, new Color(255, 128, 128));
+
+        // 데이터 포인트 위에 금액 표시
+        for (int i = 0; i < dataset.getColumnCount(); i++) {
+            String yearLabel = (String) dataset.getColumnKey(i);
+            double totalMoney = dataset.getValue(0, i).doubleValue();
+            CategoryTextAnnotation annotation = new CategoryTextAnnotation(String.format("%,.0f원", totalMoney), yearLabel, totalMoney + 50000);
+            annotation.setFont(new Font("Malgun Gothic", Font.BOLD, 7));
+            annotation.setTextAnchor(TextAnchor.BOTTOM_CENTER);
+            annotation.setPaint(new Color(83, 114, 255));
+            plot.addAnnotation(annotation);
+        }
+
+        return chart;
+    }
+
+
+
+
+    private void updateYearlyChart(int startYear, int endYear) {
+        // 년별 차트를 업데이트할 때 호출되는 메서드
+        JFreeChart chart = createYearlyChart(startYear, endYear);
+        this.chartPanel.setChart(chart); // chartPanel 필드를 사용하여 차트를 업데이트합니다.
+    }
+
+
     private void switchPanel(JPanel newPanel,JPanel borderpanel, JButton homebutton, JButton closebutton) {
         borderpanel.removeAll();
         borderpanel.add(homebutton);
