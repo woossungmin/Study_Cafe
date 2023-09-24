@@ -118,7 +118,7 @@ public class Seatpanel extends JPanel {
 			s3.setFont(new Font("굴림", Font.BOLD, 13));
 			s3.setBounds(12, 140, 50, 44);
 			panel.add(s3);
-			 
+			
 			RoundedButton s4 = new RoundedButton("4" + "<br>" +"1인석");
 			s4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -456,8 +456,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s27 = new RoundedButton("27<br>1인석");
 			s27.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 27", "s27", borderpanel, homebutton, closebutton);
+					if (s27.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 27", "s27", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s27.setFont(new Font("굴림", Font.BOLD, 13));
@@ -467,8 +470,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s28 = new RoundedButton("28<br>1인석");
 			s28.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 28", "s28", borderpanel, homebutton, closebutton);
+					if (s28.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 28", "s28", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s28.setFont(new Font("굴림", Font.BOLD, 13));
@@ -478,8 +484,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s29 = new RoundedButton("29<br>1인석");
 			s29.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 29", "s29", borderpanel, homebutton, closebutton);
+					if (s29.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 29", "s29", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s29.setFont(new Font("굴림", Font.BOLD, 13));
@@ -489,8 +498,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s30 = new RoundedButton("30<br>1인석");
 			s30.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 30", "s30", borderpanel, homebutton, closebutton);
+					if (s30.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 30", "s30", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s30.setFont(new Font("굴림", Font.BOLD, 13));
@@ -500,8 +512,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s31 = new RoundedButton("31<br>1인석");
 			s31.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 31", "s31", borderpanel, homebutton, closebutton);
+					if (s31.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 31", "s31", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s31.setFont(new Font("굴림", Font.BOLD, 13));
@@ -511,8 +526,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s32 = new RoundedButton("32<br>1인석");
 			s32.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 32", "s32", borderpanel, homebutton, closebutton);
+					if (s32.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 32", "s32", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s32.setFont(new Font("굴림", Font.BOLD, 13));
@@ -522,8 +540,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s33 = new RoundedButton("33<br>1인석");
 			s33.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 33", "s33", borderpanel, homebutton, closebutton);
+					if (s33.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 33", "s33", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s33.setFont(new Font("굴림", Font.BOLD, 13));
@@ -533,8 +554,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s34 = new RoundedButton("34<br>1인석");
 			s34.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 34", "s34", borderpanel, homebutton, closebutton);
+					if (s34.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 34", "s34", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s34.setFont(new Font("굴림", Font.BOLD, 13));
@@ -544,8 +568,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s35 = new RoundedButton("35<br>1인석");
 			s35.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 35", "s35", borderpanel, homebutton, closebutton);
+					if (s35.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 35", "s35", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s35.setFont(new Font("굴림", Font.BOLD, 13));
@@ -555,8 +582,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s36 = new RoundedButton("36<br>1인석");
 			s36.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 36", "s36", borderpanel, homebutton, closebutton);
+					if (s36.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 36", "s36", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s36.setFont(new Font("굴림", Font.BOLD, 13));
@@ -566,8 +596,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s37 = new RoundedButton("37<br>1인석");
 			s37.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 37", "s37", borderpanel, homebutton, closebutton);
+					if (s37.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 37", "s37", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s37.setFont(new Font("굴림", Font.BOLD, 13));
@@ -577,8 +610,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s38 = new RoundedButton("38<br>1인석");
 			s38.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 38", "s38", borderpanel, homebutton, closebutton);
+					if (s38.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 38", "s38", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s38.setFont(new Font("굴림", Font.BOLD, 13));
@@ -588,8 +624,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s39 = new RoundedButton("39<br>1인석");
 			s39.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 39", "s39", borderpanel, homebutton, closebutton);
+					if (s39.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 39", "s39", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s39.setFont(new Font("굴림", Font.BOLD, 13));
@@ -599,8 +638,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s40 = new RoundedButton("40<br>1인석");
 			s40.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 40", "s40", borderpanel, homebutton, closebutton);
+					if (s40.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 40", "s40", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s40.setFont(new Font("굴림", Font.BOLD, 13));
@@ -610,8 +652,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s41 = new RoundedButton("41<br>1인석");
 			s41.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 41", "s41", borderpanel, homebutton, closebutton);
+					if (s41.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 41", "s41", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s41.setFont(new Font("굴림", Font.BOLD, 13));
@@ -621,8 +666,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s42 = new RoundedButton("42<br>1인석");
 			s42.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 42", "s42", borderpanel, homebutton, closebutton);
+					if (s42.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 42", "s42", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s42.setFont(new Font("굴림", Font.BOLD, 13));
@@ -632,8 +680,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s43 = new RoundedButton("43<br>1인석");
 			s43.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 43", "s43", borderpanel, homebutton, closebutton);
+					if (s43.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 43", "s43", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s43.setFont(new Font("굴림", Font.BOLD, 13));
@@ -643,8 +694,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s44 = new RoundedButton("44<br>1인석");
 			s44.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 44", "s44", borderpanel, homebutton, closebutton);
+					if (s44.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 44", "s44", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s44.setFont(new Font("굴림", Font.BOLD, 13));
@@ -654,8 +708,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s45 = new RoundedButton("45<br>1인석");
 			s45.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 45", "s45", borderpanel, homebutton, closebutton);
+					if (s45.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 45", "s45", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s45.setFont(new Font("굴림", Font.BOLD, 13));
@@ -665,8 +722,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s46 = new RoundedButton("46<br>1인석");
 			s46.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 46", "s46", borderpanel, homebutton, closebutton);
+					if (s46.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 46", "s46", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s46.setFont(new Font("굴림", Font.BOLD, 13));
@@ -676,8 +736,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s47 = new RoundedButton("47<br>1인석");
 			s47.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 47", "s47", borderpanel, homebutton, closebutton);
+					if (s47.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 47", "s47", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s47.setFont(new Font("굴림", Font.BOLD, 13));
@@ -687,8 +750,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s48 = new RoundedButton("48<br>1인석");
 			s48.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 48", "s48", borderpanel, homebutton, closebutton);
+					if (s48.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 48", "s48", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s48.setFont(new Font("굴림", Font.BOLD, 13));
@@ -698,8 +764,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s49 = new RoundedButton("49<br>1인석");
 			s49.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 49", "s49", borderpanel, homebutton, closebutton);
+					if (s49.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 49", "s49", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s49.setFont(new Font("굴림", Font.BOLD, 13));
@@ -709,8 +778,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s50 = new RoundedButton("50<br>1인석");
 			s50.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 50", "s50", borderpanel, homebutton, closebutton);
+					if (s50.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 50", "s50", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s50.setFont(new Font("굴림", Font.BOLD, 13));
@@ -720,8 +792,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s51 = new RoundedButton("51<br>1인석");
 			s51.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 51", "s51", borderpanel, homebutton, closebutton);
+					if (s51.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 51", "s51", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s51.setFont(new Font("굴림", Font.BOLD, 13));
@@ -731,8 +806,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s52 = new RoundedButton("52<br>1인석");
 			s52.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 52", "s52", borderpanel, homebutton, closebutton);
+					if (s52.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 52", "s52", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s52.setFont(new Font("굴림", Font.BOLD, 13));
@@ -742,8 +820,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s53 = new RoundedButton("53<br>1인석");
 			s53.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 53", "s53", borderpanel, homebutton, closebutton);
+					if (s53.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 53", "s53", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s53.setFont(new Font("굴림", Font.BOLD, 13));
@@ -753,8 +834,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s54 = new RoundedButton("54<br>1인석");
 			s54.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 54", "s54", borderpanel, homebutton, closebutton);
+					if (s54.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 54", "s54", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s54.setFont(new Font("굴림", Font.BOLD, 13));
@@ -764,8 +848,11 @@ public class Seatpanel extends JPanel {
 			RoundedButton s55 = new RoundedButton("55<br>1인석");
 			s55.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 55", "s55", borderpanel, homebutton, closebutton);
+					if (s55.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 55", "s5", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s55.setFont(new Font("굴림", Font.BOLD, 13));
@@ -775,13 +862,23 @@ public class Seatpanel extends JPanel {
 			RoundedButton s56 = new RoundedButton("56<br>1인석");
 			s56.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
-		            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 56", "s56", borderpanel, homebutton, closebutton);
+					if (s56.isBackgroundColorEqual(new Color(200, 196, 196))) {
+			            // 배경색이 바뀌었을 때의 이벤트 처리 코드를 여기에 추가하세요
+			            Seatpanel sa = new Seatpanel(borderpanel, homebutton, closebutton);
+			            SeatCompulsory se = new SeatCompulsory("CAFE ZOON , 56", "s56", borderpanel, homebutton, closebutton);
+			        }
 				}
 			});
 			s56.setFont(new Font("굴림", Font.BOLD, 13));
 			s56.setBounds(740, 131, 50, 44);
 			panel_1_1.add(s56);
+			
+			JLabel label4 = new JLabel("CAFE ZONE");
+			label4.setBounds(404, 110, 101, 29);
+			panel_1_1.add(label4);
+			label4.setFont(new Font("굴림", Font.BOLD, 13));
+			label4.setForeground(new Color(0,0,255));
+			
 			
 			JSONObject data = new JSONObject();
 			try {
