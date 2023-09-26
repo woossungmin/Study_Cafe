@@ -99,6 +99,7 @@ public class Login {
       	public void mouseClicked(MouseEvent e) {
       		if(e.getClickCount()>2)
 			{
+				Info.phone = "NULL";
       			ManagerMessage ma = new ManagerMessage(frame);
 			}
       	}
@@ -318,7 +319,20 @@ public class Login {
 	  Memberlabel.setForeground(new Color(255, 100, 100));
 	  Memberlabel.setBounds(28, 15, 430, 34); 
 	  textpanel3.add(Memberlabel); 
-	  
+	  JButton payment = new JButton("결제 내역");
+	  payment.addActionListener(new ActionListener() {
+	  	public void actionPerformed(ActionEvent e) {
+	  		PaymentDetails pa = new PaymentDetails();
+	  	}
+	  });
+		payment.setFont(new Font("굴림", Font.BOLD, 16));
+		payment.setBounds(0, 13, 115, 23);
+		borderpanel.add(payment);
+		payment.setBorderPainted(false);
+		payment.setContentAreaFilled(false);
+		payment.setFocusPainted(false);
+		payment.setForeground(new Color(114,166,255));
+		payment.setVisible(false);
 	   if(Info.phone == "NULL")
 	   {
 		   textpanel2.setVisible(true);
@@ -326,7 +340,9 @@ public class Login {
 	   }
 	   else if(Info.phone != "NULL")
 	   {
+		   payment.setVisible(true);
 	    	try {
+	    		
 				data.put("phone", Info.phone);
 	   		check = po.jsonpost("/FindSeatPhone", data);
 	   		Info.seat_number = check.getString("seat_number");
@@ -534,6 +550,7 @@ public class Login {
 				
 				if((check.get("check")).equals("true"))
 				{
+					payment.setVisible(true);
 					Calendar calendar = Calendar.getInstance();
 				   	currentYear = calendar.get(Calendar.YEAR);
 				   	currentMonth = calendar.get(Calendar.MONTH) + 1; // 월은 0부터 시작하므로 1을 더해줍니다.

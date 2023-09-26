@@ -67,7 +67,7 @@ public class Memberpanel extends JPanel {
         scrollPane.setBorder(BorderFactory.createLineBorder(new Color(114, 166, 255), 2)); // 테두리 선 두께 설정
         scrollPane.setBounds(40, 91, 738, 467);
         add(scrollPane);
-
+        
         // 각 열의 너비 설정
         table.getColumn("구분").setPreferredWidth(10);
         table.getColumn("전화번호").setPreferredWidth(70);

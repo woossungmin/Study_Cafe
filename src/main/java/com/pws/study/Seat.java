@@ -953,6 +953,34 @@ public class Seat {
 				  s26.setEnabled(false);
 				  s27.setEnabled(false);
 				  s28.setEnabled(false);
+				  s29.setEnabled(false);
+				  s30.setEnabled(false);
+				  s31.setEnabled(false);
+				  s32.setEnabled(false);
+				  s33.setEnabled(false);
+				  s34.setEnabled(false);
+				  s35.setEnabled(false);
+				  s36.setEnabled(false);
+				  s37.setEnabled(false);
+				  s38.setEnabled(false);
+				  s39.setEnabled(false);
+				  s40.setEnabled(false);
+				  s41.setEnabled(false);
+				  s42.setEnabled(false);
+				  s43.setEnabled(false);
+				  s44.setEnabled(false);
+				  s45.setEnabled(false);
+				  s46.setEnabled(false);
+				  s47.setEnabled(false);
+				  s48.setEnabled(false);
+				  s49.setEnabled(false);
+				  s50.setEnabled(false);
+				  s51.setEnabled(false);
+				  s52.setEnabled(false);
+				  s53.setEnabled(false);
+				  s54.setEnabled(false);
+				  s55.setEnabled(false);
+				  s56.setEnabled(false);
 			  }	   
 			  
 	}
