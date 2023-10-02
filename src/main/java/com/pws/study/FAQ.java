@@ -160,6 +160,10 @@ public class FAQ {
 				borderpanel.add(qeustion);
 				
 				JButton keyword1 = new JButton("keyword1");
+				keyword1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					}
+				});
 				keyword1.setFont(new Font("굴림", Font.BOLD, 15));
 				keyword1.setBounds(5, 151, 125, 37);
 				borderpanel.add(keyword1);

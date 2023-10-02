@@ -156,8 +156,12 @@ public class Paymentpanel extends JPanel {
             // 날짜 포맷 적용하여 일자를 가져옴
             String dayOfMonth = sdf.format(date);
 
-            // 일자와 금액을 줄바꿈으로 나눠서 출력
-            dayButtons[i].setText(dayOfMonth + "<br><br>0원");
+            // 현재 달의 버튼일 경우에만 일자와 금액을 표시
+            if (calendar.get(Calendar.MONTH) == currentMonth - 1) {
+                dayButtons[i].setText(dayOfMonth + "<br><br>0원");
+            } else {
+                dayButtons[i].setText(dayOfMonth + "<br><br>xxx원"); // 현재 달이 아닌 경우 빈 문자열("")로 설정
+            }
             dayButtons[i].setBounds(x - 80, y - 25, buttonWidth, buttonHeight);
             dayButtons[i].setVisible(true);
 

@@ -126,6 +126,8 @@ public class Manager {
 	  	  JButton faqbutton = new JButton("FAQ");
 	  	  faqbutton.addActionListener(new ActionListener() {
 	  	  	public void actionPerformed(ActionEvent e) {
+	  	  		FaqPanel fa = new FaqPanel(borderPanel,homeButton,closeButton);
+	  	  		switchPanel(fa);
 	  	  	}
 	  	  });
 	  	  JButton qabutton = new JButton("Q&A");
