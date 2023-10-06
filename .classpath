@@ -25,6 +25,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/user/Downloads/json.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Downloads/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -53,12 +53,13 @@ public class FaqPanel extends JPanel {
 			        return false;
 			    }
 			};
-			table.setFont(new Font("굴림", Font.BOLD, 8));
+			table.setFont(new Font("굴림", Font.BOLD, 12));
 	        table.getTableHeader().setReorderingAllowed(false);
 	        table.getTableHeader().setResizingAllowed(false);
 	        table.setBackground(new Color(255, 255, 255));
-	        table.setGridColor(new Color(114, 166, 255));
+	        table.setGridColor(new Color(193, 215, 255,100));
 	        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // 테이블 마우스 클릭 이벤트
+	        table.setForeground(new Color(114,166,255));
 	        table.addMouseListener(new MouseAdapter() {
 	            @Override
 	            public void mousePressed(MouseEvent e) {
@@ -74,7 +75,7 @@ public class FaqPanel extends JPanel {
 	        header.setPreferredSize(new Dimension(header.getPreferredSize().width, 35));
 	        table.setModel(new DefaultTableModel(
 	                new Object[][] {},
-	                new String[] { "제 목", "답 변"}
+	                new String[] { "구 분","제 목", "답 변"}
 	        ));
 	
 	        // 스크롤 패널에 테이블 추가
@@ -85,8 +86,9 @@ public class FaqPanel extends JPanel {
 	        add(scrollPane);
 	        
 	        // 각 열의 너비 설정
-	        table.getColumn("제 목").setPreferredWidth(50);
-	        table.getColumn("답 변").setPreferredWidth(300);
+	        table.getColumn("구 분").setPreferredWidth(1);
+	        table.getColumn("제 목").setPreferredWidth(250);
+	        table.getColumn("답 변").setPreferredWidth(400);
 	
 	        // 테이블 셀 가운데 정렬
 	        DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
@@ -97,7 +99,7 @@ public class FaqPanel extends JPanel {
 	        }
 	     
 	        // 테이블의 행 높이 설정
-	        table.setRowHeight(30); // 원하는 높이로 설정
+	        table.setRowHeight(50); // 원하는 높이로 설정
 	
 	        // 테이블 내부 선의 두께 설정 (내부 선은 행 간 구분 선)
 	        table.setIntercellSpacing(new Dimension(0, 0)); // 셀 간격을 0으로 설정
@@ -107,7 +109,7 @@ public class FaqPanel extends JPanel {
 	            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 	                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 	                c.setBackground(Color.WHITE);
-	                ((JComponent) c).setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, new Color(114, 166, 255))); // 내부 선 두께 1로 설정
+	                ((JComponent) c).setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, new Color(167, 198, 255,100))); // 내부 선 두께 1로 설정
 	                return c;
 	            }
 	        });
@@ -120,6 +122,34 @@ public class FaqPanel extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					if(keyword.getText().equals("NULL")) {
 						InsertFaq in = new InsertFaq(borderpanel,homeButton,closeButton);
+					}
+					else {
+						DefaultTableModel model = (DefaultTableModel) table.getModel();
+						model.setNumRows(0);
+				        Post po = new Post();
+				        JSONObject data = new JSONObject();
+				        // 데이터를 서버에 전송하고 응답을 받아옵니다.
+				        int number = 0;
+				        JSONArray FaqInfoArray;
+						try {
+							data.put("keyword", keyword.getText());
+					        JSONObject response = po.jsonpost("/FindFaq", data);
+					        
+							FaqInfoArray = response.getJSONArray("Faq_Info");
+						       for (int i = 0; i < FaqInfoArray.length(); i++) {
+						            JSONObject faqinfo = FaqInfoArray.getJSONObject(i);
+						            String key = faqinfo.getString("keyword");
+						            String question= faqinfo.getString("question");
+						            String answer = faqinfo.getString("answer"); 
+						            number++;
+						            String num_1 = Integer.toString(number);
+						            String[] row = { num_1,question,answer};
+						            model.addRow(row);
+						        }
+						} catch (JSONException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 				}
 			});
@@ -138,6 +168,34 @@ public class FaqPanel extends JPanel {
 					if(keyword1.getText().equals("NULL")) {
 						InsertFaq in = new InsertFaq(borderpanel,homeButton,closeButton);
 					}
+					else {
+						DefaultTableModel model = (DefaultTableModel) table.getModel();
+						model.setNumRows(0);
+				        Post po = new Post();
+				        JSONObject data = new JSONObject();
+				        // 데이터를 서버에 전송하고 응답을 받아옵니다.
+				        int number = 0;
+				        JSONArray FaqInfoArray;
+						try {
+							data.put("keyword", keyword1.getText());
+					        JSONObject response = po.jsonpost("/FindFaq", data);
+					        
+							FaqInfoArray = response.getJSONArray("Faq_Info");
+						       for (int i = 0; i < FaqInfoArray.length(); i++) {
+						            JSONObject faqinfo = FaqInfoArray.getJSONObject(i);
+						            String key = faqinfo.getString("keyword");
+						            String question= faqinfo.getString("question");
+						            String answer = faqinfo.getString("answer"); 
+						            number++;
+						            String num_1 = Integer.toString(number);
+						            String[] row = { num_1,question,answer};
+						            model.addRow(row);
+						        }
+						} catch (JSONException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
 	        	}
 	        });
 	        keyword1.setForeground(new Color(114, 166, 255));
@@ -153,6 +211,34 @@ public class FaqPanel extends JPanel {
 	        	public void actionPerformed(ActionEvent e) {
 					if(keyword2.getText().equals("NULL")) {
 						InsertFaq in = new InsertFaq(borderpanel,homeButton,closeButton);
+					}
+					else {
+						DefaultTableModel model = (DefaultTableModel) table.getModel();
+						model.setNumRows(0);
+				        Post po = new Post();
+				        JSONObject data = new JSONObject();
+				        // 데이터를 서버에 전송하고 응답을 받아옵니다.
+				        int number = 0;
+				        JSONArray FaqInfoArray;
+						try {
+							data.put("keyword", keyword2.getText());
+					        JSONObject response = po.jsonpost("/FindFaq", data);
+					        
+							FaqInfoArray = response.getJSONArray("Faq_Info");
+						       for (int i = 0; i < FaqInfoArray.length(); i++) {
+						            JSONObject faqinfo = FaqInfoArray.getJSONObject(i);
+						            String key = faqinfo.getString("keyword");
+						            String question= faqinfo.getString("question");
+						            String answer = faqinfo.getString("answer"); 
+						            number++;
+						            String num_1 = Integer.toString(number);
+						            String[] row = { num_1,question,answer};
+						            model.addRow(row);
+						        }
+						} catch (JSONException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 	        	}
 	        });
@@ -170,6 +256,34 @@ public class FaqPanel extends JPanel {
 					if(keyword3.getText().equals("NULL")) {
 						InsertFaq in = new InsertFaq(borderpanel,homeButton,closeButton);
 					}
+					else {
+						DefaultTableModel model = (DefaultTableModel) table.getModel();
+						model.setNumRows(0);
+				        Post po = new Post();
+				        JSONObject data = new JSONObject();
+				        // 데이터를 서버에 전송하고 응답을 받아옵니다.
+				        int number = 0;
+				        JSONArray FaqInfoArray;
+						try {
+							data.put("keyword", keyword3.getText());
+					        JSONObject response = po.jsonpost("/FindFaq", data);
+					        
+							FaqInfoArray = response.getJSONArray("Faq_Info");
+						       for (int i = 0; i < FaqInfoArray.length(); i++) {
+						            JSONObject faqinfo = FaqInfoArray.getJSONObject(i);
+						            String key = faqinfo.getString("keyword");
+						            String question= faqinfo.getString("question");
+						            String answer = faqinfo.getString("answer"); 
+						            number++;
+						            String num_1 = Integer.toString(number);
+						            String[] row = { num_1,question,answer};
+						            model.addRow(row);
+						        }
+						} catch (JSONException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
 	        	}
 	        });
 	        keyword3.setForeground(new Color(114, 166, 255));
@@ -186,6 +300,34 @@ public class FaqPanel extends JPanel {
 					if(keyword4.getText().equals("NULL")) {
 						InsertFaq in = new InsertFaq(borderpanel,homeButton,closeButton);
 					}
+					else {
+						DefaultTableModel model = (DefaultTableModel) table.getModel();
+						model.setNumRows(0);
+				        Post po = new Post();
+				        JSONObject data = new JSONObject();
+				        // 데이터를 서버에 전송하고 응답을 받아옵니다.
+				        int number = 0;
+				        JSONArray FaqInfoArray;
+						try {
+							data.put("keyword", keyword4.getText());
+					        JSONObject response = po.jsonpost("/FindFaq", data);
+					        
+							FaqInfoArray = response.getJSONArray("Faq_Info");
+						       for (int i = 0; i < FaqInfoArray.length(); i++) {
+						            JSONObject faqinfo = FaqInfoArray.getJSONObject(i);
+						            String key = faqinfo.getString("keyword");
+						            String question= faqinfo.getString("question");
+						            String answer = faqinfo.getString("answer"); 
+						            number++;
+						            String num_1 = Integer.toString(number);
+						            String[] row = { num_1,question,answer};
+						            model.addRow(row);
+						        }
+						} catch (JSONException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
 	        	}
 	        });
 	        keyword4.setForeground(new Color(114, 166, 255));
@@ -198,13 +340,13 @@ public class FaqPanel extends JPanel {
 	        
 	        RoundedButton2 btnNewButton = new RoundedButton2("FAQ 등록");
 	        btnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
-	        btnNewButton.setBounds(609, 20, 95, 30);
+	        btnNewButton.setBounds(609, 15, 95, 30);
 	        add(btnNewButton);
 	        
 	        RoundedButton2 btnNewButton_1 = new RoundedButton2("FAQ 등록");
 	        btnNewButton_1.setText("전체 조회");
 	        btnNewButton_1.setFont(new Font("굴림", Font.BOLD, 12));
-	        btnNewButton_1.setBounds(709, 20, 95, 30);
+	        btnNewButton_1.setBounds(709, 15, 95, 30);
 	        add(btnNewButton_1);
 	        
 	        JSONObject data = new JSONObject();
@@ -241,8 +383,31 @@ public class FaqPanel extends JPanel {
 	        } catch (JSONException e1) {
 	            e1.printStackTrace();
 	        }
-
-
+	        
+	        Post po = new Post();
+	        // 데이터를 서버에 전송하고 응답을 받아옵니다.
+	        int number = 0;
+	        DefaultTableModel model = (DefaultTableModel) table.getModel();
+	        JSONArray FaqInfoArray;
+			try {
+				data.put("keyword", keyword.getText());
+		        JSONObject response = po.jsonpost("/FindFaq", data);
+		        
+				FaqInfoArray = response.getJSONArray("Faq_Info");
+			       for (int i = 0; i < FaqInfoArray.length(); i++) {
+			            JSONObject faqinfo = FaqInfoArray.getJSONObject(i);
+			            String key = faqinfo.getString("keyword");
+			            String question= faqinfo.getString("question");
+			            String answer = faqinfo.getString("answer"); 
+			            number++;
+			            String num_1 = Integer.toString(number);
+			            String[] row = { num_1,question,answer};
+			            model.addRow(row);
+			        }
+			} catch (JSONException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 	}
     
 	
@@ -259,13 +424,12 @@ public class FaqPanel extends JPanel {
             JComponent renderer = (JComponent) defaultRenderer.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
             // 특정 컬럼명인 경우 배경색 변경
-            if ("제 목".equals(value) || "답 변".equals(value)) {
+            if ("구 분".equals(value) || "제 목".equals(value)|| "답 변".equals(value)) {
                 renderer.setBackground(new Color(217, 231, 255));
                 renderer.setForeground(new Color(114, 166, 255));
                 renderer.setFont(new Font("굴림", Font.BOLD, 18));
                 renderer.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 1, new Color(114, 166, 255))); // 내부 선 색상 설정
             }
-
             return renderer;
         }
     }

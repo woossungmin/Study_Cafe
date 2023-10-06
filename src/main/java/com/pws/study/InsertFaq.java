@@ -73,6 +73,7 @@ public class InsertFaq {
 		panel_1.setBackground(new Color(255,255,255));
 		panel_1.setBorder(border);
 		panel_1.setLayout(null);
+		panel_1.setBackground(new Color(217,231,255));
 		
 		JLabel lblNewLabel = new JLabel("키워드명 : ");
 		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
@@ -85,6 +86,7 @@ public class InsertFaq {
 		panel_1.add(keyword);
 		keyword.setColumns(10);
 		keyword.setBorder(border);
+		keyword.setBackground(new Color(240,240,240));
 		
 		JButton BackButton = new JButton("");
 		BackButton.addActionListener(new ActionListener() {
@@ -110,6 +112,7 @@ public class InsertFaq {
 		question.setBounds(109, 91, 291, 30);
 		panel_1.add(question);
 		question.setBorder(border);
+		question.setBackground(new Color(240,240,240));
 		
 		JLabel lblNewLabel_1_1 = new JLabel("답      변 : ");
 		lblNewLabel_1_1.setForeground(new Color(114, 166, 255));
@@ -121,6 +124,7 @@ public class InsertFaq {
 		answer.setBounds(109, 131, 291, 137);
 		panel_1.add(answer);
 		answer.setBorder(border);
+		answer.setBackground(new Color(240,240,240));
 		
 		RoundedButton2 btnNewButton = new RoundedButton2("확인");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -149,7 +153,7 @@ public class InsertFaq {
 		btnNewButton.setBounds(160, 278, 95, 23);
 		panel_1.add(btnNewButton);
 	
-
+		
 	}
 	
     private void switchPanel(JPanel newPanel,JPanel borderpanel, JButton homebutton, JButton closebutton) {

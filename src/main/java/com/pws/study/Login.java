@@ -5,12 +5,8 @@ import java.awt.SystemColor;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeListener;
@@ -748,6 +744,7 @@ public class Login {
 		    checkout.setEnabled(false);
 		    lock.setEnabled(false);
 		    coffe.setEnabled(false);
+		    payment.setVisible(false);
     	}
     });
     logoutbutton.setBounds(20, 88, 200, 23);
