@@ -64,9 +64,9 @@ public class Manager {
 		 frame = new JFrame();
 	      frame.setBounds(100, 5, 1120, 680);
 	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.getContentPane().setLayout(null);
-		      frame.setResizable(false);
-		      frame.setVisible(true);
+	      frame.getContentPane().setLayout(null);
+		  frame.setResizable(false);
+		  frame.setVisible(true);
 	      Border border =  BorderFactory.createLineBorder(new Color(114,166,250),2);
 	      
 	      JPanel panel_4 = new JPanel();

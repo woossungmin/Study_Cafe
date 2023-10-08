@@ -39,8 +39,9 @@ public class FaqPanel extends JPanel {
 	JSONObject b5 = null;
 	JSONObject b6 = null;
 	
+	
 	public FaqPanel(JPanel borderpanel, JButton homeButton, JButton closeButton) {
-		 Border border =  BorderFactory.createLineBorder(new Color(114,166,250), 2);
+		Border border =  BorderFactory.createLineBorder(new Color(114,166,250), 2);
 	     setBackground(new Color(255, 255, 255));
 	     setBounds(23, 40, 816, 580);
 	     setLayout(null);
@@ -152,6 +153,16 @@ public class FaqPanel extends JPanel {
 						}
 					}
 				}
+			});	
+			keyword.addMouseListener(new MouseAdapter() {
+			    public void mouseClicked(MouseEvent e) {
+			        if (e.getClickCount() == 2) { 
+			        	if(!keyword.getText().equals("NULL"))
+			        	{
+			        		UpdateKeyword up = new UpdateKeyword(keyword.getText(),homeButton,closeButton,borderpanel);	
+			        	}
+			        }
+			    }
 			});
 			keyword.setFont(new Font("굴림", Font.BOLD, 17));
 			keyword.setBounds(12, 10, 105, 37);
@@ -198,6 +209,16 @@ public class FaqPanel extends JPanel {
 					}
 	        	}
 	        });
+	        keyword1.addMouseListener(new MouseAdapter() {
+			    public void mouseClicked(MouseEvent e) {
+			        if (e.getClickCount() == 2) { 
+			        	if(!keyword1.getText().equals("NULL"))
+			        	{
+			        		UpdateKeyword up = new UpdateKeyword(keyword1.getText(),homeButton,closeButton,borderpanel);	
+			        	}
+			        }
+			    }
+			});
 	        keyword1.setForeground(new Color(114, 166, 255));
 	        keyword1.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword1.setFocusPainted(false);
@@ -242,6 +263,16 @@ public class FaqPanel extends JPanel {
 					}
 	        	}
 	        });
+	        keyword2.addMouseListener(new MouseAdapter() {
+			    public void mouseClicked(MouseEvent e) {
+			        if (e.getClickCount() == 2) { 
+			        	if(!keyword2.getText().equals("NULL"))
+			        	{
+			        		UpdateKeyword up = new UpdateKeyword(keyword2.getText(),homeButton,closeButton,borderpanel);	
+			        	}
+			        }
+			    }
+			});
 	        keyword2.setForeground(new Color(114, 166, 255));
 	        keyword2.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword2.setFocusPainted(false);
@@ -286,6 +317,16 @@ public class FaqPanel extends JPanel {
 					}
 	        	}
 	        });
+	        keyword3.addMouseListener(new MouseAdapter() {
+			    public void mouseClicked(MouseEvent e) {
+			        if (e.getClickCount() == 2) { 
+			        	if(!keyword3.getText().equals("NULL"))
+			        	{
+			        		UpdateKeyword up = new UpdateKeyword(keyword3.getText(),homeButton,closeButton,borderpanel);	
+			        	}
+			        }
+			    }
+			});
 	        keyword3.setForeground(new Color(114, 166, 255));
 	        keyword3.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword3.setFocusPainted(false);
@@ -330,6 +371,16 @@ public class FaqPanel extends JPanel {
 					}
 	        	}
 	        });
+	        keyword4.addMouseListener(new MouseAdapter() {
+			    public void mouseClicked(MouseEvent e) {
+			        if (e.getClickCount() == 2) { 
+			        	if(!keyword4.getText().equals("NULL"))
+			        	{
+			        		UpdateKeyword up = new UpdateKeyword(keyword4.getText(),homeButton,closeButton,borderpanel);	
+			        	}
+			        }
+			    }
+			});
 	        keyword4.setForeground(new Color(114, 166, 255));
 	        keyword4.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword4.setFocusPainted(false);
@@ -340,14 +391,8 @@ public class FaqPanel extends JPanel {
 	        
 	        RoundedButton2 btnNewButton = new RoundedButton2("FAQ 등록");
 	        btnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
-	        btnNewButton.setBounds(609, 15, 95, 30);
+	        btnNewButton.setBounds(700, 17, 95, 30);
 	        add(btnNewButton);
-	        
-	        RoundedButton2 btnNewButton_1 = new RoundedButton2("FAQ 등록");
-	        btnNewButton_1.setText("전체 조회");
-	        btnNewButton_1.setFont(new Font("굴림", Font.BOLD, 12));
-	        btnNewButton_1.setBounds(709, 15, 95, 30);
-	        add(btnNewButton_1);
 	        
 	        JSONObject data = new JSONObject();
 	        try {
