@@ -68,7 +68,8 @@ public class FaqPanel extends JPanel {
 	                    int row = table.getSelectedRow();
 	                    int col = table.getSelectedColumn();
 	
-	                    Click.phone = (String) table.getModel().getValueAt(row, 1);
+	                    Click.question = (String) table.getModel().getValueAt(row, 1);
+	                    ModifyFaq mo = new ModifyFaq(homeButton,closeButton,borderpanel);
 	                }
 	            }
 	        });
@@ -121,8 +122,8 @@ public class FaqPanel extends JPanel {
 	        JButton keyword = new JButton("");
 			keyword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if(keyword.getText().equals("NULL")) {
-						InsertFaq in = new InsertFaq(borderpanel,homeButton,closeButton);
+					if(keyword.getText().equals("X")) {
+						InsertKeyword in = new InsertKeyword(borderpanel,homeButton,closeButton);
 					}
 					else {
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -157,7 +158,7 @@ public class FaqPanel extends JPanel {
 			keyword.addMouseListener(new MouseAdapter() {
 			    public void mouseClicked(MouseEvent e) {
 			        if (e.getClickCount() == 2) { 
-			        	if(!keyword.getText().equals("NULL"))
+			        	if(!keyword.getText().equals("X"))
 			        	{
 			        		UpdateKeyword up = new UpdateKeyword(keyword.getText(),homeButton,closeButton,borderpanel);	
 			        	}
@@ -176,8 +177,8 @@ public class FaqPanel extends JPanel {
 	        JButton keyword1 = new JButton("");
 	        keyword1.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
-					if(keyword1.getText().equals("NULL")) {
-						InsertFaq in = new InsertFaq(borderpanel,homeButton,closeButton);
+					if(keyword1.getText().equals("X")) {
+						InsertKeyword in = new InsertKeyword(borderpanel,homeButton,closeButton);
 					}
 					else {
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -212,7 +213,7 @@ public class FaqPanel extends JPanel {
 	        keyword1.addMouseListener(new MouseAdapter() {
 			    public void mouseClicked(MouseEvent e) {
 			        if (e.getClickCount() == 2) { 
-			        	if(!keyword1.getText().equals("NULL"))
+			        	if(!keyword1.getText().equals("X"))
 			        	{
 			        		UpdateKeyword up = new UpdateKeyword(keyword1.getText(),homeButton,closeButton,borderpanel);	
 			        	}
@@ -230,8 +231,8 @@ public class FaqPanel extends JPanel {
 	        JButton keyword2 = new JButton("");
 	        keyword2.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
-					if(keyword2.getText().equals("NULL")) {
-						InsertFaq in = new InsertFaq(borderpanel,homeButton,closeButton);
+					if(keyword2.getText().equals("X")) {
+						InsertKeyword in = new InsertKeyword(borderpanel,homeButton,closeButton);
 					}
 					else {
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -266,7 +267,7 @@ public class FaqPanel extends JPanel {
 	        keyword2.addMouseListener(new MouseAdapter() {
 			    public void mouseClicked(MouseEvent e) {
 			        if (e.getClickCount() == 2) { 
-			        	if(!keyword2.getText().equals("NULL"))
+			        	if(!keyword2.getText().equals("X"))
 			        	{
 			        		UpdateKeyword up = new UpdateKeyword(keyword2.getText(),homeButton,closeButton,borderpanel);	
 			        	}
@@ -284,8 +285,8 @@ public class FaqPanel extends JPanel {
 	        JButton keyword3 = new JButton("");
 	        keyword3.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
-					if(keyword3.getText().equals("NULL")) {
-						InsertFaq in = new InsertFaq(borderpanel,homeButton,closeButton);
+					if(keyword3.getText().equals("X")) {
+						InsertKeyword in = new InsertKeyword(borderpanel,homeButton,closeButton);
 					}
 					else {
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -320,7 +321,7 @@ public class FaqPanel extends JPanel {
 	        keyword3.addMouseListener(new MouseAdapter() {
 			    public void mouseClicked(MouseEvent e) {
 			        if (e.getClickCount() == 2) { 
-			        	if(!keyword3.getText().equals("NULL"))
+			        	if(!keyword3.getText().equals("X"))
 			        	{
 			        		UpdateKeyword up = new UpdateKeyword(keyword3.getText(),homeButton,closeButton,borderpanel);	
 			        	}
@@ -338,8 +339,8 @@ public class FaqPanel extends JPanel {
 	        JButton keyword4 = new JButton("");
 	        keyword4.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
-					if(keyword4.getText().equals("NULL")) {
-						InsertFaq in = new InsertFaq(borderpanel,homeButton,closeButton);
+					if(keyword4.getText().equals("X")) {
+						InsertKeyword in = new InsertKeyword(borderpanel,homeButton,closeButton);
 					}
 					else {
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -374,7 +375,7 @@ public class FaqPanel extends JPanel {
 	        keyword4.addMouseListener(new MouseAdapter() {
 			    public void mouseClicked(MouseEvent e) {
 			        if (e.getClickCount() == 2) { 
-			        	if(!keyword4.getText().equals("NULL"))
+			        	if(!keyword4.getText().equals("X"))
 			        	{
 			        		UpdateKeyword up = new UpdateKeyword(keyword4.getText(),homeButton,closeButton,borderpanel);	
 			        	}
@@ -390,6 +391,11 @@ public class FaqPanel extends JPanel {
 	        add(keyword4);
 	        
 	        RoundedButton2 btnNewButton = new RoundedButton2("FAQ 등록");
+	        btnNewButton.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        		InsertFaq in = new InsertFaq(borderpanel,homeButton,closeButton);
+	        	}
+	        });
 	        btnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
 	        btnNewButton.setBounds(700, 17, 95, 30);
 	        add(btnNewButton);
@@ -411,15 +417,15 @@ public class FaqPanel extends JPanel {
 
 	                    // Assuming you have labels named keyword, keyword1, keyword2, ...
 	                    if (i == 0) {
-	                        keyword.setText(keywordText);
+	                        keyword.setText("NULL".equals(keywordText) ? "X" : keywordText);
 	                    } else if (i == 1) {
-	                        keyword1.setText(keywordText);
+	                        keyword1.setText("NULL".equals(keywordText) ? "X" : keywordText);
 	                    } else if (i == 2) {
-	                        keyword2.setText(keywordText);
+	                        keyword2.setText("NULL".equals(keywordText) ? "X" : keywordText);
 	                    } else if (i == 3) {
-	                        keyword3.setText(keywordText);
+	                        keyword3.setText("NULL".equals(keywordText) ? "X" : keywordText);
 	                    } else if (i == 4) {
-	                        keyword4.setText(keywordText);
+	                        keyword4.setText("NULL".equals(keywordText) ? "X" : keywordText);
 	                    }
 	                }
 	            } else {

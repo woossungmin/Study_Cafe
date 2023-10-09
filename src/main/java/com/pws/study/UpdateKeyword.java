@@ -110,7 +110,7 @@ public class UpdateKeyword {
 		});
 		panel_1.setLayout(null);
 		btnNewButton.setFont(new Font("굴림", Font.BOLD, 13));
-		btnNewButton.setBounds(156, 101, 61, 25);
+		btnNewButton.setBounds(105, 101, 61, 25);
 		panel_1.add(btnNewButton);
 		
 		JButton BackButton = new JButton("");
@@ -138,6 +138,39 @@ public class UpdateKeyword {
 		keyword.setColumns(10);
 		keyword.setBorder(border);
 		keyword.setText(text);
+		
+		RoundedButton2 btnNewButton_1 = new RoundedButton2("삭제");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		        Post po = new Post();
+		        JSONObject data = new JSONObject();
+				try {
+					data.put("keyword", text);
+					JSONObject check = po.jsonpost("/DeleteKeyword", data);
+					if((check.get("check")).equals("true"))
+					{
+						frame.dispose();
+						FaqPanel fa = new FaqPanel(borderpanel,homebutton,closebutton);
+						switchPanel(fa,borderpanel,homebutton,closebutton);
+						Message ms = new Message("삭제가 완료되었습니다!");
+		   				ms.frame.setBounds(550, 250, ms.frame.getWidth(), ms.frame.getHeight());
+					}
+					else
+					{
+						frame.dispose();
+						Message ms = new Message("삭제를 실패하였습니다!");
+		   				ms.frame.setBounds(550, 250, ms.frame.getWidth(), ms.frame.getHeight());
+					}
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnNewButton_1.setText("삭제");
+		btnNewButton_1.setFont(new Font("굴림", Font.BOLD, 13));
+		btnNewButton_1.setBounds(202, 101, 61, 25);
+		panel_1.add(btnNewButton_1);
 	}
 	
     private void switchPanel(JPanel newPanel,JPanel borderpanel, JButton homebutton, JButton closebutton) {
