@@ -166,7 +166,7 @@ public class FaqPanel extends JPanel {
 			    }
 			});
 			keyword.setFont(new Font("굴림", Font.BOLD, 17));
-			keyword.setBounds(12, 10, 105, 37);
+			keyword.setBounds(10, 10, 105, 37);
 			borderpanel.add(keyword);
 		    keyword.setForeground(new Color(114, 166, 255));
 			keyword.setBorderPainted(false);
@@ -225,7 +225,7 @@ public class FaqPanel extends JPanel {
 	        keyword1.setFocusPainted(false);
 	        keyword1.setBorderPainted(false);
 	        keyword1.setBackground(Color.WHITE);
-	        keyword1.setBounds(129, 10, 105, 37);
+	        keyword1.setBounds(130, 10, 105, 37);
 	        add(keyword1);
 	        
 	        JButton keyword2 = new JButton("");
@@ -279,7 +279,7 @@ public class FaqPanel extends JPanel {
 	        keyword2.setFocusPainted(false);
 	        keyword2.setBorderPainted(false);
 	        keyword2.setBackground(Color.WHITE);
-	        keyword2.setBounds(246, 10, 105, 37);
+	        keyword2.setBounds(250, 10, 105, 37);
 	        add(keyword2);
 	        
 	        JButton keyword3 = new JButton("");
@@ -333,7 +333,7 @@ public class FaqPanel extends JPanel {
 	        keyword3.setFocusPainted(false);
 	        keyword3.setBorderPainted(false);
 	        keyword3.setBackground(Color.WHITE);
-	        keyword3.setBounds(363, 10, 105, 37);
+	        keyword3.setBounds(370, 10, 105, 37);
 	        add(keyword3);
 	        
 	        JButton keyword4 = new JButton("");
@@ -387,7 +387,7 @@ public class FaqPanel extends JPanel {
 	        keyword4.setFocusPainted(false);
 	        keyword4.setBorderPainted(false);
 	        keyword4.setBackground(Color.WHITE);
-	        keyword4.setBounds(480, 10, 105, 37);
+	        keyword4.setBounds(490, 10, 105, 37);
 	        add(keyword4);
 	        
 	        RoundedButton2 btnNewButton = new RoundedButton2("FAQ 등록");
@@ -397,8 +397,62 @@ public class FaqPanel extends JPanel {
 	        	}
 	        });
 	        btnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
-	        btnNewButton.setBounds(700, 17, 95, 30);
+	        btnNewButton.setBounds(720, 17, 80, 30);
 	        add(btnNewButton);
+	        
+	        JButton keyword5 = new JButton("");
+	        keyword5.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        		if(keyword5.getText().equals("X")) {
+						InsertKeyword in = new InsertKeyword(borderpanel,homeButton,closeButton);
+					}
+					else {
+						DefaultTableModel model = (DefaultTableModel) table.getModel();
+						model.setNumRows(0);
+				        Post po = new Post();
+				        JSONObject data = new JSONObject();
+				        // 데이터를 서버에 전송하고 응답을 받아옵니다.
+				        int number = 0;
+				        JSONArray FaqInfoArray;
+						try {
+							data.put("keyword", keyword5.getText());
+					        JSONObject response = po.jsonpost("/FindFaq", data);
+					        
+							FaqInfoArray = response.getJSONArray("Faq_Info");
+						       for (int i = 0; i < FaqInfoArray.length(); i++) {
+						            JSONObject faqinfo = FaqInfoArray.getJSONObject(i);
+						            String key = faqinfo.getString("keyword");
+						            String question= faqinfo.getString("question");
+						            String answer = faqinfo.getString("answer"); 
+						            number++;
+						            String num_1 = Integer.toString(number);
+						            String[] row = { num_1,question,answer};
+						            model.addRow(row);
+						        }
+						} catch (JSONException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+	        	}
+	        });
+	        keyword5.addMouseListener(new MouseAdapter() {
+			    public void mouseClicked(MouseEvent e) {
+			        if (e.getClickCount() == 2) { 
+			        	if(!keyword5.getText().equals("X"))
+			        	{
+			        		UpdateKeyword up = new UpdateKeyword(keyword4.getText(),homeButton,closeButton,borderpanel);	
+			        	}
+			        }
+			    }
+			});
+	        keyword5.setForeground(new Color(114, 166, 255));
+	        keyword5.setFont(new Font("굴림", Font.BOLD, 17));
+	        keyword5.setFocusPainted(false);
+	        keyword5.setBorderPainted(false);
+	        keyword5.setBackground(Color.WHITE);
+	        keyword5.setBounds(610, 10, 105, 37);
+	        add(keyword5);
 	        
 	        JSONObject data = new JSONObject();
 	        try {
@@ -411,7 +465,7 @@ public class FaqPanel extends JPanel {
 	                JSONArray keywordArray = check.getJSONArray("keyword");
 
 	                // Assuming you have TextView objects named keyword, keyword1, keyword2, ...
-	                for (int i = 0; i < 5; i++) {
+	                for (int i = 0; i < 6; i++) {
 	                    JSONObject keywordObject = keywordArray.getJSONObject(i);
 	                    String keywordText = keywordObject.getString("keyword");
 
@@ -426,6 +480,8 @@ public class FaqPanel extends JPanel {
 	                        keyword3.setText("NULL".equals(keywordText) ? "X" : keywordText);
 	                    } else if (i == 4) {
 	                        keyword4.setText("NULL".equals(keywordText) ? "X" : keywordText);
+	                    } else if (i == 5) {
+	                        keyword5.setText("NULL".equals(keywordText) ? "X" : keywordText);
 	                    }
 	                }
 	            } else {

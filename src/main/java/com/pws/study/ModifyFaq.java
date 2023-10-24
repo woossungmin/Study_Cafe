@@ -78,12 +78,14 @@ public class ModifyFaq {
 		lblNewLabel.setForeground(new Color(114,166,255));
 		
 		JTextField keyword = new JTextField();
+		keyword.setFont(new Font("한컴산뜻돋움", Font.BOLD, 13));
 		keyword.setBounds(109, 51, 291, 30);
 		panel_1.add(keyword);
 		keyword.setColumns(10);
 		keyword.setBorder(border);
 		keyword.setBackground(new Color(240,240,240));
-		keyword.setEnabled(false);
+		keyword.setForeground(new Color(114,166,255));
+		keyword.setEditable(false);
 		
 		JButton BackButton = new JButton("");
 		BackButton.addActionListener(new ActionListener() {
@@ -105,11 +107,13 @@ public class ModifyFaq {
 		panel_1.add(lblNewLabel_1);
 		
 		JTextField question = new JTextField();
+		question.setFont(new Font("한컴산뜻돋움", Font.BOLD, 13));
 		question.setColumns(10);
 		question.setBounds(109, 91, 291, 30);
 		panel_1.add(question);
 		question.setBorder(border);
 		question.setBackground(new Color(240,240,240));
+		question.setForeground(new Color(114,166,255));
 		
 		JLabel lblNewLabel_1_1 = new JLabel("답      변 : ");
 		lblNewLabel_1_1.setForeground(new Color(114, 166, 255));
@@ -117,11 +121,31 @@ public class ModifyFaq {
 		lblNewLabel_1_1.setBounds(12, 129, 85, 30);
 		panel_1.add(lblNewLabel_1_1);
 		
-		JTextArea answer = new JTextArea();
-		answer.setBounds(109, 131, 291, 137);
-		panel_1.add(answer);
-		answer.setBorder(border);
-		answer.setBackground(new Color(240,240,240));
+		 JTextArea answer = new JTextArea() {
+	            @Override
+	            public void setText(String t) {
+	                if (t.length() > 30) {
+	                    StringBuilder sb = new StringBuilder();
+	                    int i = 0;
+	                    while (i < t.length()) {
+	                        sb.append(t, i, Math.min(i + 30, t.length()));
+	                        if (i + 30 < t.length()) {
+	                            sb.append("\n");
+	                        }
+	                        i += 30;
+	                    }
+	                    t = sb.toString();
+	                }
+	                super.setText(t);
+	            }
+	        };
+	        answer.setFont(new Font("한컴산뜻돋움", Font.BOLD, 13));
+	        answer.setBounds(109, 131, 291, 170);
+	        panel_1.add(answer);
+	        answer.setBorder(border);
+	        answer.setForeground(new Color(114, 166, 255));
+	        answer.setEditable(false);
+	        answer.setBackground(new Color(240,240,240));
 		
 		RoundedButton2 btnNewButton = new RoundedButton2("수정");
 		btnNewButton.addActionListener(new ActionListener() {

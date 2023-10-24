@@ -86,6 +86,7 @@ public class FAQ {
 	      mainpanel .setBackground(new Color(255,255,255));
 	      
 	      JPanel borderpanel = new JPanel();
+
 	      borderpanel.setBounds(10, 10, 837, 593);
 	      mainpanel.add(borderpanel);
 	      borderpanel.setLayout(null);
@@ -196,7 +197,7 @@ public class FAQ {
 				BackButton.setFocusPainted(false);
 				
 				  JButton qeustion = new JButton("");
-			      qeustion.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\barcode-scan.png"));
+			      qeustion.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\kakao-talk.png"));
 				qeustion.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						QR qr = new QR();
@@ -209,13 +210,19 @@ public class FAQ {
 				borderpanel.add(qeustion);
 				
 				JPanel panel = new JPanel();
-				panel.setBounds(536, 95, 289, 61);
+				panel.setBounds(536, 60, 289, 61);
 				borderpanel.add(panel);
 				panel.setBackground(new Color(255,255,255));
 			    panel.setBorder(border1);
 				panel.setVisible(false);
 				panel.setLayout(null);
 				
+			      borderpanel.addMouseListener(new MouseAdapter() {
+				      	@Override
+				      	public void mouseClicked(MouseEvent e) {
+				      		panel.setVisible(false);
+				      	}
+				      });
 				JLabel text = new JLabel("");
 				text.setBounds(16, 7, 261, 15);
 				panel.add(text);
@@ -234,18 +241,23 @@ public class FAQ {
 				text_1_1.setBounds(16, 40, 214, 15);
 				panel.add(text_1_1);
 				
+				JButton keyword5 = new JButton("");
+				keyword5.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					}
+				});
+				keyword5.setForeground(new Color(114, 166, 255));
+				keyword5.setFont(new Font("굴림", Font.BOLD, 17));
+				keyword5.setFocusPainted(false);
+				keyword5.setBorderPainted(false);
+				keyword5.setBackground(Color.WHITE);
+				keyword5.setBounds(610, 115, 105, 37);
+				borderpanel.add(keyword5);
+				
 			    RoundedButton2 inquiry = new RoundedButton2("문의하기"); 
 				inquiry.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						panel.setVisible(true);
-					}
-					@Override
-					public void mouseExited(MouseEvent e) {
-						panel.setVisible(false);
-					}
-					@Override
 					public void mouseClicked(MouseEvent e) {
+						panel.setVisible(true);
 						if(e.getClickCount()>1)
 						{
 							frame.dispose();
@@ -288,7 +300,7 @@ public class FAQ {
 				}
 			});	
 			keyword.setFont(new Font("굴림", Font.BOLD, 17));
-			keyword.setBounds(12, 115, 105, 37);
+			keyword.setBounds(10, 115, 105, 37);
 			borderpanel.add(keyword);
 		    keyword.setForeground(new Color(114, 166, 255));
 			keyword.setBorderPainted(false);
@@ -332,7 +344,7 @@ public class FAQ {
 	        keyword1.setFocusPainted(false);
 	        keyword1.setBorderPainted(false);
 	        keyword1.setBackground(Color.WHITE);
-	        keyword1.setBounds(129, 115, 105, 37);
+	        keyword1.setBounds(130, 115, 105, 37);
 	        borderpanel.add(keyword1);
 	        
 	        JButton keyword2 = new JButton("");
@@ -371,7 +383,7 @@ public class FAQ {
 	        keyword2.setFocusPainted(false);
 	        keyword2.setBorderPainted(false);
 	        keyword2.setBackground(Color.WHITE);
-	        keyword2.setBounds(246, 115, 105, 37);
+	        keyword2.setBounds(250, 115, 105, 37);
 	        borderpanel.add(keyword2);
 	        
 	        JButton keyword3 = new JButton("");
@@ -410,7 +422,7 @@ public class FAQ {
 	        keyword3.setFocusPainted(false);
 	        keyword3.setBorderPainted(false);
 	        keyword3.setBackground(Color.WHITE);
-	        keyword3.setBounds(363, 115, 105, 37);
+	        keyword3.setBounds(370, 115, 105, 37);
 	        borderpanel.add(keyword3);
 	        
 	        JButton keyword4 = new JButton("");
@@ -449,7 +461,7 @@ public class FAQ {
 	        keyword4.setFocusPainted(false);
 	        keyword4.setBorderPainted(false);
 	        keyword4.setBackground(Color.WHITE);
-	        keyword4.setBounds(480, 115, 105, 37);
+	        keyword4.setBounds(490, 115, 105, 37);
 	        borderpanel.add(keyword4);	
 	        JSONObject data = new JSONObject();
 	        try {
@@ -462,7 +474,7 @@ public class FAQ {
 	                JSONArray keywordArray = check.getJSONArray("keyword");
 
 	                // Assuming you have TextView objects named keyword, keyword1, keyword2, ...
-	                for (int i = 0; i < 5; i++) {
+	                for (int i = 0; i < 6; i++) {
 	                    JSONObject keywordObject = keywordArray.getJSONObject(i);
 	                    String keywordText = keywordObject.getString("keyword");
 
@@ -476,6 +488,8 @@ public class FAQ {
 	                        keyword3.setText("NULL".equals(keywordText) ? "X" : keywordText);
 	                    } else if (i == 4) {
 	                        keyword4.setText("NULL".equals(keywordText) ? "X" : keywordText);
+	                    } else if (i == 5) {
+	                        keyword5.setText("NULL".equals(keywordText) ? "X" : keywordText);
 	                    }
 	                }
 	            } else {
@@ -521,7 +535,7 @@ public class FAQ {
 			        JSONArray keywordArray = check.getJSONArray("keyword");
 
 			        // Assuming you have JButton objects named keyword, keyword1, keyword2, ...
-			        JButton[] keywordButtons = { keyword, keyword1, keyword2, keyword3, keyword4 };
+			        JButton[] keywordButtons = { keyword, keyword1, keyword2, keyword3, keyword4, keyword5 };
 
 			        for (int i = 0; i < keywordArray.length(); i++) {
 			            JSONObject keywordObject = keywordArray.getJSONObject(i);

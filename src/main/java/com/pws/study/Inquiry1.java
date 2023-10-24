@@ -1,26 +1,39 @@
 package com.pws.study;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.pws.study.Memberpanel.CustomHeaderRenderer;
 
 public class Inquiry1 {
 
@@ -106,53 +119,110 @@ public class Inquiry1 {
 				BackButton.setContentAreaFilled(false);
 				BackButton.setFocusPainted(false);
 				
-				 JScrollPane scrollPane = new JScrollPane();
-					scrollPane.setBounds(12, 133, 813, 400);
-					borderpanel.add(scrollPane);
-					scrollPane.getViewport().setBackground(new Color(255,255,255));
-					
-					JTable table = new JTable();
-					table.setShowGrid(false);
-					table.setSurrendersFocusOnKeystroke(true);
-					table.setRowSelectionAllowed(false);
-					table.setForeground(SystemColor.activeCaption);
-					table.setModel(new DefaultTableModel(
-						new Object[][] {
-						},
-						new String[] {
-							"제목", "답변일", "처리 상태"
-						}
-					));
-					scrollPane.setViewportView(table);
-					table.getColumn("제목").setPreferredWidth(500);
-					table.getColumn("답변일").setPreferredWidth(10);
-					table.getColumn("처리 상태").setPreferredWidth(10);
-					table.setGridColor(new Color(114,166,250)); //안쪽 테두리색 변경
-					table.getTableHeader().setBackground(new Color(255,255,255)); //헤더 배경색 변경
-					table.getTableHeader().setForeground(new Color(114, 166, 255));// 헤더 글자색 변경
-					table.getTableHeader().setReorderingAllowed(false); //헤더 이동 불가
-					scrollPane.setBorder(border);
-					
-					RoundedButton2 rr = new RoundedButton2("문의하기");
-					rr.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							frame.dispose();
-							Inquiry in = new Inquiry();
-						}
-					});
-					rr.setFont(new Font("굴림", Font.BOLD, 15));
-					rr.setBounds(379, 543, 95, 37); 
-					borderpanel.add(rr);
-					table.getTableHeader().setFont(new Font(" ", Font.BOLD, 15)); //헤더 글씨체 변경
-					table.getTableHeader().setPreferredSize(new Dimension(0,30));
-					
-						
-					DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer(); //테이블 밑에 사용 튜플값들 가운데 정렬
-				    dtcr.setHorizontalAlignment(SwingConstants.CENTER);
-				    TableColumnModel tcm = table.getColumnModel();
-				    for(int i = 0; i < tcm.getColumnCount(); i++) {
-				    	tcm.getColumn(i).setCellRenderer(dtcr);
+				RoundedButton2 bu_1 = new RoundedButton2("등록하기");
+				bu_1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						frame.dispose();
+						Inquiry In = new Inquiry();
+					}
+				});
+				bu_1.setText("문의하기");
+				bu_1.setFont(new Font("굴림", Font.BOLD, 15));
+				bu_1.setBounds(381, 546, 95, 37);
+				borderpanel.add(bu_1);
+				
+				// 테이블 생성
+				JTable table = new JTable() {
+				    @Override
+				    public boolean isCellEditable(int row, int column) {
+				        // 모든 셀을 수정 불가능하게 설정
+				        return false;
 				    }
-	}
+				};
+		        table.getTableHeader().setReorderingAllowed(false);
+		        table.getTableHeader().setResizingAllowed(false);
+		        table.setBackground(new Color(255, 255, 255));
+		        table.setGridColor(new Color(114, 166, 255));
+		        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // 테이블 마우스 클릭 이벤트
+		        table.addMouseListener(new MouseAdapter() {
+		            @Override
+		            public void mousePressed(MouseEvent e) {
+		                if (e.getClickCount() == 2) { // 더블 클릭 확인
+		                    int row = table.getSelectedRow();
+		                    int col = table.getSelectedColumn();
 
+		                    Click.phone = (String) table.getModel().getValueAt(row, 1);
+		                }
+		            }
+		        });
+		        JTableHeader header = table.getTableHeader();
+		        header.setPreferredSize(new Dimension(header.getPreferredSize().width, 35));
+		        table.setModel(new DefaultTableModel(
+		                new Object[][] {},
+		                new String[] { "구분", "제목", "질문일", "답변일" }
+		        ));
+
+		        // 스크롤 패널에 테이블 추가
+		        JScrollPane scrollPane = new JScrollPane(table);
+		        scrollPane.setBackground(new Color(217, 231, 255));
+		        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(114, 166, 255), 2)); // 테두리 선 두께 설정
+		        scrollPane.setBounds(12, 91, 813, 449);
+		        borderpanel.add(scrollPane);
+		        
+		        // 각 열의 너비 설정
+		        table.getColumn("구분").setPreferredWidth(0);
+		        table.getColumn("제목").setPreferredWidth(300);
+		        table.getColumn("질문일").setPreferredWidth(40);
+		        table.getColumn("답변일").setPreferredWidth(40);
+
+		        // 테이블 셀 가운데 정렬
+		        DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+		        dtcr.setHorizontalAlignment(SwingConstants.CENTER);
+		        TableColumnModel tcm = table.getColumnModel();
+		        for (int i = 0; i < tcm.getColumnCount(); i++) {
+		            tcm.getColumn(i).setCellRenderer(dtcr);
+		        }
+		     
+
+		        // 테이블의 행 높이 설정
+		        table.setRowHeight(30); // 원하는 높이로 설정
+
+		        // 테이블 내부 선의 두께 설정 (내부 선은 행 간 구분 선)
+		        table.setIntercellSpacing(new Dimension(0, 0));
+		        table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+		            @Override
+		            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+		                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+		                c.setBackground(Color.WHITE);
+		                ((JComponent) c).setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, new Color(114, 166, 255))); // 내부 선 두께 1로 설정
+		                return c;
+		            }
+		        });
+
+		        // 커스텀 헤더 렌더러 설정
+		        table.getTableHeader().setDefaultRenderer(new CustomHeaderRenderer());
+	}
+	  static class CustomHeaderRenderer implements TableCellRenderer {
+	        private TableCellRenderer defaultRenderer;
+
+	        public CustomHeaderRenderer() {
+	            this.defaultRenderer = new DefaultTableCellRenderer();
+	            ((DefaultTableCellRenderer) defaultRenderer).setHorizontalAlignment(SwingConstants.CENTER);
+	        }
+
+	        @Override
+	        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+	            JComponent renderer = (JComponent) defaultRenderer.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+	            // 특정 컬럼명인 경우 배경색 변경
+	            if ("구분".equals(value) || "제목".equals(value) || "질문일".equals(value) || "답변일".equals(value)) {
+	                renderer.setBackground(new Color(217, 231, 255));
+	                renderer.setForeground(new Color(114, 166, 255));
+	                renderer.setFont(new Font("굴림", Font.BOLD, 18));
+	                renderer.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 1, new Color(114, 166, 255))); // 내부 선 색상 설정
+	            }
+
+	            return renderer;
+	        }
+	    }
 }
