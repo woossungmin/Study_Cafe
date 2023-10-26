@@ -183,7 +183,33 @@ public class Inquiry1 {
 		            tcm.getColumn(i).setCellRenderer(dtcr);
 		        }
 		     
+		        Post po = new Post();
+		        JSONObject data = new JSONObject();
+		        // 데이터를 서버에 전송하고 응답을 받아옵니다.
+		        int number = 0;
+		        DefaultTableModel model = (DefaultTableModel) table.getModel();
+		        JSONArray managerInfoArray;
+				try {
+					data.put("phone", Info.phone);
+			        JSONObject response = po.jsonpost("/FindQNA", data);
+					managerInfoArray = response.getJSONArray("manager_info");
+					for (int i = 0; i < managerInfoArray.length(); i++) {
+					    JSONObject managerInfo = managerInfoArray.getJSONObject(i);
+					    String q_record = managerInfo.getString("q_record");
+					    String q_time = managerInfo.getString("q_time");
+					    String checks = managerInfo.getString("checks");
 
+					    // 만약 checks가 null이면 'X'로 설정하고, 아니면 checks의 값 그대로 사용합니다.
+					    checks = checks.equals("NULL") ? "X" : checks;
+					    number++;
+					    String num_1 = Integer.toString(number);
+					    String[] row = {num_1, q_record, q_time, checks};
+					    model.addRow(row);
+					}
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 		        // 테이블의 행 높이 설정
 		        table.setRowHeight(30); // 원하는 높이로 설정
 

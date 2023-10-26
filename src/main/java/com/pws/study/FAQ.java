@@ -244,6 +244,32 @@ public class FAQ {
 				JButton keyword5 = new JButton("");
 				keyword5.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						DefaultTableModel model = (DefaultTableModel) table.getModel();
+						model.setNumRows(0);
+				        Post po = new Post();
+				        JSONObject data = new JSONObject();
+				        // 데이터를 서버에 전송하고 응답을 받아옵니다.
+				        int number = 0;
+				        JSONArray FaqInfoArray;
+						try {
+							data.put("keyword", keyword5.getText());
+					        JSONObject response = po.jsonpost("/FindFaq", data);
+					        
+							FaqInfoArray = response.getJSONArray("Faq_Info");
+						       for (int i = 0; i < FaqInfoArray.length(); i++) {
+						            JSONObject faqinfo = FaqInfoArray.getJSONObject(i);
+						            String key = faqinfo.getString("keyword");
+						            String question= faqinfo.getString("question");
+						            String answer = faqinfo.getString("answer"); 
+						            number++;
+						            String num_1 = Integer.toString(number);
+						            String[] row = { num_1,question,answer};
+						            model.addRow(row);
+						        }
+						} catch (JSONException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 				});
 				keyword5.setForeground(new Color(114, 166, 255));

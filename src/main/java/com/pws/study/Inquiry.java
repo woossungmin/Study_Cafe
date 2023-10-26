@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,10 +24,13 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Inquiry {
 
 	private JFrame frame;
+	String type = "";
 
 	/**
 	 * Launch the application.
@@ -121,6 +125,13 @@ public class Inquiry {
 			projectname2_1.setBounds(12, 185, 61, 30);
 			panel.add(projectname2_1);
 			 
+			JTextArea textArea = new JTextArea();
+			textArea.setText("\r\n");
+			textArea.setBounds(12, 221, 384, 185);
+			panel.add(textArea);
+			textArea.setBorder(border);
+			textArea.setFont(new Font("한컴산뜻돋움", Font.BOLD, 15));
+			
 			RoundedButton2 bu = new RoundedButton2("등록하기");
 			bu.setText("취소");
 			bu.setFont(new Font("한컴산뜻돋움", Font.BOLD, 15));
@@ -130,19 +141,35 @@ public class Inquiry {
 			RoundedButton2 bu_1 = new RoundedButton2("등록하기");
 			bu_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					Post po = new Post();
+					JSONObject data = new JSONObject();
+					
+					try {
+						data.put("phone", Info.phone);
+						data.put("q_type", type);
+						data.put("q_record", textArea.getText());
+						data.put("answer", "NULL");
+						LocalDateTime now = LocalDateTime.now();
+			            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+			            String formattedDateTime = now.format(formatter);
+			            data.put("q_time", formattedDateTime);
+						data.put("checks", "NULL");
+						JSONObject check = po.jsonpost("/InsertQNA", data);
+						if((check.get("check")).equals("true")) {
+							Message ms = new Message("입력이 완료되었습니다!");
+						}
+						else if((check.get("check")).equals("false")) {
+							Message ms = new Message("입력을 실패하였습니다!");
+						}
+						
+					} catch (JSONException e1) {
+					}
 				}
 			});
 			bu_1.setText("작성하기");
 			bu_1.setFont(new Font("한컴산뜻돋움", Font.BOLD, 15));
 			bu_1.setBounds(108, 418, 95, 37);
 			panel.add(bu_1);
-			
-			JTextArea textArea = new JTextArea();
-			textArea.setText("\r\n");
-			textArea.setBounds(12, 221, 384, 185);
-			panel.add(textArea);
-			textArea.setBorder(border);
-			textArea.setFont(new Font("한컴산뜻돋움", Font.BOLD, 15));
 			
 			JLabel circle = new JLabel("");
 		    circle.setBounds(25, 107, 15, 15);
@@ -203,6 +230,7 @@ public class Inquiry {
 						circle4.setVisible(false);
 						circle5.setVisible(false);
 					}
+					type = typebutton.getText();
 				}
 			});
 			typebutton.setBounds(11, 101, 122, 30);
@@ -221,6 +249,7 @@ public class Inquiry {
 						circle4.setVisible(false);
 						circle5.setVisible(false);
 					}
+					type = typebutton1.getText();
 				}
 			});
 			typebutton1.setBounds(145, 101, 122, 30);
@@ -239,6 +268,7 @@ public class Inquiry {
 						circle4.setVisible(false);
 						circle5.setVisible(false);	
 					}
+					type = typebutton2.getText();
 				}
 			});
 			typebutton2.setBounds(279, 101, 122, 30);
@@ -257,6 +287,7 @@ public class Inquiry {
 						circle4.setVisible(false);
 						circle5.setVisible(false);
 					}
+					type = typebutton3.getText();
 				}
 			});
 			typebutton3.setBounds(11, 141, 122, 30);
@@ -275,6 +306,7 @@ public class Inquiry {
 						circle4.setVisible(true);
 						circle5.setVisible(false);
 					}
+					type = typebutton4.getText();
 				}
 			});
 			typebutton4.setBounds(145, 141, 122, 30);
@@ -293,7 +325,7 @@ public class Inquiry {
 						circle4.setVisible(false);
 						circle5.setVisible(true);
 					}
-					
+					type = typebutton5.getText();
 				}
 			});
 			typebutton5.setBounds(279, 141, 122, 30);
@@ -330,7 +362,7 @@ public class Inquiry {
 				}
 			});
 			FAQ1.setFont(new Font("한컴산뜻돋움", Font.BOLD, 18));
-			FAQ1.setBounds(50, 70, 299, 30);
+			FAQ1.setBounds(50, 50, 299, 30);
 			panel_1.add(FAQ1);
 			FAQ1.setForeground(new Color(147, 186, 255));
 			
@@ -343,7 +375,7 @@ public class Inquiry {
 			});
 			FAQ2.setForeground(new Color(147, 186, 255));
 			FAQ2.setFont(new Font("한컴산뜻돋움", Font.BOLD, 18));
-			FAQ2.setBounds(50, 108, 327, 30);
+			FAQ2.setBounds(50, 88, 327, 30);
 			panel_1.add(FAQ2);
 			
 			JLabel FAQ4 = new JLabel("Q. 제목 ");
@@ -355,7 +387,7 @@ public class Inquiry {
 			});
 			FAQ4.setForeground(new Color(147, 186, 255));
 			FAQ4.setFont(new Font("한컴산뜻돋움", Font.BOLD, 18));
-			FAQ4.setBounds(50, 178, 327, 30);
+			FAQ4.setBounds(50, 158, 327, 30);
 			panel_1.add(FAQ4);
 			
 			JLabel FAQ3 = new JLabel("");
@@ -367,7 +399,7 @@ public class Inquiry {
 			});
 			FAQ3.setForeground(new Color(147, 186, 255));
 			FAQ3.setFont(new Font("한컴산뜻돋움", Font.BOLD, 18));
-			FAQ3.setBounds(50, 143, 327, 30);
+			FAQ3.setBounds(50, 123, 327, 30);
 			panel_1.add(FAQ3);
 			
 			JLabel FAQ5 = new JLabel("");
@@ -379,7 +411,7 @@ public class Inquiry {
 			});
 			FAQ5.setForeground(new Color(147, 186, 255));
 			FAQ5.setFont(new Font("한컴산뜻돋움", Font.BOLD, 18));
-			FAQ5.setBounds(50, 213, 327, 30);
+			FAQ5.setBounds(50, 193, 327, 30);
 			panel_1.add(FAQ5);
 			
 			JLabel FAQ6 = new JLabel("");
@@ -392,7 +424,7 @@ public class Inquiry {
 			});
 			FAQ6.setForeground(new Color(147, 186, 255));
 			FAQ6.setFont(new Font("한컴산뜻돋움", Font.BOLD, 18));
-			FAQ6.setBounds(50, 248, 327, 30);
+			FAQ6.setBounds(50, 228, 327, 30);
 			panel_1.add(FAQ6);
 			
 			JLabel lblFaq = new JLabel("BEST FAQ");
@@ -423,7 +455,7 @@ public class Inquiry {
 			});
 			FAQ7.setForeground(new Color(147, 186, 255));
 			FAQ7.setFont(new Font("한컴산뜻돋움", Font.BOLD, 18));
-			FAQ7.setBounds(50, 283, 327, 30);
+			FAQ7.setBounds(50, 263, 327, 30);
 			panel_1.add(FAQ7);
 			
 			JLabel FAQ8 = new JLabel("");
@@ -436,7 +468,7 @@ public class Inquiry {
 			});
 			FAQ8.setForeground(new Color(147, 186, 255));
 			FAQ8.setFont(new Font("한컴산뜻돋움", Font.BOLD, 18));
-			FAQ8.setBounds(50, 318, 327, 30);
+			FAQ8.setBounds(50, 298, 327, 30);
 			panel_1.add(FAQ8);
 			
 			JLabel FAQ9 = new JLabel("");
@@ -449,7 +481,7 @@ public class Inquiry {
 			});
 			FAQ9.setForeground(new Color(147, 186, 255));
 			FAQ9.setFont(new Font("한컴산뜻돋움", Font.BOLD, 18));
-			FAQ9.setBounds(50, 353, 327, 30);
+			FAQ9.setBounds(50, 333, 327, 30);
 			panel_1.add(FAQ9);
 			
 			JLabel FAQ10 = new JLabel("");
@@ -462,66 +494,66 @@ public class Inquiry {
 			});
 			FAQ10.setForeground(new Color(147, 186, 255));
 			FAQ10.setFont(new Font("한컴산뜻돋움", Font.BOLD, 18));
-			FAQ10.setBounds(50, 388, 327, 30);
+			FAQ10.setBounds(50, 368, 327, 30);
 			panel_1.add(FAQ10);
 			
 			JLabel Q1 = new JLabel("Q.");
 			Q1.setFont(new Font("한컴 고딕", Font.BOLD, 18));
-			Q1.setBounds(22, 70, 21, 30);
+			Q1.setBounds(22, 50, 21, 30);
 			Q1.setForeground(new Color(83,144,255));
 			panel_1.add(Q1);
 			
 			JLabel Q2 = new JLabel("Q.");
 			Q2.setFont(new Font("한컴 고딕", Font.BOLD, 18));
-			Q2.setBounds(22, 108, 21, 30);
+			Q2.setBounds(22, 88, 21, 30);
 			Q2.setForeground(new Color(83,144,255));
 			panel_1.add(Q2);
 			
 			JLabel Q3 = new JLabel("Q.");
 			Q3.setFont(new Font("한컴 고딕", Font.BOLD, 18));
-			Q3.setBounds(22, 143, 21, 30);
+			Q3.setBounds(22, 123, 21, 30);
 			Q3.setForeground(new Color(83,144,255));
 			panel_1.add(Q3);
 			
 			JLabel Q4 = new JLabel("Q.");
 			Q4.setFont(new Font("한컴 고딕", Font.BOLD, 18));
-			Q4.setBounds(22, 178, 21, 30);
+			Q4.setBounds(22, 158, 21, 30);
 			Q4.setForeground(new Color(83,144,255));
 			panel_1.add(Q4);
 			
 			JLabel Q5 = new JLabel("Q.");
 			Q5.setFont(new Font("한컴 고딕", Font.BOLD, 18));
-			Q5.setBounds(22, 213, 21, 30);
+			Q5.setBounds(22, 193, 21, 30);
 			Q5.setForeground(new Color(83,144,255));
 			panel_1.add(Q5);
 			
 			JLabel Q6 = new JLabel("Q.");
 			Q6.setFont(new Font("한컴 고딕", Font.BOLD, 18));
-			Q6.setBounds(22, 248, 21, 30);
+			Q6.setBounds(22, 228, 21, 30);
 			Q6.setForeground(new Color(83,144,255));
 			panel_1.add(Q6);
 			
 			JLabel Q7 = new JLabel("Q.");
 			Q7.setFont(new Font("한컴 고딕", Font.BOLD, 18));
-			Q7.setBounds(22, 283, 21, 30);
+			Q7.setBounds(22, 263, 21, 30);
 			Q7.setForeground(new Color(83,144,255));
 			panel_1.add(Q7);
 			
 			JLabel Q8 = new JLabel("Q.");
 			Q8.setFont(new Font("한컴 고딕", Font.BOLD, 18));
-			Q8.setBounds(22, 318, 21, 30);
+			Q8.setBounds(22, 298, 21, 30);
 			Q8.setForeground(new Color(83,144,255));
 			panel_1.add(Q8);
 			
 			JLabel Q9 = new JLabel("Q.");
 			Q9.setFont(new Font("한컴 고딕", Font.BOLD, 18));
-			Q9.setBounds(22, 353, 21, 30);
+			Q9.setBounds(22, 333, 21, 30);
 			Q9.setForeground(new Color(83,144,255));
 			panel_1.add(Q9);
 			
 			JLabel Q10 = new JLabel("Q.");
 			Q10.setFont(new Font("한컴 고딕", Font.BOLD, 18));
-			Q10.setBounds(22, 388, 21, 30);
+			Q10.setBounds(22, 368, 21, 30);
 			Q10.setForeground(new Color(83,144,255));
 			panel_1.add(Q10);
 			
