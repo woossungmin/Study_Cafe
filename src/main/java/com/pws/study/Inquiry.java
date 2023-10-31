@@ -126,11 +126,12 @@ public class Inquiry {
 			panel.add(projectname2_1);
 			 
 			JTextArea textArea = new JTextArea();
-			textArea.setText("\r\n");
+			textArea.setText("");
 			textArea.setBounds(12, 221, 384, 185);
 			panel.add(textArea);
 			textArea.setBorder(border);
 			textArea.setFont(new Font("한컴산뜻돋움", Font.BOLD, 15));
+			textArea.setLineWrap(true); // 자동 줄 바꿈 활성화
 			
 			RoundedButton2 bu = new RoundedButton2("등록하기");
 			bu.setText("취소");
@@ -147,7 +148,7 @@ public class Inquiry {
 					try {
 						data.put("phone", Info.phone);
 						data.put("q_type", type);
-						data.put("q_record", textArea.getText());
+						data.put("q_record", textArea.getText().replace("\n", " ")); // 수정된 부분
 						data.put("answer", "NULL");
 						LocalDateTime now = LocalDateTime.now();
 			            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -367,7 +368,7 @@ public class Inquiry {
 			FAQ1.setForeground(new Color(147, 186, 255));
 			
 			JLabel FAQ2 = new JLabel("");
-			FAQ2.addMouseListener(new MouseAdapter() {
+			FAQ2.addMouseListener(new MouseAdapter() { 
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					SelectFaq se = new SelectFaq(FAQ2.getText());

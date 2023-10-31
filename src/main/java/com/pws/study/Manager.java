@@ -131,6 +131,12 @@ public class Manager {
 	  	  	}
 	  	  });
 	  	  JButton qabutton = new JButton("Q&A");
+	  	  qabutton.addActionListener(new ActionListener() {
+	  	  	public void actionPerformed(ActionEvent e) {
+	  	  	QnaPanel qn = new QnaPanel(borderPanel,homeButton,closeButton);
+  	  		switchPanel(qn);
+	  	  	}
+	  	  });
 	  	  JButton caffebutton = new JButton("카페");
 	  	  
 	      JButton closebutton = new JButton("");

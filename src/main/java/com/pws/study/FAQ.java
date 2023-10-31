@@ -89,25 +89,40 @@ public class FAQ {
 
 	      borderpanel.setBounds(10, 10, 837, 593);
 	      mainpanel.add(borderpanel);
-	      borderpanel.setLayout(null);
 	      borderpanel.setBackground(new Color(255,255,255));
 	      borderpanel.setBorder(border);
+	      borderpanel.setLayout(null);
+
+	      JPanel panel = new JPanel();
+			panel.setBounds(520, 54, 289, 61);
+			borderpanel.add(panel);
+			panel.setBackground(new Color(255,255,255));
+		    panel.setBorder(border1);
+			panel.setVisible(false);
+			panel.setLayout(null);
+			
+		      borderpanel.addMouseListener(new MouseAdapter() {
+			      	@Override
+			      	public void mouseClicked(MouseEvent e) {
+			      		panel.setVisible(false);
+			      	}
+			      });
 	      
 	      JLabel projectname = new JLabel("포텐스터디카페");
+	      projectname.setBounds(313, 10, 338, 53);
 	      projectname.setFont(new Font("굴림", Font.BOLD, 35));
 	      projectname.setForeground(new Color(114, 166, 255));
-	      projectname.setBounds(313, 10, 338, 53);
 	      borderpanel.add(projectname);
 	      
 	      JLabel projectname2 = new JLabel("POTEN STUDY CAFE");
+	      projectname2.setBounds(265, 54, 398, 37);
 	      projectname2.setForeground(new Color(114, 166, 255));
 	      projectname2.setFont(new Font("굴림", Font.BOLD, 30));
-	      projectname2.setBounds(265, 54, 398, 37);
 	      borderpanel.add(projectname2);
 	      
 	      ImageIcon icon = new ImageIcon("C:\\Users\\user\\Desktop");
 	      JLabel label = new JLabel(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\clock.png"));
-	      label.setBounds(265,10,43,43);
+	      label.setBounds(265, 10, 43, 43);
 	      borderpanel.add(label);
 	      
 	   // 테이블 생성
@@ -146,9 +161,9 @@ public class FAQ {
 	   	
 	   	        // 스크롤 패널에 테이블 추가
 	   	        JScrollPane scrollPane = new JScrollPane(table);
-	   	        scrollPane.setBackground(new Color(217, 231, 255));
-	   	        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(114, 166, 255), 2)); // 테두리 선 두께 설정
 	   	        scrollPane.setBounds(12, 166, 813, 417);
+	   	        scrollPane.setBackground(new Color(217, 231, 255));
+	   	        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(114, 166, 255), 2));
 	   	        borderpanel.add(scrollPane);
 	   	        
 	   	        // 각 열의 너비 설정
@@ -183,6 +198,7 @@ public class FAQ {
 	   	        // 커스텀 헤더 렌더러 설정
 	   	        table.getTableHeader().setDefaultRenderer(new CustomHeaderRenderer());
 		      JButton BackButton = new JButton("");
+		      BackButton.setBounds(0, 0, 45, 40);
 				BackButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						frame.dispose();
@@ -190,39 +206,25 @@ public class FAQ {
 					}
 				});
 				BackButton.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\back.png"));
-				BackButton.setBounds(0, 0, 45, 40);
 				borderpanel.add(BackButton);
 				BackButton.setBorderPainted(false); 
 				BackButton.setContentAreaFilled(false);
 				BackButton.setFocusPainted(false);
 				
 				  JButton qeustion = new JButton("");
+				  qeustion.setBounds(775, 10, 50, 50);
 			      qeustion.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\kakao-talk.png"));
 				qeustion.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						QR qr = new QR();
 					}
 				});
-				qeustion.setBounds(775, 10, 50, 50);
 				qeustion.setBorderPainted(false);
 				qeustion.setContentAreaFilled(false);
 				qeustion.setFocusPainted(false);
 				borderpanel.add(qeustion);
 				
-				JPanel panel = new JPanel();
-				panel.setBounds(536, 60, 289, 61);
-				borderpanel.add(panel);
-				panel.setBackground(new Color(255,255,255));
-			    panel.setBorder(border1);
-				panel.setVisible(false);
-				panel.setLayout(null);
 				
-			      borderpanel.addMouseListener(new MouseAdapter() {
-				      	@Override
-				      	public void mouseClicked(MouseEvent e) {
-				      		panel.setVisible(false);
-				      	}
-				      });
 				JLabel text = new JLabel("");
 				text.setBounds(16, 7, 261, 15);
 				panel.add(text);
@@ -241,7 +243,8 @@ public class FAQ {
 				text_1_1.setBounds(16, 40, 214, 15);
 				panel.add(text_1_1);
 				
-				JButton keyword5 = new JButton("");
+				RoundedButton3 keyword5 = new RoundedButton3("");
+				keyword5.setBounds(610, 115, 105, 37);
 				keyword5.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -272,29 +275,35 @@ public class FAQ {
 						}
 					}
 				});
-				keyword5.setForeground(new Color(114, 166, 255));
+				keyword5.setTextColor(new Color(114, 166, 255));
 				keyword5.setFont(new Font("굴림", Font.BOLD, 17));
 				keyword5.setFocusPainted(false);
 				keyword5.setBorderPainted(false);
-				keyword5.setBackground(Color.WHITE);
-				keyword5.setBounds(610, 115, 105, 37);
+				keyword5.setBackgroundColor(new Color(205,224,255));
 				borderpanel.add(keyword5);
 				
 			    RoundedButton2 inquiry = new RoundedButton2("문의하기"); 
+			    inquiry.setBounds(730, 120, 95, 30);
 				inquiry.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
 						panel.setVisible(true);
 						if(e.getClickCount()>1)
 						{
-							frame.dispose();
-							Inquiry in = new Inquiry();
+							if(!Info.phone.equals("NULL"))
+							{
+								frame.dispose();
+								Inquiry in = new Inquiry();
+							}else {
+								Message ms = new Message("로그인 후 이용해주세요!");
+							}
+
 						}
 					}
 				});
 				inquiry.setFont(new Font("굴림", Font.BOLD, 15));
-				inquiry.setBounds(730, 126, 95, 30);
 				borderpanel.add(inquiry);				
-		  JButton keyword = new JButton("");
+		  RoundedButton3 keyword = new RoundedButton3("");
+		  keyword.setBounds(10, 115, 105, 37);
 			keyword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -326,15 +335,15 @@ public class FAQ {
 				}
 			});	
 			keyword.setFont(new Font("굴림", Font.BOLD, 17));
-			keyword.setBounds(10, 115, 105, 37);
 			borderpanel.add(keyword);
-		    keyword.setForeground(new Color(114, 166, 255));
+		    keyword.setTextColor(new Color(114, 166, 255));
 			keyword.setBorderPainted(false);
-			keyword.setBackground(new Color(255,255,255));
+			keyword.setBackgroundColor(new Color(205,224,255));
 			keyword.setFocusPainted(false);
 			borderpanel.add(keyword);
 			
-	        JButton keyword1 = new JButton("");
+	        RoundedButton3 keyword1 = new RoundedButton3("");
+	        keyword1.setBounds(130, 115, 105, 37);
 	        keyword1.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -365,15 +374,15 @@ public class FAQ {
 						}
 	        	}
 	        });
-	        keyword1.setForeground(new Color(114, 166, 255));
+	        keyword1.setTextColor(new Color(114, 166, 255));
 	        keyword1.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword1.setFocusPainted(false);
 	        keyword1.setBorderPainted(false);
-	        keyword1.setBackground(Color.WHITE);
-	        keyword1.setBounds(130, 115, 105, 37);
+	        keyword1.setBackgroundColor(new Color(205,224,255));
 	        borderpanel.add(keyword1);
 	        
-	        JButton keyword2 = new JButton("");
+	        RoundedButton3 keyword2 = new RoundedButton3("");
+	        keyword2.setBounds(250, 115, 105, 37);
 	        keyword2.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -404,15 +413,15 @@ public class FAQ {
 						}
 	        	}
 	        });
-	        keyword2.setForeground(new Color(114, 166, 255));
+	        keyword2.setTextColor(new Color(114, 166, 255));
 	        keyword2.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword2.setFocusPainted(false);
 	        keyword2.setBorderPainted(false);
-	        keyword2.setBackground(Color.WHITE);
-	        keyword2.setBounds(250, 115, 105, 37);
+	        keyword2.setBackgroundColor(new Color(205,224,255));
 	        borderpanel.add(keyword2);
 	        
-	        JButton keyword3 = new JButton("");
+	        RoundedButton3 keyword3 = new RoundedButton3("");
+	        keyword3.setBounds(370, 115, 105, 37);
 	        keyword3.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -443,15 +452,15 @@ public class FAQ {
 						}
 	        	}
 	        });
-	        keyword3.setForeground(new Color(114, 166, 255));
+	        keyword3.setTextColor(new Color(114, 166, 255));
 	        keyword3.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword3.setFocusPainted(false);
 	        keyword3.setBorderPainted(false);
-	        keyword3.setBackground(Color.WHITE);
-	        keyword3.setBounds(370, 115, 105, 37);
+	        keyword3.setBackgroundColor(new Color(205,224,255));
 	        borderpanel.add(keyword3);
 	        
-	        JButton keyword4 = new JButton("");
+	        RoundedButton3 keyword4 = new RoundedButton3("");
+	        keyword4.setBounds(490, 115, 105, 37);
 	        keyword4.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -482,12 +491,11 @@ public class FAQ {
 						}
 	        	}
 	        });
-	        keyword4.setForeground(new Color(114, 166, 255));
+	        keyword4.setTextColor(new Color(114, 166, 255));
 	        keyword4.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword4.setFocusPainted(false);
 	        keyword4.setBorderPainted(false);
-	        keyword4.setBackground(Color.WHITE);
-	        keyword4.setBounds(490, 115, 105, 37);
+	        keyword4.setBackgroundColor(new Color(205,224,255));
 	        borderpanel.add(keyword4);	
 	        JSONObject data = new JSONObject();
 	        try {

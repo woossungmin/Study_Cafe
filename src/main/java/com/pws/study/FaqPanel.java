@@ -119,7 +119,7 @@ public class FaqPanel extends JPanel {
 	        // 커스텀 헤더 렌더러 설정
 	        table.getTableHeader().setDefaultRenderer(new CustomHeaderRenderer());
 	        
-	        JButton keyword = new JButton("");
+	        RoundedButton3 keyword = new RoundedButton3("");
 			keyword.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if(keyword.getText().equals("X")) {
@@ -166,15 +166,15 @@ public class FaqPanel extends JPanel {
 			    }
 			});
 			keyword.setFont(new Font("굴림", Font.BOLD, 17));
-			keyword.setBounds(10, 10, 105, 37);
+			keyword.setBounds(12, 10, 105, 37);
 			borderpanel.add(keyword);
-		    keyword.setForeground(new Color(114, 166, 255));
+		    keyword.setTextColor(new Color(114, 166, 255));
 			keyword.setBorderPainted(false);
-			keyword.setBackground(new Color(255,255,255));
+			keyword.setBackgroundColor(new Color(205,224,255));
 			keyword.setFocusPainted(false);
 			add(keyword);
 			
-	        JButton keyword1 = new JButton("");
+	        RoundedButton3 keyword1 = new RoundedButton3("");
 	        keyword1.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
 					if(keyword1.getText().equals("X")) {
@@ -220,15 +220,15 @@ public class FaqPanel extends JPanel {
 			        }
 			    }
 			});
-	        keyword1.setForeground(new Color(114, 166, 255));
+	        keyword1.setTextColor(new Color(114, 166, 255));
 	        keyword1.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword1.setFocusPainted(false);
 	        keyword1.setBorderPainted(false);
-	        keyword1.setBackground(Color.WHITE);
-	        keyword1.setBounds(130, 10, 105, 37);
+	        keyword1.setBackgroundColor(new Color(205,224,255));
+	        keyword1.setBounds(132, 10, 105, 37);
 	        add(keyword1);
 	        
-	        JButton keyword2 = new JButton("");
+	        RoundedButton3 keyword2 = new RoundedButton3("");
 	        keyword2.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
 					if(keyword2.getText().equals("X")) {
@@ -274,15 +274,15 @@ public class FaqPanel extends JPanel {
 			        }
 			    }
 			});
-	        keyword2.setForeground(new Color(114, 166, 255));
+	        keyword2.setTextColor(new Color(114, 166, 255));
 	        keyword2.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword2.setFocusPainted(false);
 	        keyword2.setBorderPainted(false);
-	        keyword2.setBackground(Color.WHITE);
-	        keyword2.setBounds(250, 10, 105, 37);
+	        keyword2.setBackgroundColor(new Color(205,224,255));
+	        keyword2.setBounds(252, 10, 105, 37);
 	        add(keyword2);
 	        
-	        JButton keyword3 = new JButton("");
+	        RoundedButton3 keyword3 = new RoundedButton3("");
 	        keyword3.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
 					if(keyword3.getText().equals("X")) {
@@ -328,15 +328,15 @@ public class FaqPanel extends JPanel {
 			        }
 			    }
 			});
-	        keyword3.setForeground(new Color(114, 166, 255));
+	        keyword3.setTextColor(new Color(114, 166, 255));
 	        keyword3.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword3.setFocusPainted(false);
 	        keyword3.setBorderPainted(false);
-	        keyword3.setBackground(Color.WHITE);
-	        keyword3.setBounds(370, 10, 105, 37);
+	        keyword3.setBackgroundColor(new Color(205,224,255));
+	        keyword3.setBounds(372, 10, 105, 37);
 	        add(keyword3);
 	        
-	        JButton keyword4 = new JButton("");
+	        RoundedButton3 keyword4 = new RoundedButton3("");
 	        keyword4.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
 					if(keyword4.getText().equals("X")) {
@@ -382,12 +382,12 @@ public class FaqPanel extends JPanel {
 			        }
 			    }
 			});
-	        keyword4.setForeground(new Color(114, 166, 255));
+	        keyword4.setTextColor(new Color(114, 166, 255));
 	        keyword4.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword4.setFocusPainted(false);
 	        keyword4.setBorderPainted(false);
-	        keyword4.setBackground(Color.WHITE);
-	        keyword4.setBounds(490, 10, 105, 37);
+	        keyword4.setBackgroundColor(new Color(205,224,255));
+	        keyword4.setBounds(492, 10, 105, 37);
 	        add(keyword4);
 	        
 	        RoundedButton2 btnNewButton = new RoundedButton2("FAQ 등록");
@@ -397,10 +397,10 @@ public class FaqPanel extends JPanel {
 	        	}
 	        });
 	        btnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
-	        btnNewButton.setBounds(720, 17, 80, 30);
+	        btnNewButton.setBounds(722, 10, 80, 37);
 	        add(btnNewButton);
 	        
-	        JButton keyword5 = new JButton("");
+	        RoundedButton3 keyword5 = new RoundedButton3("");
 	        keyword5.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
 	        		if(keyword5.getText().equals("X")) {
@@ -446,12 +446,12 @@ public class FaqPanel extends JPanel {
 			        }
 			    }
 			});
-	        keyword5.setForeground(new Color(114, 166, 255));
+	        keyword5.setTextColor(new Color(114, 166, 255));
 	        keyword5.setFont(new Font("굴림", Font.BOLD, 17));
 	        keyword5.setFocusPainted(false);
 	        keyword5.setBorderPainted(false);
-	        keyword5.setBackground(Color.WHITE);
-	        keyword5.setBounds(610, 10, 105, 37);
+	        keyword5.setBackgroundColor(new Color(205,224,255));
+	        keyword5.setBounds(612, 10, 105, 37);
 	        add(keyword5);
 	        
 	        JSONObject data = new JSONObject();

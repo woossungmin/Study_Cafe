@@ -114,6 +114,7 @@ public class ModifyFaq {
 		question.setBorder(border);
 		question.setBackground(new Color(240,240,240));
 		question.setForeground(new Color(114,166,255));
+		question.setEditable(false);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("답      변 : ");
 		lblNewLabel_1_1.setForeground(new Color(114, 166, 255));

@@ -66,7 +66,7 @@ public class Inquiry1 {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		   frame = new JFrame();
+		   	frame = new JFrame();
 		      frame.setBounds(210, 20, 870, 650);
 		      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		      frame.getContentPane().setLayout(null);
@@ -151,7 +151,9 @@ public class Inquiry1 {
 		                    int row = table.getSelectedRow();
 		                    int col = table.getSelectedColumn();
 
-		                    Click.phone = (String) table.getModel().getValueAt(row, 1);
+		                    Click.question = (String) table.getModel().getValueAt(row, 1);
+		                    Click.phone = Info.phone;
+		                    CheckAnswer ch = new CheckAnswer(frame);
 		                }
 		            }
 		        });
@@ -250,5 +252,6 @@ public class Inquiry1 {
 
 	            return renderer;
 	        }
-	    }
+	  }
+
 }

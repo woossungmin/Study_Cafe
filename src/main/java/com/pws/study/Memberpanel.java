@@ -92,7 +92,7 @@ public class Memberpanel extends JPanel {
         JSONArray managerInfoArray;
 		try {
 			data.put("0", "0");
-	        JSONObject response = po.jsonpost("/FindManager", data);
+	        JSONObject response = po.jsonpost("/FindAllQna", data);
 	        
 			managerInfoArray = response.getJSONArray("manager_info");
 		       for (int i = 0; i < managerInfoArray.length(); i++) {

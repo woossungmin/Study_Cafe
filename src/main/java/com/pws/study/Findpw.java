@@ -109,21 +109,21 @@ public class Findpw {
 	      keypadpanel.setBorder(border2);
 	      borderpanel.add(keypadpanel);
 	      keypadpanel.setLayout(null);
-	      keypadpanel.setBackground(new Color(255,255,255));
+	      keypadpanel.setBackground(new Color(217,231,255));
 	      
 	      JPanel doublekeypadpanel_1 = new JPanel();
 	      doublekeypadpanel_1.setBounds(12, 10, 789, 208);
 	      keypadpanel.add(doublekeypadpanel_1);
 	      doublekeypadpanel_1.setLayout(null);
-	      doublekeypadpanel_1.setBackground(Color.WHITE);
 	      doublekeypadpanel_1.setVisible(false);
+	      doublekeypadpanel_1.setBackground(new Color(217,231,255));
 	      
 	      JPanel doublekeypadpanel = new JPanel();
 	      doublekeypadpanel.setBounds(12, 10, 789, 208);
 	      keypadpanel.add(doublekeypadpanel);
 	      doublekeypadpanel.setLayout(null);
-	      doublekeypadpanel.setBackground(new Color(255,255,255));
 	      doublekeypadpanel.setVisible(true);
+	      doublekeypadpanel.setBackground(new Color(217,231,255));
 	      
 	      JButton BackButton = new JButton("");
 			BackButton.addActionListener(new ActionListener() {
