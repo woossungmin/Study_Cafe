@@ -137,7 +137,13 @@ public class Manager {
   	  		switchPanel(qn);
 	  	  	}
 	  	  });
-	  	  JButton caffebutton = new JButton("카페");
+	  	  JButton eventbutton = new JButton("행사 상품");
+	  	  eventbutton.addActionListener(new ActionListener() {
+	  	  	public void actionPerformed(ActionEvent e) {
+	  	  		EventPanel ea = new EventPanel(borderPanel,homeButton,closeButton);
+	  	  		switchPanel(ea);
+	  	  	}
+	  	  });
 	  	  
 	      JButton closebutton = new JButton("");
 	      closebutton.addActionListener(new ActionListener() {
@@ -158,7 +164,7 @@ public class Manager {
 	      closeButton = closebutton;
 	  	  
 	      Loginpanel lo = new Loginpanel(homePanel,borderPanel,homebutton,closeButton,modifybutton,memberbutton,seatbutton,lockbutton,ticketbutton,
-	    		  salesbutton,faqbutton,qabutton,caffebutton);
+	    		  salesbutton,faqbutton,qabutton,eventbutton);
 	      lo.setBounds(23, 45, 813, 568);
 	      borderpanel.add(lo);
 	      loginPanel = lo;
@@ -349,25 +355,25 @@ public class Manager {
 	  	  qabutton.setBorderPainted(false);
 	  	  panel.add(qabutton);
 	  	  
-	  	  caffebutton.setBounds(37, 464, 100, 43);
-	      caffebutton.getModel().addChangeListener(new ChangeListener() {
+	  	  eventbutton.setBounds(37, 464, 134, 43);
+	      eventbutton.getModel().addChangeListener(new ChangeListener() {
 	    	    @Override
 	    	    public void stateChanged(ChangeEvent e) {
 	    	        ButtonModel model = (ButtonModel) e.getSource();
 	    	        
 	    	        if (model.isRollover()) {
-	    	            caffebutton.setForeground(Color.WHITE); // 글자 색상 변경
+	    	            eventbutton.setForeground(Color.WHITE); // 글자 색상 변경
 	    	        } else {
-	    	            caffebutton.setForeground(new Color(114, 166, 255)); // 원래 글자 색상으로 변경
+	    	            eventbutton.setForeground(new Color(114, 166, 255)); // 원래 글자 색상으로 변경
 	    	        }
 	    	    }
 	    	});
-	  	  caffebutton.setForeground(new Color(114, 166, 244));
-	  	  caffebutton.setFont(new Font("굴림", Font.BOLD, 20));
-	  	  caffebutton.setFocusPainted(false);
-	  	  caffebutton.setContentAreaFilled(false);
-	  	  caffebutton.setBorderPainted(false);
-	  	  panel.add(caffebutton);
+	  	  eventbutton.setForeground(new Color(114, 166, 244));
+	  	  eventbutton.setFont(new Font("굴림", Font.BOLD, 20));
+	  	  eventbutton.setFocusPainted(false);
+	  	  eventbutton.setContentAreaFilled(false);
+	  	  eventbutton.setBorderPainted(false);
+	  	  panel.add(eventbutton);
 	  	  
 	  	  if(Info2.phone.equals("NULL")) {
 	  		  memberbutton.setEnabled(false);
@@ -375,7 +381,7 @@ public class Manager {
 	  		  lockbutton.setEnabled(false);
 	  		  faqbutton.setEnabled(false);
 	  		  qabutton.setEnabled(false);
-	  		  caffebutton.setEnabled(false);
+	  		  eventbutton.setEnabled(false);
 	  		  ticketbutton.setEnabled(false);
 	  		  salesbutton.setEnabled(false);
 	  		  homebutton.setEnabled(false);
@@ -387,7 +393,7 @@ public class Manager {
 	  		  lockbutton.setEnabled(true);
 	  		  faqbutton.setEnabled(true);
 	  		  qabutton.setEnabled(true);
-	  		  caffebutton.setEnabled(true);
+	  		  eventbutton.setEnabled(true);
 	  		  ticketbutton.setEnabled(true);
 	  		  salesbutton.setEnabled(true);
 	  		  homebutton.setEnabled(true);
@@ -435,7 +441,7 @@ public class Manager {
 	  	  panel.add(qalabel);
 	  	  
 	  	  JLabel caffelabel = new JLabel("");
-	  	  caffelabel.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\coffee-mug.png"));
+	  	  caffelabel.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\petard.png"));
 	  	  caffelabel.setBounds(14, 466, 32, 32);
 	  	  panel.add(caffelabel);
 	  	  

@@ -148,14 +148,9 @@ public class Login {
 	   keypanel2.setLayout(null);
 	   keypanel2.setBackground(new Color(255,255,255));
 	   
-	  JPanel nomembership = new JPanel();
-      tabbedPane.addTab("비회원", null, nomembership, null);
-      nomembership.setLayout(null);
-      nomembership.setBackground(new Color(255,255,255)); 
 	  
       JPanel nokeypanel = new JPanel();
       nokeypanel.setBounds(291, 14, 167, 108);
-      nomembership.add(nokeypanel);
       nokeypanel.setLayout(null);
       nokeypanel.setBackground(new Color(255,255,255));
       
@@ -164,7 +159,6 @@ public class Login {
       nokeypanel_1.setBackground(new Color(255,255,255));
       nokeypanel_1.setBounds(291, 14, 167, 108);
       nokeypanel_1.setVisible(false);
-      nomembership.add(nokeypanel_1);
     
   	  JLabel Memberlabel_1 = new JLabel("");
 	  JLabel Memberlabel = new JLabel("");
@@ -230,7 +224,6 @@ public class Login {
       	}
       });
       logoutbutton2.setBounds(12, 78, 235, 23);
-      nomembership.add(logoutbutton2); 
       
       RoundedButton2 one = new RoundedButton2("1일 이용권");
       one.setText("시간 이용권");
@@ -293,18 +286,23 @@ public class Login {
       lock.setBounds(521, 156, 170, 95);
       borderpanel.add(lock);
       
-      RoundedButton2 coffe = new RoundedButton2("커피");
-      coffe.setFont(new Font("굴림", Font.BOLD, 20));
-      coffe.setText("커피 ");
-      coffe.setBounds(521, 267, 170, 95);
-      borderpanel.add(coffe);
+      RoundedButton2 event = new RoundedButton2("행사 상품");
+      event.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+      		
+      	}
+      });
+      event.setFont(new Font("굴림", Font.BOLD, 20));
+      event.setText("행사 상품");
+      event.setBounds(521, 267, 170, 95);
+      borderpanel.add(event);
       
 	  one.setEnabled(false);
 	  move.setEnabled(false);
 	  spirit.setEnabled(false);
 	  checkout.setEnabled(false);
 	  lock.setEnabled(false);
-	  coffe.setEnabled(false);
+	  event.setEnabled(false);
 	  
 	  JLabel phonelabel = new JLabel("전화번호 : ");
 	  phonelabel.setFont(new Font("굴림", Font.BOLD, 12));
@@ -315,14 +313,15 @@ public class Login {
 	  Memberlabel.setForeground(new Color(255, 100, 100));
 	  Memberlabel.setBounds(28, 15, 430, 34); 
 	  textpanel3.add(Memberlabel); 
-	  JButton payment = new JButton("결제 내역");
+	  JButton payment = new JButton("");
+	  payment.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\banknote.png"));
 	  payment.addActionListener(new ActionListener() {
 	  	public void actionPerformed(ActionEvent e) {
 	  		PaymentDetails pa = new PaymentDetails();
 	  	}
 	  });
 		payment.setFont(new Font("굴림", Font.BOLD, 16));
-		payment.setBounds(0, 13, 115, 23);
+		payment.setBounds(12, 10, 64, 64);
 		borderpanel.add(payment);
 		payment.setBorderPainted(false);
 		payment.setContentAreaFilled(false);
@@ -353,7 +352,7 @@ public class Login {
 	    	spirit.setEnabled(true);
 	    	checkout.setEnabled(true);
 	    	lock.setEnabled(true);
-	    	coffe.setEnabled(true);
+	    	event.setEnabled(true);
 	    	try {	
 	    		data.put("phone", Info.phone);
 	    		check = po.jsonpost("/FindSeatTime", data);
@@ -564,7 +563,7 @@ public class Login {
 			    	spirit.setEnabled(true);
 			    	checkout.setEnabled(true);
 			    	lock.setEnabled(true);
-			    	coffe.setEnabled(true);
+			    	event.setEnabled(true);
 			    	try {
 			    		data.put("phone", Info.phone);
 			    		check = po.jsonpost("/FindSeatTime", data);
@@ -743,7 +742,7 @@ public class Login {
 		    spirit.setEnabled(false);
 		    checkout.setEnabled(false);
 		    lock.setEnabled(false);
-		    coffe.setEnabled(false);
+		    event.setEnabled(false);
 		    payment.setVisible(false);
     	}
     });
@@ -1539,12 +1538,10 @@ public class Login {
       JLabel phonelabel2 = new JLabel("전화번호 : ");
       phonelabel2.setFont(new Font("굴림", Font.BOLD, 12));
       phonelabel2.setBounds(12, 35, 75, 15);
-      nomembership.add(phonelabel2);
       
       phonetext2 = new JTextField();
       phonetext2.setColumns(10);
       phonetext2.setBounds(85, 35, 162, 21);
-      nomembership.add(phonetext2);
       phonetext2.setBorder(border);
        
       JLabel projectname = new JLabel("포텐스터디카페");
@@ -1597,14 +1594,14 @@ public class Login {
       uselabel4.setFont(new Font("굴림", Font.BOLD, 13));
       
       JButton faq = new JButton("");
-      faq.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\faq (3).png"));
+      faq.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Study Cafe이미지 파일\\question.png"));
 	faq.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			FAQ qu = new FAQ();
 			frame.dispose();
 		}
 	});
-	faq.setBounds(761, 5, 64, 64);
+	faq.setBounds(761, 5, 64, 59);
 	borderpanel.add(faq);
 	faq.setBorderPainted(false);
 	faq.setContentAreaFilled(false);
