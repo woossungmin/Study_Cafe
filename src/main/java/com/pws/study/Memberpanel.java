@@ -1,6 +1,7 @@
 package com.pws.study;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -66,6 +67,27 @@ public class Memberpanel extends JPanel {
         scrollPane.setBackground(new Color(217, 231, 255));
         scrollPane.setBorder(BorderFactory.createLineBorder(new Color(114, 166, 255), 2)); // 테두리 선 두께 설정
         scrollPane.setBounds(40, 91, 738, 467);
+        scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+        @Override
+        protected void configureScrollBarColors() {
+            this.thumbColor = new Color(217, 231, 255);
+        }
+        @Override
+        protected JButton createDecreaseButton(int orientation) {
+            JButton button = super.createDecreaseButton(orientation);
+            button.setBackground(new Color(217, 231, 255)); // 스크롤바 화살표 색상
+            button.setBorder(BorderFactory.createLineBorder(new Color(217, 231, 255))); // 스크롤바 화살표 테두리 색상
+            return button;
+        }
+
+        @Override
+        protected JButton createIncreaseButton(int orientation) {
+            JButton button = super.createIncreaseButton(orientation);
+            button.setBackground(new Color(217, 231, 255)); // 스크롤바 화살표 색상
+            button.setBorder(BorderFactory.createLineBorder(new Color(217, 231, 255))); // 스크롤바 화살표 테두리 색상
+            return button;
+        }
+        });
         add(scrollPane);
         
         // 각 열의 너비 설정
@@ -92,7 +114,7 @@ public class Memberpanel extends JPanel {
         JSONArray managerInfoArray;
 		try {
 			data.put("0", "0");
-	        JSONObject response = po.jsonpost("/FindAllQna", data);
+	        JSONObject response = po.jsonpost("/FindManager", data);
 	        
 			managerInfoArray = response.getJSONArray("manager_info");
 		       for (int i = 0; i < managerInfoArray.length(); i++) {

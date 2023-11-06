@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -164,6 +165,27 @@ public class FAQ {
 	   	        scrollPane.setBounds(12, 166, 813, 417);
 	   	        scrollPane.setBackground(new Color(217, 231, 255));
 	   	        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(114, 166, 255), 2));
+	   	        scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+	   	        @Override
+	   	        protected void configureScrollBarColors() {
+	   	            this.thumbColor = new Color(217, 231, 255);
+	   	        }
+	   	        @Override
+	   	        protected JButton createDecreaseButton(int orientation) {
+	   	            JButton button = super.createDecreaseButton(orientation);
+	   	            button.setBackground(new Color(217, 231, 255)); // 스크롤바 화살표 색상
+	   	            button.setBorder(BorderFactory.createLineBorder(new Color(217, 231, 255))); // 스크롤바 화살표 테두리 색상
+	   	            return button;
+	   	        }
+
+	   	        @Override
+	   	        protected JButton createIncreaseButton(int orientation) {
+	   	            JButton button = super.createIncreaseButton(orientation);
+	   	            button.setBackground(new Color(217, 231, 255)); // 스크롤바 화살표 색상
+	   	            button.setBorder(BorderFactory.createLineBorder(new Color(217, 231, 255))); // 스크롤바 화살표 테두리 색상
+	   	            return button;
+	   	        }
+	   	        });
 	   	        borderpanel.add(scrollPane);
 	   	        
 	   	        // 각 열의 너비 설정

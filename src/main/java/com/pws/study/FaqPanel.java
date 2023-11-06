@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -84,6 +85,27 @@ public class FaqPanel extends JPanel {
 	        JScrollPane scrollPane = new JScrollPane(table);
 	        scrollPane.setBackground(new Color(217, 231, 255));
 	        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(114, 166, 255), 2)); // 테두리 선 두께 설정
+	        scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+	            @Override
+	            protected void configureScrollBarColors() {
+	                this.thumbColor = new Color(217, 231, 255);
+	            }
+	            @Override
+	            protected JButton createDecreaseButton(int orientation) {
+	                JButton button = super.createDecreaseButton(orientation);
+	                button.setBackground(new Color(217, 231, 255)); // 스크롤바 화살표 색상
+	                button.setBorder(BorderFactory.createLineBorder(new Color(217, 231, 255))); // 스크롤바 화살표 테두리 색상
+	                return button;
+	            }
+
+	            @Override
+	            protected JButton createIncreaseButton(int orientation) {
+	                JButton button = super.createIncreaseButton(orientation);
+	                button.setBackground(new Color(217, 231, 255)); // 스크롤바 화살표 색상
+	                button.setBorder(BorderFactory.createLineBorder(new Color(217, 231, 255))); // 스크롤바 화살표 테두리 색상
+	                return button;
+	            }
+	            });
 	        scrollPane.setBounds(12, 57, 792, 513);
 	        add(scrollPane);
 	        
