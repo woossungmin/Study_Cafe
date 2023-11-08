@@ -289,7 +289,8 @@ public class Login {
       RoundedButton2 event = new RoundedButton2("행사 상품");
       event.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
-      		
+      		frame.dispose();
+      		EventTicket ev = new EventTicket();
       	}
       });
       event.setFont(new Font("굴림", Font.BOLD, 20));

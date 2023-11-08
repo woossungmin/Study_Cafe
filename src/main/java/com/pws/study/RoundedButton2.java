@@ -12,7 +12,8 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 
 public class RoundedButton2 extends JButton {
-
+	
+	private int textSize = 12; // 기본 텍스트 크기
     private Color backgroundColor;
 	public RoundedButton2() {
         super();
@@ -71,6 +72,7 @@ public class RoundedButton2 extends JButton {
     }
 
     private void drawHTMLText(Graphics2D graphics, String text, int width, int height) {
+    	
         FontMetrics fontMetrics = graphics.getFontMetrics();
         String[] lines = text.split("<br/>"); // 줄바꿈을 기준으로 텍스트를 나눔
 
@@ -85,5 +87,9 @@ public class RoundedButton2 extends JButton {
     public void setBackgroundColor(Color backgroundColor) {
         this.backgroundColor = backgroundColor;
         repaint(); // 배경색 변경 후 다시 그리기
+    }
+    public void setTextSize(int textSize) {
+        this.textSize = textSize;
+        setFont(getFont().deriveFont((float) textSize)); // 텍스트 크
     }
 }

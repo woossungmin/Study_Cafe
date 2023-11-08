@@ -132,10 +132,10 @@ public class EventPanel extends JPanel {
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
 		            	 String buttonText = eventButtons[finalII].getText();
-			                String[] parts = buttonText.split("<br>");
-			                String name = parts[0];
-			                String money = parts[1];
-			                money = money.substring(0, money.length() - 1); // 마지막 문자(원) 제거
+		            	 String[] parts = buttonText.split("<br>");
+		                 String name = parts[1].replaceAll("\\<.*?\\>", ""); // HTML 태그 제거
+		                 String money = parts[2].replaceAll("\\<.*?\\>", ""); // HTML 태그 제거
+		                 money = money.substring(0, money.length() - 1); // 마지막 문자(원) 제거
 			                try {
 			                    data.put("name", name);
 			                    data.put("money", money);
@@ -202,7 +202,6 @@ public class EventPanel extends JPanel {
 		    }
 		    fetchDataAndUpdate("a");
 		    
-	     
 	}
 	private void switchPanel(JPanel newPanel,JPanel borderpanel, JButton homebutton, JButton closebutton) {
         borderpanel.removeAll();
@@ -234,18 +233,19 @@ public class EventPanel extends JPanel {
 	        for (int i = 0; i < jArray.length(); i++) {
 	            try {
 	                b[i] = jArray.getJSONObject(i);
-	                ticketButtons[i].setText((String) b[i].get("t_name") + "<br>" + (String) b[i].get("t_money") + "원");
+		            ticketButtons[i].setText((String) b[i].get("t_name") + "<br>" + (String) b[i].get("t_money") + "원");
 	            } catch (JSONException e) {
 	                e.printStackTrace();
 	            }
 	        }
 	    }
-	}
+	    }
 	private void fetchDataAndUpdate1(String id) {
 	    JSONObject data = new JSONObject();
 	    JSONArray jArray = null;
 	    try {
 	        data.put("id", id);
+	        
 	        Post po = new Post();
 	        JSONObject check = po.jsonpost("/FindTicket", data);
 
@@ -267,7 +267,15 @@ public class EventPanel extends JPanel {
 	                if (name.equals("") || money.equals("")) {
 	                    eventButtons[i].setText("X");
 	                } else {
-	                    eventButtons[i].setText(name + "<br>" + money + "원");
+		                if(e[i].get("origin_id").equals("a") || e[i].get("origin_id").equals("b")) {
+		                    eventButtons[i].setText("좌석 이용권 " + "<br>" + name + "<br>" + money + "원");
+		                    eventButtons[i].setTextSize(15);
+		                }
+		                else if(e[i].get("origin_id").equals("c")) {
+		                	 eventButtons[i].setText("사물함 이용권 " + "<br>" + name + "<br>" + money + "원");
+		                	 eventButtons[i].setTextSize(15);
+		                }
+
 	                }
 	            } catch (JSONException e) {
 	                e.printStackTrace();
