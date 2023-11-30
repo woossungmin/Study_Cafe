@@ -246,7 +246,8 @@ public class UpdateSeat {
 		    		  String formattedHour = String.format("%02d", hour);
 		    		  String formattedMinute = String.format("%02d", minute);
 		    		  phonelabel.setText(Info.phone);
-		    		  locklabel.setText(seat + " 번");
+		    		  String extractedNumber = seat_number.replace("s", "");
+		    		  locklabel.setText(seat + "," + extractedNumber + " 번");
 		    		  timelabel.setText(year + "년 " + formattedMonth + "월 " + formattedDay + "일 " + formattedHour + "시 " + formattedMinute + "분");
 		    		  
 	    		  }

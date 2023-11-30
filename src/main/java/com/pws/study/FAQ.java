@@ -27,7 +27,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.pws.study.FaqPanel.CustomHeaderRenderer;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;

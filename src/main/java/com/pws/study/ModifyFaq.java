@@ -18,7 +18,11 @@ import javax.swing.border.Border;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+
 import javax.swing.JList;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ModifyFaq {
 
@@ -73,13 +77,13 @@ public class ModifyFaq {
 		
 		JLabel lblNewLabel = new JLabel("키워드명 : ");
 		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel.setBounds(12, 49, 85, 30);
+		lblNewLabel.setBounds(12, 30, 85, 30);
 		panel_1.add(lblNewLabel);
 		lblNewLabel.setForeground(new Color(114,166,255));
 		
 		JTextField keyword = new JTextField();
 		keyword.setFont(new Font("한컴산뜻돋움", Font.BOLD, 13));
-		keyword.setBounds(109, 51, 291, 30);
+		keyword.setBounds(109, 32, 291, 30);
 		panel_1.add(keyword);
 		keyword.setColumns(10);
 		keyword.setBorder(border);
@@ -103,13 +107,19 @@ public class ModifyFaq {
 		JLabel lblNewLabel_1 = new JLabel("질      문 : ");
 		lblNewLabel_1.setForeground(new Color(114, 166, 255));
 		lblNewLabel_1.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel_1.setBounds(12, 89, 85, 30);
+		lblNewLabel_1.setBounds(12, 70, 85, 30);
 		panel_1.add(lblNewLabel_1);
 		
 		JTextField question = new JTextField();
+		question.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				question.setEditable(true);
+			}
+		});
 		question.setFont(new Font("한컴산뜻돋움", Font.BOLD, 13));
 		question.setColumns(10);
-		question.setBounds(109, 91, 291, 30);
+		question.setBounds(109, 72, 291, 30);
 		panel_1.add(question);
 		question.setBorder(border);
 		question.setBackground(new Color(240,240,240));
@@ -119,7 +129,7 @@ public class ModifyFaq {
 		JLabel lblNewLabel_1_1 = new JLabel("답      변 : ");
 		lblNewLabel_1_1.setForeground(new Color(114, 166, 255));
 		lblNewLabel_1_1.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel_1_1.setBounds(12, 129, 85, 30);
+		lblNewLabel_1_1.setBounds(12, 110, 85, 30);
 		panel_1.add(lblNewLabel_1_1);
 		
 		 JTextArea answer = new JTextArea() {
@@ -140,8 +150,14 @@ public class ModifyFaq {
 	                super.setText(t);
 	            }
 	        };
+		 answer.addMouseListener(new MouseAdapter() {
+		 	@Override
+		 	public void mouseClicked(MouseEvent e) {
+		 		answer.setEditable(true);
+		 	}
+		 });
 	        answer.setFont(new Font("한컴산뜻돋움", Font.BOLD, 13));
-	        answer.setBounds(109, 131, 291, 170);
+	        answer.setBounds(109, 112, 291, 149);
 	        panel_1.add(answer);
 	        answer.setBorder(border);
 	        answer.setForeground(new Color(114, 166, 255));
@@ -210,7 +226,7 @@ public class ModifyFaq {
 		});
 		btnNewButton_1.setText("삭제");
 		btnNewButton_1.setFont(new Font("굴림", Font.BOLD, 13));
-		btnNewButton_1.setBounds(216, 278, 95, 23);
+		btnNewButton_1.setBounds(305, 278, 95, 23);
 		panel_1.add(btnNewButton_1);
 	
 		 Post po = new Post();
